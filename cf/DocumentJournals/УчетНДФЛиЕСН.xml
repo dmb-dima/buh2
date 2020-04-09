@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
+	<DocumentJournal uuid="6bc755be-f8fa-4e1f-aca3-6a2890171e91">
+		<InternalInfo>
+			<xr:GeneratedType name="DocumentJournalSelection.УчетНДФЛиЕСН" category="Selection">
+				<xr:TypeId>e483266e-e3e6-4fbe-8790-543ae1d0fb35</xr:TypeId>
+				<xr:ValueId>459ef0b6-f84e-4415-b0bf-c32b679699b3</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DocumentJournalList.УчетНДФЛиЕСН" category="List">
+				<xr:TypeId>4c541305-a6c4-4323-ba79-835365990a34</xr:TypeId>
+				<xr:ValueId>cc804280-7ac9-4058-a126-f8af224ca359</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DocumentJournalManager.УчетНДФЛиЕСН" category="Manager">
+				<xr:TypeId>e961737c-917e-4901-9251-9faeff8797e6</xr:TypeId>
+				<xr:ValueId>a7165eeb-0c52-424a-8ef1-b20687ef2000</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>УчетНДФЛиЕСН</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы учета НДФЛ и налогов (взносов) с ФОТ</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<DefaultForm>DocumentJournal.УчетНДФЛиЕСН.Form.ФормаСписка</DefaultForm>
+			<AuxiliaryForm/>
+			<UseStandardCommands>false</UseStandardCommands>
+			<RegisteredDocuments>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ВводПроцентаДеятельностиЕНВД</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛВозвратНалога</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛиЕСНДоходыИНалоги</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛПерерасчет</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.СведенияОДоходахФизлиц</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.РасчетЕСН</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛПодтверждениеПраваНаИмущественныйВычет</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.РасчетыПоСтраховымВзносам</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.СправкаПоНДФЛСотруднику</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.СправкаПоНДФЛВНалоговыйОрган</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ПеречислениеНДФЛвБюджет</xr:Item>
+			</RegisteredDocuments>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation/>
+		</Properties>
+		<ChildObjects>
+			<Column uuid="6db2cf32-1a16-4180-b320-08e1f563244c">
+				<Properties>
+					<Name>Организация</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>IndexWithAdditionalOrder</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛПерерасчет.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ВводПроцентаДеятельностиЕНВД.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛиЕСНДоходыИНалоги.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛВозвратНалога.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СведенияОДоходахФизлиц.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.РасчетЕСН.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛПодтверждениеПраваНаИмущественныйВычет.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.РасчетыПоСтраховымВзносам.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СправкаПоНДФЛВНалоговыйОрган.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СправкаПоНДФЛСотруднику.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПеречислениеНДФЛвБюджет.Attribute.Организация</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="23f1af13-dbf5-4c39-bbec-7190da973efb">
+				<Properties>
+					<Name>НалоговыйПериод</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоговый период</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛПерерасчет.Attribute.НалоговыйПериод</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ВводПроцентаДеятельностиЕНВД.Attribute.Период</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛВозвратНалога.Attribute.МесяцНалоговогоПериода</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СведенияОДоходахФизлиц.Attribute.НалоговыйПериод</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.РасчетЕСН.Attribute.ПериодРегистрации</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛПодтверждениеПраваНаИмущественныйВычет.Attribute.НалоговыйПериод</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.РасчетыПоСтраховымВзносам.Attribute.МесяцРасчетногоПериода</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СправкаПоНДФЛСотруднику.Attribute.НалоговыйПериод</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СправкаПоНДФЛВНалоговыйОрган.Attribute.НалоговыйПериод</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПеречислениеНДФЛвБюджет.Attribute.МесяцНалоговогоПериода</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="36afe73e-e264-4c85-8ba6-ab3adecbbc49">
+				<Properties>
+					<Name>Работники</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Работники</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СведенияОДоходахФизлиц.Attribute.КраткийСоставДокумента</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛВозвратНалога.Attribute.КраткийСоставДокумента</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛПодтверждениеПраваНаИмущественныйВычет.Attribute.КраткийСоставДокумента</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛПерерасчет.Attribute.КраткийСоставДокумента</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛиЕСНДоходыИНалоги.Attribute.КраткийСоставДокумента</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СправкаПоНДФЛВНалоговыйОрган.Attribute.КраткийСоставДокумента</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПеречислениеНДФЛвБюджет.Attribute.КраткийСоставДокумента</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="52cd48e9-b15b-4c86-90d7-e8b7beadb4a6">
+				<Properties>
+					<Name>Ответственный</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ответственный</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛПодтверждениеПраваНаИмущественныйВычет.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛПерерасчет.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ВводПроцентаДеятельностиЕНВД.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СведенияОДоходахФизлиц.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.РасчетЕСН.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛиЕСНДоходыИНалоги.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛВозвратНалога.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.РасчетыПоСтраховымВзносам.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СправкаПоНДФЛСотруднику.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СправкаПоНДФЛВНалоговыйОрган.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПеречислениеНДФЛвБюджет.Attribute.Ответственный</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="9c4b251d-4c25-4bce-b9cb-a13ed864563d">
+				<Properties>
+					<Name>Комментарий</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛПодтверждениеПраваНаИмущественныйВычет.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛПерерасчет.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ВводПроцентаДеятельностиЕНВД.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СведенияОДоходахФизлиц.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.РасчетЕСН.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛиЕСНДоходыИНалоги.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.НДФЛВозвратНалога.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.РасчетыПоСтраховымВзносам.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СправкаПоНДФЛСотруднику.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СправкаПоНДФЛВНалоговыйОрган.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПеречислениеНДФЛвБюджет.Attribute.Комментарий</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Form>ФормаСписка</Form>
+		</ChildObjects>
+	</DocumentJournal>
+</MetaDataObject>

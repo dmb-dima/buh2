@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
+	<Enum uuid="65fb352b-a0d7-4beb-adea-37f2e53d17de">
+		<InternalInfo>
+			<xr:GeneratedType name="EnumRef.ВидыЦенностей" category="Ref">
+				<xr:TypeId>dbf39d25-a355-4360-aa57-0fb16c0a8915</xr:TypeId>
+				<xr:ValueId>a0467a28-dbc0-4957-9ca3-b6ad0792759b</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumManager.ВидыЦенностей" category="Manager">
+				<xr:TypeId>6b106bd4-7c1b-4653-bde7-f3a55fcb82f2</xr:TypeId>
+				<xr:ValueId>3dd2d137-4467-4486-b593-a757e477fdee</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumList.ВидыЦенностей" category="List">
+				<xr:TypeId>9c2a4475-f69b-4e27-a27b-27a2cea81cb3</xr:TypeId>
+				<xr:ValueId>cb0a6224-1f05-4c42-b0c9-c7913739e444</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>ВидыЦенностей</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Виды ценностей</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment>(Регл)</Comment>
+			<UseStandardCommands>false</UseStandardCommands>
+			<Characteristics/>
+			<QuickChoice>true</QuickChoice>
+			<ChoiceMode>BothWays</ChoiceMode>
+			<DefaultListForm/>
+			<DefaultChoiceForm/>
+			<AuxiliaryListForm/>
+			<AuxiliaryChoiceForm/>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation/>
+			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+		</Properties>
+		<ChildObjects>
+			<EnumValue uuid="a303fec6-d3c7-4a92-b0be-d2dba228ff9a">
+				<Properties>
+					<Name>АвансыВыданные</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Авансы выданные</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>для учета НДС, предъявленного по выданному авансу</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="2d582051-934f-4ffb-a68b-115155070463">
+				<Properties>
+					<Name>АвансыПолученные</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Авансы полученные</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>для учета НДС, исчисленного с полученных авансов, кроме НДС с авансов под будущие поставки с 0%</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="2dd01482-780a-4d04-93b8-2a6f0e3028fc">
+				<Properties>
+					<Name>АвансыПолученные0</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Авансы полученные под 0%</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>для учета НДС с авансов, полученных под будущие поставки с применением ставки 0%</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="493d31bb-adc0-4e3f-ab80-b90ec9024a07">
+				<Properties>
+					<Name>ВнутреннееПотребление</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Внутреннее потребление</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>Ценности (товары, работы или услуги, переданные для собственного потребления внутри организации)</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="949dd289-2a73-4682-82a2-a91cdd0fba87">
+				<Properties>
+					<Name>Возврат</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Возврат</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>для учета НДС, по возвращаемым от покупателя (поставщику) ценностям</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="6e2e106a-05f9-4088-8e54-c195cd529077">
+				<Properties>
+					<Name>ИмуществоСУчетомНДС</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имущество с учетом НДС</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>Имущество, в балансовую стоимость которого входит НДС, уплаченный ранее поставщикам данного имущества</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="a73c6c15-0028-4b5f-8411-4cfb70600cf1">
+				<Properties>
+					<Name>КомандировочныеРасходы</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Командировочные расходы</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>для отражения НДС по командировочным расходам</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="b02b490f-fd3d-4a35-b72c-5790215edca4">
+				<Properties>
+					<Name>Материалы</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Материалы</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="8e2ff1ca-c7c4-4b62-8041-4c290d1a28a7">
+				<Properties>
+					<Name>НалоговыйАгентАренда</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоговый агент (аренда)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>для учета сумм НДС, удержанных при аренде имущества у государственных и муниципальных органов</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="c5389e25-9ca6-4235-a6be-50ccfb6b7169">
+				<Properties>
+					<Name>НалоговыйАгентРеализацияИмущества</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоговый агент (реализация имущества)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>для учета сумм НДС, удержанных при приобретении государственного и муниципального имущества</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="35aa0cc9-b0d0-4afb-ac44-06d15ce8ba9b">
+				<Properties>
+					<Name>НалоговыйАгентИностранцы</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоговый агент (иностранцы)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>для учета сумм НДС, удержанных с иностранцев, не состоящих на налоговом учете в РФ</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="c961e061-ee05-466b-b487-a3653fc231e2">
+				<Properties>
+					<Name>НалоговыйАгентКомитент</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоговый агент (комитент)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="9ba69841-29df-4d9c-90d1-d1c8a46b9cbb">
+				<Properties>
+					<Name>НМА</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>НМА</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="19af3d12-1db7-405e-a221-4d68af3842c4">
+				<Properties>
+					<Name>Оборудование</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оборудование</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>для учета НДС по приобретаемому оборудованию требующему монтажа для ввода в эксплуатацию</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="0c8d4b43-5b78-46f7-8a6c-521a86d7082e">
+				<Properties>
+					<Name>ОбъектыНезавершенногоСтроительства</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объекты незавершенного строительства</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>для учета НДС по приобретаемым (реализуемым) объектам незавершенного строительства</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="3abb92d5-ac2d-44ad-85d3-2b034d64b2ac">
+				<Properties>
+					<Name>ОС</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ОС</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="356f939c-b1bf-43c3-be60-8bb667f73090">
+				<Properties>
+					<Name>ПосредническиеУслуги</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Посреднические услуги</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>Посреднические услуги оказываемые в интересах другого лица на основе договоров поручения, комиссии либо агентских договоров</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="33fdd3e7-2a00-4f16-b6b4-7731416185d2">
+				<Properties>
+					<Name>ПредставительскиеРасходы</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представительские расходы</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>для учета НДС по представительским расходам</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="916f04e7-aaaf-4b01-93b6-48833cd6494e">
+				<Properties>
+					<Name>ПрочиеРаботыИУслуги</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Прочие работы и услуги</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="a17d55cf-c167-41ae-8e72-d98a116c347c">
+				<Properties>
+					<Name>СМРПодрядные</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СМР подрядные</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>для учета НДС, предъявленных подрядчиками при выполнении строительства ОС</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="2f2fafb2-15c5-426d-a501-825bd03e71cb">
+				<Properties>
+					<Name>СМРСобственнымиСилами</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СМР собственными силами</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>для учета НДС, приходящегося на СМР, выполненные самой организацией (хозспособ)</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="0503bb88-53ff-44d5-87c4-5a453d792e19">
+				<Properties>
+					<Name>СуммыСвязанныеСРасчетамиПоОплате</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Суммы, связанные с расчетами по оплате</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>Суммы, связанные с расчетами по оплате (ст. 162 НК РФ)</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="f5033e71-eeba-42d7-a4be-d03c163e114d">
+				<Properties>
+					<Name>ТаможенныеПлатежи</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таможенные платежи</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>для учета НДС, уплаченного налогоплательщиком при ввозе на территорию России товаров</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="5d88af3b-f6fd-4a4e-bb8b-2770de32b36a">
+				<Properties>
+					<Name>ТаможенныеПлатежиОС</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таможенные платежи по ОС</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>Для учета НДС, уплаченного налогоплательщиком при ввозе на территорию России ОС и оборудования (использование с 01.01.2006)</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="40a6b4de-7e32-4511-8608-636cbdb94aea">
+				<Properties>
+					<Name>Товары</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Товары</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="e2beb262-ca19-47fd-892d-9f60ee071e5f">
+				<Properties>
+					<Name>ТоварыУслугиКомитентов</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Товары и услуги комитентов</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+		</ChildObjects>
+	</Enum>
+</MetaDataObject>

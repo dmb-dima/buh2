@@ -1,0 +1,3985 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИнформационнаяБаза</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetUnion">
+		<name>Данные</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ФизЛицо</dataPath>
+			<field>ФизЛицо</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Физ лицо</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидРасчета</dataPath>
+			<field>ВидРасчета</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид расчета</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ГоловнаяОрганизация</dataPath>
+			<field>ГоловнаяОрганизация</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Головная организация</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОблагаетсяЕНВД</dataPath>
+			<field>ОблагаетсяЕНВД</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Облагается ЕНВД</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодРегистрации</dataPath>
+			<field>ПериодРегистрации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Месяц начисления</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ДФ='MMMM yyyy "г."'</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Результат</dataPath>
+			<field>Результат</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидПоказателя</dataPath>
+			<field>ВидПоказателя</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид показателя</v8:content>
+				</v8:item>
+			</title>
+			<orderExpression>
+				<dcscom:expression>Порядок</dcscom:expression>
+				<dcscom:orderType>Asc</dcscom:orderType>
+				<dcscom:autoOrder>false</dcscom:autoOrder>
+			</orderExpression>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДокументОснование</dataPath>
+			<field>ДокументОснование</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Группа</dataPath>
+			<field>Группа</field>
+			<orderExpression>
+				<dcscom:expression>Порядок</dcscom:expression>
+				<dcscom:orderType>Asc</dcscom:orderType>
+				<dcscom:autoOrder>false</dcscom:autoOrder>
+			</orderExpression>
+			<valueType>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</valueType>
+			<availableValue>
+				<value xsi:type="xs:string">Налоговая база</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Налоговая база</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Налоги</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Налоги</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Всего сумма пособия</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Всего сумма пособия</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Оплачено дней пособия</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Оплачено дней пособия</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Всего страховых случаев</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Всего страховых случаев</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">в т.ч. сумма сверх нормы</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>в т.ч. сумма сверх нормы</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Всего сумма пособия (раздел 1)</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Всего сумма пособия (раздел 1)</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Оплачено дней пособия (раздел 1)</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Оплачено дней пособия (раздел 1)</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Всего страховых случаев (раздел 1)</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Всего страховых случаев (раздел 1)</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">в т.ч. сумма сверх нормы (раздел 1)</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>в т.ч. сумма сверх нормы (раздел 1)</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Всего сумма пособия (ФСС НС)</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Всего сумма пособия (ФСС НС)</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Оплачено дней пособия (ФСС НС)</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Оплачено дней пособия (ФСС НС)</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Всего страховых случаев (ФСС НС)</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Всего страховых случаев (ФСС НС)</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">в т.ч. сумма сверх нормы (ФСС НС)</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>в т.ч. сумма сверх нормы (ФСС НС)</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Количество выплат пособий</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Количество выплат пособий</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Количество получателей (раздел 1)</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Количество получателей (раздел 1)</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Количество получателей</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Количество получателей</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КодДохода</dataPath>
+			<field>КодДохода</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидЗанятости</dataPath>
+			<field>ВидЗанятости</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид занятости</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Порядок</dataPath>
+			<field>Порядок</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядок</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УСН</dataPath>
+			<field>УСН</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПолучателиПособий</dataPath>
+			<field>ПолучателиПособий</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сотрудник</dataPath>
+			<field>Сотрудник</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УходЗаПервымРебенком</dataPath>
+			<field>УходЗаПервымРебенком</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Инвалидность</dataPath>
+			<field>Инвалидность</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДобровольныеВзносыВФСС</dataPath>
+			<field>ДобровольныеВзносыВФСС</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЕНВД</dataPath>
+			<field>ЕНВД</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Пояснение</dataPath>
+			<field>Пояснение</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пояснение</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидПособияСоциальногоСтрахования</dataPath>
+			<field>ВидПособияСоциальногоСтрахования</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид пособия социального страхования</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОбщаяГруппа</dataPath>
+			<field>ОбщаяГруппа</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Общая группа</v8:content>
+				</v8:item>
+			</title>
+			<orderExpression>
+				<dcscom:expression>Порядок</dcscom:expression>
+				<dcscom:orderType>Asc</dcscom:orderType>
+				<dcscom:autoOrder>false</dcscom:autoOrder>
+			</orderExpression>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Документ</dataPath>
+			<field>Документ</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>БЛ</dataPath>
+			<field>БЛ</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>БЛ</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КодДоходаФСС_НС</dataPath>
+			<field>КодДоходаФСС_НС</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код дохода ФСС НС</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<item xsi:type="DataSetQuery">
+			<name>БазаЕСН</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Результат</dataPath>
+				<field>Результат</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Результат</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидПоказателя</dataPath>
+				<field>ВидПоказателя</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ГоловнаяОрганизация</dataPath>
+				<field>ГоловнаяОрганизация</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДокументОснование</dataPath>
+				<field>ДокументОснование</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОблагаетсяЕНВД</dataPath>
+				<field>ОблагаетсяЕНВД</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодРегистрации</dataPath>
+				<field>ПериодРегистрации</field>
+				<role>
+					<dcscom:periodNumber>1</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ФизЛицо</dataPath>
+				<field>ФизЛицо</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Группа</dataPath>
+				<field>Группа</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КодДохода</dataPath>
+				<field>КодДохода</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Порядок</dataPath>
+				<field>Порядок</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Порядок</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Инвалидность</dataPath>
+				<field>Инвалидность</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Пояснение</dataPath>
+				<field>Пояснение</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Пояснение</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>УСН</dataPath>
+				<field>УСН</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>УСН</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбщаяГруппа</dataPath>
+				<field>ОбщаяГруппа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Общая группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДобровольныеВзносыВФСС</dataPath>
+				<field>ДобровольныеВзносыВФСС</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Добровольные взносы ВФСС</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>ИнформационнаяБаза</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	"Налоговая база" КАК Группа,
+	"" КАК ОбщаяГруппа,
+	"По данным учета" КАК Пояснение,
+	ВидыПоказателей.ВидПоказателя КАК ВидПоказателя,
+	ВЫБОР
+		КОГДА ВидыПоказателей.ВидПоказателя = "Начислено"
+			ТОГДА 1
+		КОГДА ВидыПоказателей.ВидПоказателя = "База взносов в федиральный бюджэт"
+			ТОГДА 2
+		КОГДА ВидыПоказателей.ВидПоказателя = "База ФСС"
+			ТОГДА 3
+		КОГДА ВидыПоказателей.ВидПоказателя = "База ФОМС"
+			ТОГДА 4
+		КОГДА ВидыПоказателей.ВидПоказателя = "База ТФОМС"
+			ТОГДА 5
+		КОГДА ВидыПоказателей.ВидПоказателя = "База взносов в ПФР"
+			ТОГДА 6
+	КОНЕЦ КАК Порядок,
+	ДоходыПоРегистрамРасчета.ПериодРегистрации КАК ПериодРегистрации,
+	ДоходыПоРегистрамРасчета.ФизЛицо КАК ФизЛицо,
+	ДоходыПоРегистрамРасчета.ГоловнаяОрганизация КАК ГоловнаяОрганизация,
+	ДоходыПоРегистрамРасчета.Организация КАК Организация,
+	ДоходыПоРегистрамРасчета.ДокументОснование КАК ДокументОснование,
+	ДоходыПоРегистрамРасчета.КодДоходаЕСН КАК КодДоходаЕСН,
+	ДоходыПоРегистрамРасчета.ОблагаетсяЕНВД КАК ОблагаетсяЕНВД,
+	СУММА(ВЫБОР
+			КОГДА ВидыПоказателей.ВидПоказателя = "Начислено"
+				ТОГДА ДоходыПоРегистрамРасчета.Результат
+			КОГДА ВидыПоказателей.ВидПоказателя = "База взносов в федиральный бюджэт"
+				ТОГДА ВЫБОР
+						КОГДА ДоходыПоРегистрамРасчета.КодДоходаЕСН.ВходитВБазуФедеральныйБюджет
+								И (НЕ ДоходыПоРегистрамРасчета.ОблагаетсяЕНВД)
+							ТОГДА ДоходыПоРегистрамРасчета.Результат
+						ИНАЧЕ 0
+					КОНЕЦ
+			КОГДА ВидыПоказателей.ВидПоказателя = "База ФСС"
+				ТОГДА ВЫБОР
+						КОГДА ДоходыПоРегистрамРасчета.КодДоходаЕСН.ВходитВБазуФСС
+							ТОГДА ДоходыПоРегистрамРасчета.Результат
+						ИНАЧЕ 0
+					КОНЕЦ
+			КОГДА ВидыПоказателей.ВидПоказателя = "База ФОМС"
+				ТОГДА ВЫБОР
+						КОГДА ДоходыПоРегистрамРасчета.КодДоходаЕСН.ВходитВБазуФОМС
+								И (НЕ ДоходыПоРегистрамРасчета.ОблагаетсяЕНВД)
+							ТОГДА ДоходыПоРегистрамРасчета.Результат
+						ИНАЧЕ 0
+					КОНЕЦ
+			КОГДА ВидыПоказателей.ВидПоказателя = "База ТФОМС"
+				ТОГДА ВЫБОР
+						КОГДА ДоходыПоРегистрамРасчета.КодДоходаЕСН.ВходитВБазуФОМС
+								И (НЕ ДоходыПоРегистрамРасчета.ОблагаетсяЕНВД)
+							ТОГДА ДоходыПоРегистрамРасчета.Результат
+						ИНАЧЕ 0
+					КОНЕЦ
+			КОГДА ВидыПоказателей.ВидПоказателя = "База взносов в ПФР"
+				ТОГДА ВЫБОР
+						КОГДА ДоходыПоРегистрамРасчета.КодДоходаЕСН.ВходитВБазуФедеральныйБюджет
+								И НеИмеютправоНаПенсию.ФизЛицо ЕСТЬ NULL 
+							ТОГДА ДоходыПоРегистрамРасчета.Результат
+						ИНАЧЕ 0
+					КОНЕЦ
+		КОНЕЦ) КАК Результат,
+	СведенияОбИнвалидности.Инвалидность КАК Инвалидность,
+	ЕСТЬNULL(УчтенаяПолитика.УСН, ЛОЖЬ) КАК УСН,
+	ЕСТЬNULL(УчтенаяПолитика.УплачиватьДобровольныеВзносыВФСС, ЛОЖЬ) КАК ДобровольныеВзносыВФСС
+{ВЫБРАТЬ
+	ВидПоказателя,
+	ПериодРегистрации,
+	Порядок,
+	ФизЛицо.*,
+	ГоловнаяОрганизация.*,
+	Организация.*,
+	ДокументОснование.*,
+	КодДоходаЕСН.* КАК КодДохода,
+	ОблагаетсяЕНВД,
+	Результат,
+	Группа,
+	Инвалидность,
+	Пояснение,
+	УСН,
+	ОбщаяГруппа}
+ИЗ
+	(ВЫБРАТЬ
+		НАЧАЛОПЕРИОДА(ЕСНСведенияОДоходах.Период, МЕСЯЦ) КАК ПериодРегистрации,
+		ЕСНСведенияОДоходах.ФизЛицо КАК ФизЛицо,
+		ЕСНСведенияОДоходах.Организация КАК ГоловнаяОрганизация,
+		ЕСНСведенияОДоходах.ОбособленноеПодразделение КАК Организация,
+		ЕСНСведенияОДоходах.Регистратор КАК ДокументОснование,
+		ЕСНСведенияОДоходах.КодДоходаЕСН КАК КодДоходаЕСН,
+		ЕСНСведенияОДоходах.ОблагаетсяЕНВД КАК ОблагаетсяЕНВД,
+		СУММА(ЕСНСведенияОДоходах.Результат - ЕСНСведенияОДоходах.Скидка) КАК Результат
+	ИЗ
+		РегистрНакопления.ЕСНСведенияОДоходах КАК ЕСНСведенияОДоходах
+	ГДЕ
+		ЕСНСведенияОДоходах.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	
+	СГРУППИРОВАТЬ ПО
+		НАЧАЛОПЕРИОДА(ЕСНСведенияОДоходах.Период, МЕСЯЦ),
+		ЕСНСведенияОДоходах.ФизЛицо,
+		ЕСНСведенияОДоходах.Организация,
+		ЕСНСведенияОДоходах.ОбособленноеПодразделение,
+		ЕСНСведенияОДоходах.Регистратор,
+		ЕСНСведенияОДоходах.КодДоходаЕСН,
+		ЕСНСведенияОДоходах.ОблагаетсяЕНВД) КАК ДоходыПоРегистрамРасчета
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ПоследниеЗаписиРегитсра.ПериодРегистрации КАК ПериодРегистрации,
+			ПоследниеЗаписиРегитсра.ФизЛицо КАК ФизЛицо
+		ИЗ
+			(ВЫБРАТЬ
+				Периоды.ПериодРегистрации КАК ПериодРегистрации,
+				ГражданствоФизЛиц.ФизЛицо КАК ФизЛицо,
+				МАКСИМУМ(ГражданствоФизЛиц.Период) КАК Период
+			ИЗ
+				(ВЫБРАТЬ РАЗЛИЧНЫЕ
+					НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+				ИЗ
+					РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь) КАК Периоды
+					ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ГражданствоФизЛиц КАК ГражданствоФизЛиц
+					ПО (НАЧАЛОПЕРИОДА(Периоды.ПериодРегистрации, МЕСЯЦ) &gt;= ГражданствоФизЛиц.Период)
+			
+			СГРУППИРОВАТЬ ПО
+				Периоды.ПериодРегистрации,
+				ГражданствоФизЛиц.ФизЛицо) КАК ПоследниеЗаписиРегитсра
+				ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ГражданствоФизЛиц КАК ГражданствоФизЛиц
+				ПО ПоследниеЗаписиРегитсра.ФизЛицо = ГражданствоФизЛиц.ФизЛицо
+					И ПоследниеЗаписиРегитсра.Период = ГражданствоФизЛиц.Период
+		ГДЕ
+			ГражданствоФизЛиц.НеИмеетПравоНаПенсию) КАК НеИмеютправоНаПенсию
+		ПО ДоходыПоРегистрамРасчета.ПериодРегистрации = НеИмеютправоНаПенсию.ПериодРегистрации
+			И ДоходыПоРегистрамРасчета.ФизЛицо = НеИмеютправоНаПенсию.ФизЛицо
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ДатыПоследнихДанных.ПериодРегистрации КАК ПериодРегистрации,
+			ДатыПоследнихДанных.Физлицо КАК Физлицо,
+			СведенияОбИнвалидностиФизлиц.Инвалидность КАК Инвалидность
+		ИЗ
+			(ВЫБРАТЬ
+				Периоды.ПериодРегистрации КАК ПериодРегистрации,
+				СведенияОбИнвалидностиФизлиц.Физлицо КАК Физлицо,
+				МАКСИМУМ(СведенияОбИнвалидностиФизлиц.Период) КАК Период
+			ИЗ
+				(ВЫБРАТЬ РАЗЛИЧНЫЕ
+					НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+				ИЗ
+					РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь) КАК Периоды
+					ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОбИнвалидностиФизлиц КАК СведенияОбИнвалидностиФизлиц
+					ПО (КОНЕЦПЕРИОДА(Периоды.ПериодРегистрации, МЕСЯЦ) &gt;= СведенияОбИнвалидностиФизлиц.Период)
+			
+			СГРУППИРОВАТЬ ПО
+				Периоды.ПериодРегистрации,
+				СведенияОбИнвалидностиФизлиц.Физлицо) КАК ДатыПоследнихДанных
+				ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОбИнвалидностиФизлиц КАК СведенияОбИнвалидностиФизлиц
+				ПО ДатыПоследнихДанных.Физлицо = СведенияОбИнвалидностиФизлиц.Физлицо
+					И ДатыПоследнихДанных.Период = СведенияОбИнвалидностиФизлиц.Период) КАК СведенияОбИнвалидности
+		ПО ДоходыПоРегистрамРасчета.ПериодРегистрации = СведенияОбИнвалидности.ПериодРегистрации
+			И ДоходыПоРегистрамРасчета.ФизЛицо = СведенияОбИнвалидности.Физлицо
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ПоследниеДаты.Организация КАК Организация,
+			ВЫБОР
+				КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+					ТОГДА ИСТИНА
+				ИНАЧЕ ЛОЖЬ
+			КОНЕЦ КАК УСН,
+			ПоследниеДаты.ПериодРегистрации КАК ПериодРегистрации,
+			УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС КАК УплачиватьДобровольныеВзносыВФСС
+		ИЗ
+			(ВЫБРАТЬ
+				УчетнаяПолитикаНалоговыйУчет.Организация КАК Организация,
+				Периоды.ПериодРегистрации КАК ПериодРегистрации,
+				МАКСИМУМ(УчетнаяПолитикаНалоговыйУчет.Период) КАК Период
+			ИЗ
+				(ВЫБРАТЬ РАЗЛИЧНЫЕ
+					НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, ДЕНЬ) КАК ПериодРегистрации
+				ИЗ
+					РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь) КАК Периоды
+					ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаНалоговыйУчет
+					ПО (КОНЕЦПЕРИОДА(Периоды.ПериодРегистрации, МЕСЯЦ) &gt;= УчетнаяПолитикаНалоговыйУчет.Период)
+			
+			СГРУППИРОВАТЬ ПО
+				УчетнаяПолитикаНалоговыйУчет.Организация,
+				Периоды.ПериодРегистрации) КАК ПоследниеДаты
+				ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаНалоговыйУчет
+				ПО ПоследниеДаты.Организация = УчетнаяПолитикаНалоговыйУчет.Организация
+					И ПоследниеДаты.Период = УчетнаяПолитикаНалоговыйУчет.Период) КАК УчтенаяПолитика
+		ПО ДоходыПоРегистрамРасчета.ГоловнаяОрганизация = УчтенаяПолитика.Организация
+			И ДоходыПоРегистрамРасчета.ПериодРегистрации = УчтенаяПолитика.ПериодРегистрации,
+	(ВЫБРАТЬ
+		"База взносов в федиральный бюджэт" КАК ВидПоказателя
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		"Начислено"
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		"База ФСС"
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		"База ТФОМС"
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		"База взносов в ПФР") КАК ВидыПоказателей
+{ГДЕ
+	ВидыПоказателей.ВидПоказателя КАК ВидПоказателя,
+	ДоходыПоРегистрамРасчета.ПериодРегистрации,
+	ДоходыПоРегистрамРасчета.ФизЛицо.*,
+	ДоходыПоРегистрамРасчета.ГоловнаяОрганизация.*,
+	ДоходыПоРегистрамРасчета.Организация.*,
+	ДоходыПоРегистрамРасчета.ДокументОснование.*,
+	ДоходыПоРегистрамРасчета.КодДоходаЕСН.* КАК КодДохода,
+	ДоходыПоРегистрамРасчета.ОблагаетсяЕНВД,
+	ДоходыПоРегистрамРасчета.Результат,
+	("Налоговая база") КАК Группа,
+	СведенияОбИнвалидности.Инвалидность,
+	("По данным учета") КАК Пояснение,
+	("") КАК ОбщаяГруппа,
+	(ЕСТЬNULL(УчтенаяПолитика.УСН, ЛОЖЬ)) КАК УСН,
+	(ЕСТЬNULL(УчтенаяПолитика.УплачиватьДобровольныеВзносыВФСС, ЛОЖЬ)) КАК ДобровольныеВзносыВФСС}
+
+СГРУППИРОВАТЬ ПО
+	ДоходыПоРегистрамРасчета.КодДоходаЕСН,
+	ДоходыПоРегистрамРасчета.ГоловнаяОрганизация,
+	ДоходыПоРегистрамРасчета.Организация,
+	ДоходыПоРегистрамРасчета.ФизЛицо,
+	ДоходыПоРегистрамРасчета.ПериодРегистрации,
+	ДоходыПоРегистрамРасчета.ОблагаетсяЕНВД,
+	ДоходыПоРегистрамРасчета.ДокументОснование,
+	ВидыПоказателей.ВидПоказателя,
+	СведенияОбИнвалидности.Инвалидность,
+	УчтенаяПолитика.УСН,
+	ЕСТЬNULL(УчтенаяПолитика.УплачиватьДобровольныеВзносыВФСС, ЛОЖЬ)</query>
+			<autoFillFields>false</autoFillFields>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>НалогЕСН</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ГоловнаяОрганизация</dataPath>
+				<field>ГоловнаяОрганизация</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Головная организация</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Организация</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Результат</dataPath>
+				<field>Результат</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Результат</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ФизЛицо</dataPath>
+				<field>ФизЛицо</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодРегистрации</dataPath>
+				<field>ПериодРегистрации</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период регистрации</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:periodNumber>1</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидПоказателя</dataPath>
+				<field>ВидПоказателя</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Вид показателя</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Группа</dataPath>
+				<field>Группа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Порядок</dataPath>
+				<field>Порядок</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Порядок</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДобровольныеВзносыВФСС</dataPath>
+				<field>ДобровольныеВзносыВФСС</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЕНВД</dataPath>
+				<field>ЕНВД</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>УСН</dataPath>
+				<field>УСН</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Пояснение</dataPath>
+				<field>Пояснение</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Пояснение</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбщаяГруппа</dataPath>
+				<field>ОбщаяГруппа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Общая группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>ИнформационнаяБаза</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	"Налоги" КАК Группа,
+	"" КАК ОбщаяГруппа,
+	"По данным учета" КАК Пояснение,
+	ВидыПоказателей.ВидПоказателя КАК ВидПоказателя,
+	НалогОбороты.ФизЛицо КАК ФизЛицо,
+	ВЫБОР
+		КОГДА ВидыПоказателей.ВидПоказателя = "Налог в федиральный бюджэт"
+			ТОГДА НалогОбороты.ФедеральныйБюджет
+		КОГДА ВидыПоказателей.ВидПоказателя = "Налог ФСС"
+			ТОГДА НалогОбороты.ФСС
+		КОГДА ВидыПоказателей.ВидПоказателя = "Налог ФФОМС"
+			ТОГДА НалогОбороты.ФФОМС
+		КОГДА ВидыПоказателей.ВидПоказателя = "Налог ТФОМС"
+			ТОГДА НалогОбороты.ТФОМС
+		КОГДА ВидыПоказателей.ВидПоказателя = "Взносов в ПФР"
+			ТОГДА НалогОбороты.ПФРСтраховая
+		КОНЕЦ КАК Результат,
+	НалогОбороты.ГоловнаяОрганизация КАК ГоловнаяОрганизация,
+	НалогОбороты.Организация КАК Организация,
+	НалогОбороты.ПериодРегистрации КАК ПериодРегистрации,
+	ВидыПоказателей.Порядок КАК Порядок,
+	ЕСТЬNULL(УчетнаяПолитика.УСН, ЛОЖЬ) КАК УСН,
+	ЕСТЬNULL(УчетнаяПолитика.ЕНВД, ЛОЖЬ) КАК ЕНВД,
+	ЕСТЬNULL(УчетнаяПолитика.ДобровольныеВзносыВФСС, ЛОЖЬ) КАК ДобровольныеВзносыВФСС
+{ВЫБРАТЬ
+	ФизЛицо.*,
+	Результат,
+	Порядок,
+	ГоловнаяОрганизация.*,
+	Организация.*,
+	ПериодРегистрации,
+	Группа,
+	ВидПоказателя,
+	УСН,
+	ЕНВД,
+	ДобровольныеВзносыВФСС,
+	ОбщаяГруппа}
+ИЗ
+	(ВЫБРАТЬ
+		НАЧАЛОПЕРИОДА(ЕСНИсчисленный.Период, МЕСЯЦ) КАК ПериодРегистрации,
+		ЕСНИсчисленный.ФизЛицо КАК ФизЛицо,
+		ЕСНИсчисленный.Организация КАК ГоловнаяОрганизация,
+		СУММА(ЕСНИсчисленный.ФедеральныйБюджет) КАК ФедеральныйБюджет,
+		ЕСНИсчисленный.ОбособленноеПодразделение КАК Организация,
+		СУММА(ЕСНИсчисленный.ФСС - ЕСТЬNULL(СведенияОСтавкахЕСНиПФР.ФССвПроцентах, 0) * ЕСНИсчисленный.ПримененнаяЛьготаФСС / 100) КАК ФСС,
+		СУММА(ЕСНИсчисленный.ФФОМС) КАК ФФОМС,
+		СУММА(ЕСНИсчисленный.ТФОМС) КАК ТФОМС,
+		СУММА(ЕСНИсчисленный.ПФРНакопительная) КАК ПФРНакопительная,
+		СУММА(ЕСНИсчисленный.ПФРСтраховая) КАК ПФРСтраховая
+	ИЗ
+		РегистрНакопления.ЕСНИсчисленный КАК ЕСНИсчисленный
+			ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОСтавкахЕСНиПФР КАК СведенияОСтавкахЕСНиПФР
+			ПО ЕСНИсчисленный.ОбособленноеПодразделение.ВидСтавокЕСНиПФР = СведенияОСтавкахЕСНиПФР.ВидСтавокЕСНиПФР
+				И (ГОД(ЕСНИсчисленный.Период) = СведенияОСтавкахЕСНиПФР.Год)
+				И (СведенияОСтавкахЕСНиПФР.НомерСтрокиСтавок = 1)
+	ГДЕ
+		ЕСНИсчисленный.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	
+	СГРУППИРОВАТЬ ПО
+		ЕСНИсчисленный.Организация,
+		ЕСНИсчисленный.ОбособленноеПодразделение,
+		НАЧАЛОПЕРИОДА(ЕСНИсчисленный.Период, МЕСЯЦ),
+		ЕСНИсчисленный.ФизЛицо) КАК НалогОбороты
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ДатыПоследнихДвижений.ПериодРегистрации КАК ПериодРегистрации,
+			УчетнаяПолитикаНалоговыйУчет.Организация КАК Организация,
+			ВЫБОР
+				КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+					ТОГДА ИСТИНА
+				ИНАЧЕ ЛОЖЬ
+			КОНЕЦ КАК УСН,
+			УчетнаяПолитикаНалоговыйУчет.ОрганизацияЯвляетсяПлательщикомЕНВД КАК ЕНВД,
+			УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС КАК ДобровольныеВзносыВФСС
+		ИЗ
+			(ВЫБРАТЬ
+				УчетнаяПолитикаНалоговыйУчет.Организация КАК Организация,
+				МАКСИМУМ(УчетнаяПолитикаНалоговыйУчет.Период) КАК Период,
+				Периоды.ПериодРегистрации КАК ПериодРегистрации
+			ИЗ
+				(ВЫБРАТЬ РАЗЛИЧНЫЕ
+					НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+				ИЗ
+					РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь
+				ГДЕ
+					РегламентированныйПроизводственныйКалендарь.ДатаКалендаря МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода) КАК Периоды
+					ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаНалоговыйУчет
+					ПО (КОНЕЦПЕРИОДА(Периоды.ПериодРегистрации, МЕСЯЦ) &gt;= УчетнаяПолитикаНалоговыйУчет.Период)
+			
+			СГРУППИРОВАТЬ ПО
+				УчетнаяПолитикаНалоговыйУчет.Организация,
+				Периоды.ПериодРегистрации) КАК ДатыПоследнихДвижений
+				ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаНалоговыйУчет
+				ПО ДатыПоследнихДвижений.Организация = УчетнаяПолитикаНалоговыйУчет.Организация
+					И ДатыПоследнихДвижений.Период = УчетнаяПолитикаНалоговыйУчет.Период) КАК УчетнаяПолитика
+		ПО НалогОбороты.ПериодРегистрации = УчетнаяПолитика.ПериодРегистрации
+			И НалогОбороты.ГоловнаяОрганизация = УчетнаяПолитика.Организация,
+	(ВЫБРАТЬ
+		"Налог в федиральный бюджэт" КАК ВидПоказателя,
+		9 КАК Порядок
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		"Налог ФСС",
+		10
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		"Налог ТФОМС",
+		11
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		"Налог ФФОМС",
+		12
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		"Взносов в ПФР",
+		13) КАК ВидыПоказателей
+{ГДЕ
+	НалогОбороты.ФизЛицо.*,
+	(ВЫБОР
+			КОГДА ВидыПоказателей.ВидПоказателя = "Налог в федиральный бюджэт"
+				ТОГДА НалогОбороты.ФедеральныйБюджет
+			КОГДА ВидыПоказателей.ВидПоказателя = "Налог ФСС"
+				ТОГДА НалогОбороты.ФСС
+			КОГДА ВидыПоказателей.ВидПоказателя = "Налог ФФОМС"
+				ТОГДА НалогОбороты.ФФОМС
+			КОГДА ВидыПоказателей.ВидПоказателя = "Налог ТФОМС"
+				ТОГДА НалогОбороты.ТФОМС
+			КОГДА ВидыПоказателей.ВидПоказателя = "Взносов в ПФР"
+				ТОГДА НалогОбороты.ПФРСтраховая
+		КОНЕЦ) КАК Результат,
+	НалогОбороты.ГоловнаяОрганизация.*,
+	НалогОбороты.Организация.*,
+	НалогОбороты.ПериодРегистрации,
+	("Налоги") КАК Группа,
+	ВидыПоказателей.ВидПоказателя КАК ВидПоказателя,
+	(ЕСТЬNULL(УчетнаяПолитика.УСН, ЛОЖЬ)) КАК УСН,
+	(ЕСТЬNULL(УчетнаяПолитика.ЕНВД, ЛОЖЬ)) КАК ЕНВД,
+	(ЕСТЬNULL(УчетнаяПолитика.ДобровольныеВзносыВФСС, ЛОЖЬ)) КАК ДобровольныеВзносыВФСС,
+	("") КАК ОбщаяГруппа}</query>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>ПособияФСС</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидЗанятости</dataPath>
+				<field>ВидЗанятости</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Вид занятости</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидПоказателя</dataPath>
+				<field>ВидПоказателя</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Вид показателя</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Группа</dataPath>
+				<field>Группа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОблагаетсяЕНВД</dataPath>
+				<field>ОблагаетсяЕНВД</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Облагается ЕНВД</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Организация</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Результат</dataPath>
+				<field>Результат</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Результат</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Порядок</dataPath>
+				<field>Порядок</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Порядок</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ГоловнаяОрганизация</dataPath>
+				<field>ГоловнаяОрганизация</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодРегистрации</dataPath>
+				<field>ПериодРегистрации</field>
+				<role>
+					<dcscom:periodNumber>1</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ФизЛицо</dataPath>
+				<field>ФизЛицо</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДокументОснование</dataPath>
+				<field>ДокументОснование</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>УСН</dataPath>
+				<field>УСН</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПолучателиПособий</dataPath>
+				<field>ПолучателиПособий</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Сотрудник</dataPath>
+				<field>Сотрудник</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>УходЗаПервымРебенком</dataPath>
+				<field>УходЗаПервымРебенком</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Пояснение</dataPath>
+				<field>Пояснение</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Пояснение</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбщаяГруппа</dataPath>
+				<field>ОбщаяГруппа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Общая группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДобровольныеВзносыВФСС</dataPath>
+				<field>ДобровольныеВзносыВФСС</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Добровольные взносы ВФСС</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>БЛ</dataPath>
+				<field>БЛ</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>БЛ</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>ИнформационнаяБаза</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ПособияФСС.Организация КАК Организация,
+	ПособияФСС.ВидПоказателя КАК ВидПоказателя,
+	ПособияФСС.ОблагаетсяЕНВД КАК ОблагаетсяЕНВД,
+	"По данным учета" КАК Пояснение,
+	ПособияФСС.ВидЗанятости КАК ВидЗанятости,
+	ПособияФСС.Группа КАК Группа,
+	СУММА(ВЫБОР
+			КОГДА (ПособияФСС.Группа = "Всего сумма пособия (раздел 1)"
+					ИЛИ ПособияФСС.Группа = "Оплачено дней пособия (раздел 1)"
+					ИЛИ ПособияФСС.Группа = "Всего страховых случаев (раздел 1)"
+					ИЛИ ПособияФСС.Группа = "Количество выплат пособий (раздел 1)"
+					ИЛИ ПособияФСС.Группа = "Количество получателей (раздел 1)"
+					ИЛИ ПособияФСС.Группа = "в т.ч. сумма сверх нормы (раздел 1)")
+					И (НЕ ПособияФСС.ОблагаетсяЕНВД)
+					И (НЕ ВЫБОР
+							КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+								ТОГДА ИСТИНА
+							ИНАЧЕ ЛОЖЬ
+						КОНЕЦ)
+				ТОГДА ПособияФСС.Результат
+			КОГДА ПособияФСС.Группа = "Всего сумма пособия"
+					ИЛИ ПособияФСС.Группа = "Оплачено дней пособия"
+					ИЛИ ПособияФСС.Группа = "Всего страховых случаев"
+					ИЛИ ПособияФСС.Группа = "Количество выплат пособий"
+					ИЛИ ПособияФСС.Группа = "Количество получателей"
+					ИЛИ ПособияФСС.Группа = "в т.ч. сумма сверх нормы"
+				ТОГДА ВЫБОР
+						КОГДА ПособияФСС.ОблагаетсяЕНВД
+								И (НЕ ЕСТЬNULL(УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС, ЛОЖЬ))
+							ТОГДА ПособияФСС.Результат
+						КОГДА (НЕ ПособияФСС.ОблагаетсяЕНВД)
+								И ВЫБОР
+									КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+										ТОГДА ИСТИНА
+									ИНАЧЕ ЛОЖЬ
+								КОНЕЦ
+								И (НЕ ЕСТЬNULL(УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС, ЛОЖЬ))
+							ТОГДА ПособияФСС.Результат
+						КОГДА (ПособияФСС.ОблагаетсяЕНВД
+								ИЛИ ВЫБОР
+									КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+										ТОГДА ИСТИНА
+									ИНАЧЕ ЛОЖЬ
+								КОНЕЦ)
+								И ЕСТЬNULL(УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС, ЛОЖЬ)
+							ТОГДА ПособияФСС.Результат
+						ИНАЧЕ 0
+					КОНЕЦ
+			КОГДА ПособияФСС.Группа = "Всего сумма пособия (ФСС НС)"
+					ИЛИ ПособияФСС.Группа = "Оплачено дней пособия (ФСС НС)"
+					ИЛИ ПособияФСС.Группа = "Всего страховых случаев (ФСС НС)"
+					ИЛИ ПособияФСС.Группа = "в т.ч. сумма сверх нормы (ФСС НС)"
+				ТОГДА ПособияФСС.Результат
+			ИНАЧЕ 0
+		КОНЕЦ) КАК Результат,
+	ПособияФСС.Порядок КАК Порядок,
+	ПособияФСС.ПериодРегистрации КАК ПериодРегистрации,
+	ПособияФСС.ГоловнаяОрганизация КАК ГоловнаяОрганизация,
+	ПособияФСС.ФизЛицо КАК ФизЛицо,
+	ПособияФСС.ДокументОснование КАК ДокументОснование,
+	ВЫБОР
+		КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК УСН,
+	ПособияФСС.УходЗаПервымРебенком КАК УходЗаПервымРебенком,
+	ПособияФСС.ПолучателиПособий,
+	УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС КАК УплачиватьДобровольныеВзносыВФСС,
+	ПособияФСС.ОбщаяГруппа КАК ОбщаяГруппа,
+	ВЫБОР
+		КОГДА ПособияФСС.ВидПоказателя = ЗНАЧЕНИЕ(Перечисление.ВидыПособийСоциальногоСтрахования.Нетрудоспособность)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК Нетрудоспособность
+{ВЫБРАТЬ
+	Организация.*,
+	ВидПоказателя.*,
+	ОблагаетсяЕНВД,
+	ВидЗанятости.*,
+	Группа,
+	Результат,
+	Порядок,
+	ПериодРегистрации,
+	ГоловнаяОрганизация.*,
+	ФизЛицо.*,
+	ДокументОснование.*,
+	УСН,
+	УплачиватьДобровольныеВзносыВФСС КАК ДобровольныеВзносыВФСС,
+	Пояснение,
+	ОбщаяГруппа,
+	УходЗаПервымРебенком}
+ИЗ
+	(ВЫБРАТЬ
+		Пособия.Организация КАК Организация,
+		Пособия.ВидПособияСоциальногоСтрахования КАК ВидПоказателя,
+		Пособия.ОблагаетсяЕНВД КАК ОблагаетсяЕНВД,
+		Пособия.ВидЗанятости КАК ВидЗанятости,
+		Группы.Группа КАК Группа,
+		СУММА(ВЫБОР
+				КОГДА Группы.Группа = "Всего сумма пособия (ФСС НС)"
+						И Пособия.ВидПособияСоциальногоСтрахования В (&amp;ПособияНС)
+					ТОГДА Пособия.СуммаВсего
+				КОГДА (Группы.Группа = "Всего сумма пособия (раздел 1)"
+						ИЛИ Группы.Группа = "Всего сумма пособия")
+						И (НЕ Пособия.ВидПособияСоциальногоСтрахования В (&amp;ПособияНС))
+					ТОГДА Пособия.СуммаВсего
+				КОГДА (Группы.Группа = "Оплачено дней пособия"
+						ИЛИ Группы.Группа = "Оплачено дней пособия (раздел 1)")
+						И (НЕ Пособия.ВидПособияСоциальногоСтрахования В (&amp;ПособияНС))
+					ТОГДА Пособия.ОплаченныеДни
+				КОГДА (Группы.Группа = "Всего страховых случаев"
+						ИЛИ Группы.Группа = "Всего страховых случаев (раздел 1)")
+						И (НЕ Пособия.ВидПособияСоциальногоСтрахования В (&amp;ПособияНС))
+					ТОГДА Пособия.СтраховыеСлучаи
+				КОГДА (Группы.Группа = "Количество выплат пособий"
+						ИЛИ Группы.Группа = "Количество выплат пособий (раздел 1)")
+						И (НЕ Пособия.ВидПособияСоциальногоСтрахования В (&amp;ПособияНС))
+					ТОГДА Пособия.ВыплатПособий
+				КОГДА (Группы.Группа = "Количество получателей"
+						ИЛИ Группы.Группа = "Количество получателей (раздел 1)")
+						И (НЕ Пособия.ВидПособияСоциальногоСтрахования В (&amp;ПособияНС))
+					ТОГДА Пособия.КоличествоПолучателей
+				КОГДА Группы.Группа = "Оплачено дней пособия (ФСС НС)"
+						И Пособия.ВидПособияСоциальногоСтрахования В (&amp;ПособияНС)
+					ТОГДА Пособия.ОплаченныеДни
+				КОГДА Группы.Группа = "Всего страховых случаев (ФСС НС)"
+						И Пособия.ВидПособияСоциальногоСтрахования В (&amp;ПособияНС)
+					ТОГДА Пособия.СтраховыеСлучаи
+				КОГДА (Группы.Группа = "Всего страховых случаев (раздел 1)"
+						ИЛИ Группы.Группа = "Всего страховых случаев")
+						И (НЕ Пособия.ВидПособияСоциальногоСтрахования В (&amp;ПособияНС))
+					ТОГДА Пособия.СтраховыеСлучаи
+				КОГДА Группы.Группа = "в т.ч. сумма сверх нормы(ФСС НС)"
+						И Пособия.ВидПособияСоциальногоСтрахования В (&amp;ПособияНС)
+					ТОГДА Пособия.СуммаСверхНорм
+				КОГДА (Группы.Группа = "в т.ч. сумма сверх нормы (раздел 1)"
+						ИЛИ Группы.Группа = "в т.ч. сумма сверх нормы")
+						И (НЕ Пособия.ВидПособияСоциальногоСтрахования В (&amp;ПособияНС))
+					ТОГДА Пособия.СуммаСверхНорм
+			КОНЕЦ) КАК Результат,
+		НАЧАЛОПЕРИОДА(Пособия.Период, МЕСЯЦ) КАК ПериодРегистрации,
+		ВЫБОР
+			КОГДА Пособия.Организация.ГоловнаяОрганизация = ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)
+				ТОГДА Пособия.Организация
+			ИНАЧЕ Пособия.Организация.ГоловнаяОрганизация
+		КОНЕЦ КАК ГоловнаяОрганизация,
+		Пособия.Сотрудник.Физлицо КАК ФизЛицо,
+		Пособия.ДокументОснование КАК ДокументОснование,
+		МАКСИМУМ(УчетнаяПолитикаНалоговыйУчет.Период) КАК ПериодУСН,
+		Группы.Порядок КАК Порядок,
+		Пособия.УходЗаПервымРебенком КАК УходЗаПервымРебенком,
+		Пособия.ПолучателиПособий КАК ПолучателиПособий,
+		Группы.ОбщаяГруппа КАК ОбщаяГруппа
+	ИЗ
+		(ВЫБРАТЬ
+			"Всего сумма пособия" КАК Группа,
+			18 КАК Порядок,
+			"Всего сумма пособия" КАК ОбщаяГруппа
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"Оплачено дней пособия",
+			17,
+			"Оплачено дней пособия"
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"Всего страховых случаев",
+			16,
+			"Всего страховых случаев"
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"Количество выплат пособий",
+			16,
+			"Количество выплат пособий"
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"в т.ч. сумма сверх нормы",
+			19,
+			"в т.ч. сумма сверх нормы"
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"Всего сумма пособия (раздел 1)",
+			18,
+			"Всего сумма пособия"
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"Оплачено дней пособия (раздел 1)",
+			17,
+			"Оплачено дней пособия"
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"Всего страховых случаев (раздел 1)",
+			16,
+			"Всего страховых случаев"
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"Количество выплат пособий (раздел 1)",
+			16,
+			"Количество выплат пособий"
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"Количество получателей (раздел 1)",
+			16,
+			"Количество получателей"
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"Количество получателей",
+			16,
+			"Количество получателей"
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"в т.ч. сумма сверх нормы (раздел 1)",
+			19,
+			"в т.ч. сумма сверх нормы"
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"Всего сумма пособия (ФСС НС)",
+			18,
+			"Всего сумма пособия"
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"Оплачено дней пособия (ФСС НС)",
+			17,
+			"Оплачено дней пособия"
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"Всего страховых случаев (ФСС НС)",
+			16,
+			"Всего страховых случаев"
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			"в т.ч. сумма сверх нормы (ФСС НС)",
+			19,
+			"в т.ч. сумма сверх нормы") КАК Группы,
+		(ВЫБРАТЬ
+			ПособияСоциальномуСтрахованию.Период КАК Период,
+			ПособияСоциальномуСтрахованию.Организация КАК Организация,
+			ПособияСоциальномуСтрахованию.ВидПособияСоциальногоСтрахования КАК ВидПособияСоциальногоСтрахования,
+			ПособияСоциальномуСтрахованию.ОблагаетсяЕНВД КАК ОблагаетсяЕНВД,
+			ПособияСоциальномуСтрахованию.ВидЗанятости КАК ВидЗанятости,
+			ПособияСоциальномуСтрахованию.СтраховыеСлучаи КАК СтраховыеСлучаи,
+			ПособияСоциальномуСтрахованию.ОплаченныеДни КАК ОплаченныеДни,
+			ПособияСоциальномуСтрахованию.СуммаВсего КАК СуммаВсего,
+			ПособияСоциальномуСтрахованию.СуммаСверхНорм КАК СуммаСверхНорм,
+			ПособияСоциальномуСтрахованию.Сотрудник КАК Сотрудник,
+			ПособияСоциальномуСтрахованию.ДокументОснование КАК ДокументОснование,
+			"" КАК УходЗаПервымРебенком,
+			"" КАК ПолучателиПособий,
+			NULL КАК КоличествоПолучателей,
+			ПособияСоциальномуСтрахованию.СтраховыеСлучаи КАК ВыплатПособий
+		ИЗ
+			РегистрНакопления.ПособияСоциальномуСтрахованию КАК ПособияСоциальномуСтрахованию
+		ГДЕ
+			ПособияСоциальномуСтрахованию.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+		{ГДЕ
+			ПособияСоциальномуСтрахованию.Организация.*,
+			ПособияСоциальномуСтрахованию.ВидПособияСоциальногоСтрахования.* КАК ВидПоказателя,
+			ПособияСоциальномуСтрахованию.ОблагаетсяЕНВД,
+			ПособияСоциальномуСтрахованию.ВидЗанятости.*,
+			ПособияСоциальномуСтрахованию.Сотрудник.*,
+			ПособияСоциальномуСтрахованию.ДокументОснование.*,
+			("") КАК УходЗаПервымРебенком,
+			("") КАК ПолучателиПособий}
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		
+		ВЫБРАТЬ
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Период,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Организация,
+			ЗНАЧЕНИЕ(Перечисление.ВидыПособийСоциальногоСтрахования.ПоУходуЗаРебенкомДоПолутораЛет),
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.ОблагаетсяЕНВД,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Сотрудник.ВидЗанятости,
+			NULL,
+			NULL,
+			СУММА(ПособияПоУходуЗаРебенкомДоПолутораЛет.СуммаВсего),
+			СУММА(ПособияПоУходуЗаРебенкомДоПолутораЛет.СуммаСверхНорм),
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Сотрудник,
+			NULL,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.УходЗаПервымРебенком,
+			КОЛИЧЕСТВО(РАЗЛИЧНЫЕ ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.ФизЛицо),
+			КОЛИЧЕСТВО(РАЗЛИЧНЫЕ ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.ФизЛицо),
+			СУММА(ПособияПоУходуЗаРебенкомДоПолутораЛет.СтраховыеСлучаи)
+		ИЗ
+			РегистрНакопления.ПособияПоУходуЗаРебенкомДоПолутораЛет КАК ПособияПоУходуЗаРебенкомДоПолутораЛет
+				ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет КАК ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет
+				ПО ПособияПоУходуЗаРебенкомДоПолутораЛет.Организация = ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Организация
+					И (НАЧАЛОПЕРИОДА(ПособияПоУходуЗаРебенкомДоПолутораЛет.Период, МЕСЯЦ) = НАЧАЛОПЕРИОДА(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Период, МЕСЯЦ))
+					И ПособияПоУходуЗаРебенкомДоПолутораЛет.Сотрудник = ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Сотрудник
+					И ПособияПоУходуЗаРебенкомДоПолутораЛет.ОблагаетсяЕНВД = ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.ОблагаетсяЕНВД
+		ГДЕ
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+		{ГДЕ
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Организация.*,
+			(ЗНАЧЕНИЕ(Перечисление.ВидыПособийСоциальногоСтрахования.ПоУходуЗаРебенкомДоПолутораЛет)).* КАК ВидПоказателя,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.ОблагаетсяЕНВД,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Сотрудник.ВидЗанятости.* КАК ВидЗанятости,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Сотрудник.*,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.УходЗаПервымРебенком}
+		
+		СГРУППИРОВАТЬ ПО
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Период,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Организация,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.ОблагаетсяЕНВД,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Сотрудник,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.УходЗаПервымРебенком,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Сотрудник.ВидЗанятости) КАК Пособия
+			ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ РАЗЛИЧНЫЕ
+				ПериодыРегистрации.ПериодРегистрации КАК ПериодРегистрации,
+				МАКСИМУМ(УчетнаяПолитикаОрганизаций.Период) КАК Период,
+				УчетнаяПолитикаОрганизаций.Организация КАК Организация
+			ИЗ
+				(ВЫБРАТЬ РАЗЛИЧНЫЕ
+					НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+				ИЗ
+					РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь
+				ГДЕ
+					РегламентированныйПроизводственныйКалендарь.ДатаКалендаря МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода) КАК ПериодыРегистрации
+					ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаОрганизаций
+					ПО (КОНЕЦПЕРИОДА(ПериодыРегистрации.ПериодРегистрации, МЕСЯЦ) &gt;= УчетнаяПолитикаОрганизаций.Период)
+			
+			СГРУППИРОВАТЬ ПО
+				ПериодыРегистрации.ПериодРегистрации,
+				УчетнаяПолитикаОрганизаций.Организация) КАК ПоследниеДатыУчтенойПолитики
+				ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаНалоговыйУчет
+				ПО ПоследниеДатыУчтенойПолитики.Период = УчетнаяПолитикаНалоговыйУчет.Период
+					И ПоследниеДатыУчтенойПолитики.Организация = УчетнаяПолитикаНалоговыйУчет.Организация
+			ПО (НАЧАЛОПЕРИОДА(Пособия.Период, МЕСЯЦ) = ПоследниеДатыУчтенойПолитики.ПериодРегистрации)
+				И (ВЫБОР
+					КОГДА Пособия.Организация.ГоловнаяОрганизация = ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)
+						ТОГДА Пособия.Организация
+					ИНАЧЕ Пособия.Организация.ГоловнаяОрганизация
+				КОНЕЦ = ПоследниеДатыУчтенойПолитики.Организация)
+	
+	СГРУППИРОВАТЬ ПО
+		Пособия.ОблагаетсяЕНВД,
+		Пособия.ВидПособияСоциальногоСтрахования,
+		Пособия.ВидЗанятости,
+		Пособия.Организация,
+		Группы.Группа,
+		Пособия.Сотрудник.Физлицо,
+		Пособия.ДокументОснование,
+		Группы.Порядок,
+		Пособия.УходЗаПервымРебенком,
+		Пособия.ПолучателиПособий,
+		Группы.ОбщаяГруппа,
+		НАЧАЛОПЕРИОДА(Пособия.Период, МЕСЯЦ),
+		ВЫБОР
+			КОГДА Пособия.Организация.ГоловнаяОрганизация = ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)
+				ТОГДА Пособия.Организация
+			ИНАЧЕ Пособия.Организация.ГоловнаяОрганизация
+		КОНЕЦ) КАК ПособияФСС
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаНалоговыйУчет
+		ПО ПособияФСС.ПериодУСН = УчетнаяПолитикаНалоговыйУчет.Период
+			И ПособияФСС.ГоловнаяОрганизация = УчетнаяПолитикаНалоговыйУчет.Организация
+{ГДЕ
+	ПособияФСС.Организация.*,
+	ПособияФСС.ВидПоказателя.*,
+	ПособияФСС.ОблагаетсяЕНВД,
+	ПособияФСС.ВидЗанятости.*,
+	ПособияФСС.Группа,
+	ПособияФСС.Результат,
+	ПособияФСС.ПериодРегистрации,
+	ПособияФСС.ГоловнаяОрганизация.*,
+	ПособияФСС.ФизЛицо.*,
+	ПособияФСС.ДокументОснование.*,
+	(ВЫБОР
+			КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+				ТОГДА ИСТИНА
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ) КАК УСН,
+	ПособияФСС.УходЗаПервымРебенком,
+	ПособияФСС.ПолучателиПособий,
+	УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС КАК ДобровольныеВзносыВФСС,
+	("По данным учета") КАК Пояснение,
+	ПособияФСС.ОбщаяГруппа,
+	(ВЫБОР
+			КОГДА (ПособияФСС.Группа = "Всего сумма пособия (раздел 1)"
+					ИЛИ ПособияФСС.Группа = "Оплачено дней пособия (раздел 1)"
+					ИЛИ ПособияФСС.Группа = "Всего страховых случаев (раздел 1)"
+					ИЛИ ПособияФСС.Группа = "Количество выплат пособий (раздел 1)"
+					ИЛИ ПособияФСС.Группа = "Количество получателей (раздел 1)"
+					ИЛИ ПособияФСС.Группа = "в т.ч. сумма сверх нормы (раздел 1)")
+					И (НЕ ПособияФСС.ОблагаетсяЕНВД)
+					И (НЕ ВЫБОР
+							КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+								ТОГДА ИСТИНА
+							ИНАЧЕ ЛОЖЬ
+						КОНЕЦ)
+				ТОГДА ПособияФСС.Результат
+			КОГДА ПособияФСС.Группа = "Всего сумма пособия"
+					ИЛИ ПособияФСС.Группа = "Оплачено дней пособия"
+					ИЛИ ПособияФСС.Группа = "Всего страховых случаев"
+					ИЛИ ПособияФСС.Группа = "Количество выплат пособий"
+					ИЛИ ПособияФСС.Группа = "Количество получателей"
+					ИЛИ ПособияФСС.Группа = "в т.ч. сумма сверх нормы"
+				ТОГДА ВЫБОР
+						КОГДА ПособияФСС.ОблагаетсяЕНВД
+								И (НЕ ЕСТЬNULL(УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС, ЛОЖЬ))
+							ТОГДА ПособияФСС.Результат
+						КОГДА (НЕ ПособияФСС.ОблагаетсяЕНВД)
+								И ВЫБОР
+									КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+										ТОГДА ИСТИНА
+									ИНАЧЕ ЛОЖЬ
+								КОНЕЦ
+								И (НЕ ЕСТЬNULL(УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС, ЛОЖЬ))
+							ТОГДА ПособияФСС.Результат
+						КОГДА (ПособияФСС.ОблагаетсяЕНВД
+								ИЛИ ВЫБОР
+									КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+										ТОГДА ИСТИНА
+									ИНАЧЕ ЛОЖЬ
+								КОНЕЦ)
+								И ЕСТЬNULL(УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС, ЛОЖЬ)
+							ТОГДА ПособияФСС.Результат
+						ИНАЧЕ 0
+					КОНЕЦ
+			КОГДА ПособияФСС.Группа = "Всего сумма пособия (ФСС НС)"
+					ИЛИ ПособияФСС.Группа = "Оплачено дней пособия (ФСС НС)"
+					ИЛИ ПособияФСС.Группа = "Всего страховых случаев (ФСС НС)"
+					ИЛИ ПособияФСС.Группа = "в т.ч. сумма сверх нормы (ФСС НС)"
+				ТОГДА ПособияФСС.Результат
+			ИНАЧЕ 0
+		КОНЕЦ) КАК Результат,
+	(ВЫБОР
+			КОГДА ПособияФСС.ВидПоказателя = ЗНАЧЕНИЕ(Перечисление.ВидыПособийСоциальногоСтрахования.Нетрудоспособность)
+				ТОГДА ИСТИНА
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ) КАК БЛ}
+
+СГРУППИРОВАТЬ ПО
+	ПособияФСС.Организация,
+	ПособияФСС.ВидПоказателя,
+	ПособияФСС.ОблагаетсяЕНВД,
+	ПособияФСС.ВидЗанятости,
+	ПособияФСС.Группа,
+	ПособияФСС.ПериодРегистрации,
+	ПособияФСС.ГоловнаяОрганизация,
+	ПособияФСС.ФизЛицо,
+	ПособияФСС.ДокументОснование,
+	ВЫБОР
+		КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ,
+	ПособияФСС.Порядок,
+	ПособияФСС.УходЗаПервымРебенком,
+	ПособияФСС.ПолучателиПособий,
+	УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС,
+	УчетнаяПолитикаНалоговыйУчет.ОрганизацияЯвляетсяПлательщикомЕНВД,
+	ПособияФСС.ОбщаяГруппа</query>
+			<autoFillFields>false</autoFillFields>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>ЛьготыЕСН</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидПоказателя</dataPath>
+				<field>ВидПоказателя</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ГоловнаяОрганизация</dataPath>
+				<field>ГоловнаяОрганизация</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Группа</dataPath>
+				<field>Группа</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодРегистрации</dataPath>
+				<field>ПериодРегистрации</field>
+				<role>
+					<dcscom:periodNumber>1</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Порядок</dataPath>
+				<field>Порядок</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ФизЛицо</dataPath>
+				<field>ФизЛицо</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Результат</dataPath>
+				<field>Результат</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Результат</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбщаяГруппа</dataPath>
+				<field>ОбщаяГруппа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Общая группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>ИнформационнаяБаза</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	"Льготы ЕСН" КАК Группа,
+	"" КАК ОбщаяГруппа,
+	ВидыПоказателей.ВидПоказателя КАК ВидПоказателя,
+	НалогОбороты.ФизЛицо КАК ФизЛицо,
+	НалогОбороты.ГоловнаяОрганизация КАК ГоловнаяОрганизация,
+	НалогОбороты.Организация КАК Организация,
+	НалогОбороты.ПериодРегистрации КАК ПериодРегистрации,
+	ВидыПоказателей.Порядок КАК Порядок,
+	ВЫБОР
+		КОГДА ВидыПоказателей.ВидПоказателя = "Льгота в ФБ"
+			ТОГДА НалогОбороты.ПримененнаяЛьготаФБ
+		КОГДА ВидыПоказателей.ВидПоказателя = "Льгота ФСС"
+			ТОГДА НалогОбороты.ПримененнаяЛьготаФСС
+		КОГДА ВидыПоказателей.ВидПоказателя = "Льгота ФФОМС"
+			ТОГДА НалогОбороты.ПримененнаяЛьготаФОМС
+		КОГДА ВидыПоказателей.ВидПоказателя = "Льгота взносов в ПФР"
+			ТОГДА НалогОбороты.ПФРСтраховаяЕНВД
+	КОНЕЦ КАК Результат
+{ВЫБРАТЬ
+	ФизЛицо.*,
+	Порядок,
+	ГоловнаяОрганизация.*,
+	Организация.*,
+	ПериодРегистрации,
+	Группа,
+	ВидПоказателя}
+ИЗ
+	(ВЫБРАТЬ
+		"Льгота в ФБ" КАК ВидПоказателя,
+		20 КАК Порядок
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		"Льгота ФСС",
+		21
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		"Льгота ФФОМС",
+		22
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		"Льгота взносов в ПФР",
+		23) КАК ВидыПоказателей
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			НАЧАЛОПЕРИОДА(ЕСНИсчисленный.Период, МЕСЯЦ) КАК ПериодРегистрации,
+			ЕСНИсчисленный.ФизЛицо КАК ФизЛицо,
+			ЕСНИсчисленный.Организация КАК ГоловнаяОрганизация,
+			ЕСНИсчисленный.ОбособленноеПодразделение КАК Организация,
+			СУММА(ЕСНИсчисленный.ПримененнаяЛьготаФБ) КАК ПримененнаяЛьготаФБ,
+			СУММА(ЕСНИсчисленный.ПримененнаяЛьготаФСС) КАК ПримененнаяЛьготаФСС,
+			СУММА(ЕСНИсчисленный.ПримененнаяЛьготаФОМС) КАК ПримененнаяЛьготаФОМС,
+			СУММА(ЕСНИсчисленный.ПФРСтраховаяЕНВД) КАК ПФРСтраховаяЕНВД
+		ИЗ
+			РегистрНакопления.ЕСНИсчисленный КАК ЕСНИсчисленный
+		ГДЕ
+			ЕСНИсчисленный.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+		
+		СГРУППИРОВАТЬ ПО
+			ЕСНИсчисленный.Организация,
+			ЕСНИсчисленный.ОбособленноеПодразделение,
+			НАЧАЛОПЕРИОДА(ЕСНИсчисленный.Период, МЕСЯЦ),
+			ЕСНИсчисленный.ФизЛицо) КАК НалогОбороты
+		ПО (ИСТИНА)
+{ГДЕ
+	НалогОбороты.ФизЛицо.*,
+	НалогОбороты.ГоловнаяОрганизация.*,
+	НалогОбороты.Организация.*,
+	НалогОбороты.ПериодРегистрации,
+	("Льготы ЕСН") КАК Группа,
+	ВидыПоказателей.ВидПоказателя КАК ВидПоказателя}</query>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>БазаФСС_НС</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодРегистрации</dataPath>
+				<field>ПериодРегистрации</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период регистрации</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:periodNumber>1</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ФизЛицо</dataPath>
+				<field>ФизЛицо</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Физ лицо</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидПоказателя</dataPath>
+				<field>ВидПоказателя</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Вид показателя</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ГоловнаяОрганизация</dataPath>
+				<field>ГоловнаяОрганизация</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Головная организация</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Организация</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Группа</dataPath>
+				<field>Группа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Порядок</dataPath>
+				<field>Порядок</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Порядок</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Инвалидность</dataPath>
+				<field>Инвалидность</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Инвалидность</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Результат</dataPath>
+				<field>Результат</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Результат</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбщаяГруппа</dataPath>
+				<field>ОбщаяГруппа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Общая группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КодДоходаФСС_НС</dataPath>
+				<field>КодДоходаФСС_НС</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Код дохода ФСС НС</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>ИнформационнаяБаза</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	"Налоговая база" КАК Группа,
+	"" КАК ОбщаяГруппа,
+	6.5 КАК Порядок,
+	ДанныеОДоходах.ФизЛицо,
+	ДанныеОДоходах.Результат КАК Результат,
+	ДанныеОДоходах.ПериодРегистрации,
+	"База ФСС НС" КАК ВидПоказателя,
+	ДанныеОДоходах.ГоловнаяОрганизация,
+	ДанныеОДоходах.Организация,
+	СведенияОбИнвалидности.Инвалидность,
+	ДанныеОДоходах.КодДоходаФСС_НС
+ИЗ
+	(ВЫБРАТЬ
+		НачислениеЗарплатыРаботникамОрганизацийНачисления.Физлицо КАК ФизЛицо,
+		НачислениеЗарплатыРаботникамОрганизацийНачисления.ВидРасчета КАК ВидРасчета,
+		НачислениеЗарплатыРаботникамОрганизацийНачисления.Результат КАК Результат,
+		НачислениеЗарплатыРаботникамОрганизацийНачисления.Ссылка.ПериодРегистрации КАК ПериодРегистрации,
+		ВЫБОР
+			КОГДА НачислениеЗарплатыРаботникамОрганизацийНачисления.Ссылка.Организация.ГоловнаяОрганизация = ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)
+				ТОГДА НачислениеЗарплатыРаботникамОрганизацийНачисления.Ссылка.Организация
+			ИНАЧЕ НачислениеЗарплатыРаботникамОрганизацийНачисления.Ссылка.Организация.ГоловнаяОрганизация
+		КОНЕЦ КАК ГоловнаяОрганизация,
+		НачислениеЗарплатыРаботникамОрганизацийНачисления.Ссылка.Организация КАК Организация,
+		НачислениеЗарплатыРаботникамОрганизацийНачисления.ВидРасчета.КодДоходаФСС_НС КАК КодДоходаФСС_НС
+	ИЗ
+		Документ.НачислениеЗарплатыРаботникамОрганизаций.Начисления КАК НачислениеЗарплатыРаботникамОрганизацийНачисления
+	ГДЕ
+		НачислениеЗарплатыРаботникамОрганизацийНачисления.Ссылка.ПериодРегистрации МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+		И НачислениеЗарплатыРаботникамОрганизацийНачисления.Ссылка.Проведен) КАК ДанныеОДоходах
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ДатыПоследнихДанных.ПериодРегистрации КАК ПериодРегистрации,
+			ДатыПоследнихДанных.Физлицо КАК Физлицо,
+			СведенияОбИнвалидностиФизлиц.Инвалидность КАК Инвалидность
+		ИЗ
+			(ВЫБРАТЬ
+				Периоды.ПериодРегистрации КАК ПериодРегистрации,
+				СведенияОбИнвалидностиФизлиц.Физлицо КАК Физлицо,
+				МАКСИМУМ(СведенияОбИнвалидностиФизлиц.Период) КАК Период
+			ИЗ
+				(ВЫБРАТЬ РАЗЛИЧНЫЕ
+					НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+				ИЗ
+					РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь) КАК Периоды
+					ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОбИнвалидностиФизлиц КАК СведенияОбИнвалидностиФизлиц
+					ПО (КОНЕЦПЕРИОДА(Периоды.ПериодРегистрации, МЕСЯЦ) &gt;= СведенияОбИнвалидностиФизлиц.Период)
+			
+			СГРУППИРОВАТЬ ПО
+				Периоды.ПериодРегистрации,
+				СведенияОбИнвалидностиФизлиц.Физлицо) КАК ДатыПоследнихДанных
+				ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОбИнвалидностиФизлиц КАК СведенияОбИнвалидностиФизлиц
+				ПО ДатыПоследнихДанных.Физлицо = СведенияОбИнвалидностиФизлиц.Физлицо
+					И ДатыПоследнихДанных.Период = СведенияОбИнвалидностиФизлиц.Период) КАК СведенияОбИнвалидности
+		ПО ДанныеОДоходах.ФизЛицо = СведенияОбИнвалидности.Физлицо
+			И ДанныеОДоходах.ПериодРегистрации = СведенияОбИнвалидности.ПериодРегистрации</query>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>НалогФСС_НС</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидРасчета</dataPath>
+				<field>ВидРасчета</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Вид расчета</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ГоловнаяОрганизация</dataPath>
+				<field>ГоловнаяОрганизация</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Головная организация</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Организация</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодРегистрации</dataPath>
+				<field>ПериодРегистрации</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период регистрации</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:periodNumber>1</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Результат</dataPath>
+				<field>Результат</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Результат</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ФизЛицо</dataPath>
+				<field>ФизЛицо</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Физ лицо</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Группа</dataPath>
+				<field>Группа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидПоказателя</dataPath>
+				<field>ВидПоказателя</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Вид показателя</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Пояснение</dataPath>
+				<field>Пояснение</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Пояснение</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбщаяГруппа</dataPath>
+				<field>ОбщаяГруппа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Общая группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>ИнформационнаяБаза</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	"Налоги" КАК Группа,
+	"" КАК ОбщаяГруппа,
+	"Налог ФСС НС" КАК ВидПоказателя,
+	"Данные в учете" КАК Пояснение,
+	СУММА(Доходы.Результат * ЕСТЬNULL(СтавкиФСС_НС.Ставка, 0) / 100) КАК Результат,
+	Доходы.ФизЛицо КАК ФизЛицо,
+	Доходы.ГоловнаяОрганизация КАК ГоловнаяОрганизация,
+	Доходы.Организация КАК Организация,
+	Доходы.ВидРасчета КАК ВидРасчета,
+	Доходы.ПериодРегистрации КАК ПериодРегистрации
+{ВЫБРАТЬ
+	Группа,
+	ВидПоказателя,
+	Результат,
+	ФизЛицо.*,
+	ГоловнаяОрганизация.*,
+	Организация.*,
+	ВидРасчета.*,
+	ПериодРегистрации,
+	Пояснение,
+	ОбщаяГруппа}
+ИЗ                                          
+	(ВЫБРАТЬ
+		ОсновныеНачисления.Физлицо КАК ФизЛицо,
+		ОсновныеНачисления.Результат КАК Результат,
+		ВЫБОР
+			КОГДА ОсновныеНачисления.Ссылка.Организация.ГоловнаяОрганизация = ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)
+				ТОГДА ОсновныеНачисления.Ссылка.Организация
+			ИНАЧЕ ОсновныеНачисления.Ссылка.Организация.ГоловнаяОрганизация
+		КОНЕЦ КАК ГоловнаяОрганизация,
+		ОсновныеНачисления.Ссылка.Организация КАК Организация,
+		ОсновныеНачисления.ВидРасчета КАК ВидРасчета,
+		ОсновныеНачисления.Ссылка.ПериодРегистрации КАК ПериодРегистрации
+	ИЗ
+		Документ.НачислениеЗарплатыРаботникамОрганизаций.Начисления КАК ОсновныеНачисления
+	ГДЕ
+		ОсновныеНачисления.ВидРасчета.КодДоходаФСС_НС = ЗНАЧЕНИЕ(Перечисление.ДоходыФСС_НС.Облагается)
+		И ОсновныеНачисления.Ссылка.ПериодРегистрации МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+		И ОсновныеНачисления.Ссылка.Проведен) КАК Доходы
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ДатыПоследнихДанных.ПериодРегистрации КАК ПериодРегистрации,
+			ДатыПоследнихДанных.Физлицо КАК Физлицо,
+			СведенияОбИнвалидностиФизлиц.Инвалидность КАК Инвалидность
+		ИЗ
+			(ВЫБРАТЬ
+				Периоды.ПериодРегистрации КАК ПериодРегистрации,
+				СведенияОбИнвалидностиФизлиц.Физлицо КАК Физлицо,
+				МАКСИМУМ(СведенияОбИнвалидностиФизлиц.Период) КАК Период
+			ИЗ
+				(ВЫБРАТЬ РАЗЛИЧНЫЕ
+					НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+				ИЗ
+					РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь) КАК Периоды
+					ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОбИнвалидностиФизлиц КАК СведенияОбИнвалидностиФизлиц
+					ПО (КОНЕЦПЕРИОДА(Периоды.ПериодРегистрации, МЕСЯЦ) &gt;= СведенияОбИнвалидностиФизлиц.Период)
+			
+			СГРУППИРОВАТЬ ПО
+				Периоды.ПериодРегистрации,
+				СведенияОбИнвалидностиФизлиц.Физлицо) КАК ДатыПоследнихДанных
+				ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОбИнвалидностиФизлиц КАК СведенияОбИнвалидностиФизлиц
+				ПО ДатыПоследнихДанных.Физлицо = СведенияОбИнвалидностиФизлиц.Физлицо
+					И ДатыПоследнихДанных.Период = СведенияОбИнвалидностиФизлиц.Период) КАК СведенияОбИнвалидности
+		ПО Доходы.ФизЛицо = СведенияОбИнвалидности.Физлицо
+			И Доходы.ПериодРегистрации = СведенияОбИнвалидности.ПериодРегистрации
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Организация КАК Организация,
+			ДатыПоследнихДвижений.ПериодРегистрации КАК ПериодРегистрации,
+			СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Ставка КАК Ставка
+		ИЗ
+			(ВЫБРАТЬ
+				Периоды.ПериодРегистрации КАК ПериодРегистрации,
+				СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Организация КАК Организация,
+				МАКСИМУМ(СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Период) КАК Период
+			ИЗ
+				(ВЫБРАТЬ РАЗЛИЧНЫЕ
+					НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+				ИЗ
+					РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь) КАК Периоды
+					ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев КАК СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев
+					ПО (КОНЕЦПЕРИОДА(Периоды.ПериодРегистрации, МЕСЯЦ) &gt;= СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Период)
+			
+			СГРУППИРОВАТЬ ПО
+				Периоды.ПериодРегистрации,
+				СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Организация) КАК ДатыПоследнихДвижений
+				ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев КАК СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев
+				ПО ДатыПоследнихДвижений.Организация = СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Организация
+					И ДатыПоследнихДвижений.Период = СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Период) КАК СтавкиФСС_НС
+		ПО Доходы.ПериодРегистрации = СтавкиФСС_НС.ПериодРегистрации
+			И Доходы.Организация = СтавкиФСС_НС.Организация
+{ГДЕ
+	Доходы.ФизЛицо.*,
+	Доходы.ГоловнаяОрганизация.*,
+	Доходы.Организация.*,
+	Доходы.ВидРасчета.*,
+	Доходы.ПериодРегистрации,
+	("Налоги") КАК Группа,
+	("Налог ФСС НС") КАК ВидПоказателя,
+	(Доходы.Результат * ЕСТЬNULL(СтавкиФСС_НС.Ставка, 0) / 100) КАК Результат,
+	("Данные в учете") КАК Пояснение,
+	("") КАК ОбщаяГруппа}
+
+СГРУППИРОВАТЬ ПО
+	Доходы.ФизЛицо,
+	Доходы.ГоловнаяОрганизация,
+	Доходы.Организация,
+	Доходы.ВидРасчета,
+	Доходы.ПериодРегистрации
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	"Налоги",
+	"",
+	"Налог ФСС НС",
+	"Скорректировано проводкой",
+	СУММА(ОтражениеЗарплатыВУчете.Сумма),
+	NULL,
+	ВЫБОР
+		КОГДА ОтражениеЗарплатыВУчете.Организация.ГоловнаяОрганизация = ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)
+			ТОГДА ОтражениеЗарплатыВУчете.Организация
+		ИНАЧЕ ОтражениеЗарплатыВУчете.Организация.ГоловнаяОрганизация
+	КОНЕЦ,
+	ОтражениеЗарплатыВУчете.Организация,
+	NULL,
+	ОтражениеЗарплатыВУчете.ПериодРегистрации
+ИЗ
+	(ВЫБРАТЬ
+		ОтражениеЗарплатыВРеглУчетеОтражениеВУчете.Ссылка.ПериодРегистрации КАК ПериодРегистрации,
+		ОтражениеЗарплатыВРеглУчетеОтражениеВУчете.Ссылка.Организация КАК Организация,
+		СУММА(ОтражениеЗарплатыВРеглУчетеОтражениеВУчете.Сумма) КАК Сумма
+	ИЗ
+		Документ.ОтражениеЗарплатыВРеглУчете.ОтражениеВУчете КАК ОтражениеЗарплатыВРеглУчетеОтражениеВУчете
+	ГДЕ
+		ОтражениеЗарплатыВРеглУчетеОтражениеВУчете.Ссылка.ПериодРегистрации МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+		И ОтражениеЗарплатыВРеглУчетеОтражениеВУчете.СчетКт В (ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС_НСиПЗ))
+		И ОтражениеЗарплатыВРеглУчетеОтражениеВУчете.Ссылка.Проведен
+	{ГДЕ
+		ОтражениеЗарплатыВРеглУчетеОтражениеВУчете.Ссылка.Организация.*,
+		ОтражениеЗарплатыВРеглУчетеОтражениеВУчете.Ссылка.ПериодРегистрации}
+	
+	СГРУППИРОВАТЬ ПО
+		ОтражениеЗарплатыВРеглУчетеОтражениеВУчете.Ссылка.ПериодРегистрации,
+		ОтражениеЗарплатыВРеглУчетеОтражениеВУчете.Ссылка.Организация) КАК ОтражениеЗарплатыВУчете
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			СУММА(Доходы.Результат * ЕСТЬNULL(СтавкиФСС_НС.Ставка, 0) / 100) КАК Результат,
+			Доходы.ГоловнаяОрганизация КАК ГоловнаяОрганизация,
+			Доходы.Организация КАК Организация,
+			Доходы.ПериодРегистрации КАК ПериодРегистрации
+		ИЗ
+			(ВЫБРАТЬ
+				ОсновныеНачисления.Физлицо КАК ФизЛицо,
+				ОсновныеНачисления.Результат КАК Результат,
+				ВЫБОР
+					КОГДА ОсновныеНачисления.Ссылка.Организация.ГоловнаяОрганизация = ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)
+						ТОГДА ОсновныеНачисления.Ссылка.Организация
+					ИНАЧЕ ОсновныеНачисления.Ссылка.Организация.ГоловнаяОрганизация
+				КОНЕЦ КАК ГоловнаяОрганизация,
+				ОсновныеНачисления.Ссылка.Организация КАК Организация,
+				ОсновныеНачисления.ВидРасчета КАК ВидРасчета,
+				ОсновныеНачисления.Ссылка.ПериодРегистрации КАК ПериодРегистрации
+			ИЗ
+				Документ.НачислениеЗарплатыРаботникамОрганизаций.Начисления КАК ОсновныеНачисления
+			ГДЕ
+				ОсновныеНачисления.ВидРасчета.КодДоходаФСС_НС = ЗНАЧЕНИЕ(Перечисление.ДоходыФСС_НС.Облагается)
+				И ОсновныеНачисления.Ссылка.ПериодРегистрации МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+				И ОсновныеНачисления.Ссылка.Проведен) КАК Доходы
+				ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+					ДатыПоследнихДанных.ПериодРегистрации КАК ПериодРегистрации,
+					ДатыПоследнихДанных.Физлицо КАК Физлицо,
+					СведенияОбИнвалидностиФизлиц.Инвалидность КАК Инвалидность
+				ИЗ
+					(ВЫБРАТЬ
+						Периоды.ПериодРегистрации КАК ПериодРегистрации,
+						СведенияОбИнвалидностиФизлиц.Физлицо КАК Физлицо,
+						МАКСИМУМ(СведенияОбИнвалидностиФизлиц.Период) КАК Период
+					ИЗ
+						(ВЫБРАТЬ РАЗЛИЧНЫЕ
+							НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+						ИЗ
+							РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь) КАК Периоды
+							ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОбИнвалидностиФизлиц КАК СведенияОбИнвалидностиФизлиц
+							ПО (КОНЕЦПЕРИОДА(Периоды.ПериодРегистрации, МЕСЯЦ) &gt;= СведенияОбИнвалидностиФизлиц.Период)
+					
+					СГРУППИРОВАТЬ ПО
+						Периоды.ПериодРегистрации,
+						СведенияОбИнвалидностиФизлиц.Физлицо) КАК ДатыПоследнихДанных
+						ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОбИнвалидностиФизлиц КАК СведенияОбИнвалидностиФизлиц
+						ПО ДатыПоследнихДанных.Физлицо = СведенияОбИнвалидностиФизлиц.Физлицо
+							И ДатыПоследнихДанных.Период = СведенияОбИнвалидностиФизлиц.Период) КАК СведенияОбИнвалидности
+				ПО Доходы.ФизЛицо = СведенияОбИнвалидности.Физлицо
+					И Доходы.ПериодРегистрации = СведенияОбИнвалидности.ПериодРегистрации
+				ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+					СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Организация КАК Организация,
+					ДатыПоследнихДвижений.ПериодРегистрации КАК ПериодРегистрации,
+					СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Ставка КАК Ставка
+				ИЗ
+					(ВЫБРАТЬ
+						Периоды.ПериодРегистрации КАК ПериодРегистрации,
+						СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Организация КАК Организация,
+						МАКСИМУМ(СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Период) КАК Период
+					ИЗ
+						(ВЫБРАТЬ РАЗЛИЧНЫЕ
+							НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+						ИЗ
+							РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь) КАК Периоды
+							ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев КАК СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев
+							ПО (КОНЕЦПЕРИОДА(Периоды.ПериодРегистрации, МЕСЯЦ) &gt;= СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Период)
+					
+					СГРУППИРОВАТЬ ПО
+						Периоды.ПериодРегистрации,
+						СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Организация) КАК ДатыПоследнихДвижений
+						ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев КАК СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев
+						ПО ДатыПоследнихДвижений.Организация = СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Организация
+							И ДатыПоследнихДвижений.Период = СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Период) КАК СтавкиФСС_НС
+				ПО Доходы.ПериодРегистрации = СтавкиФСС_НС.ПериодРегистрации
+					И Доходы.Организация = СтавкиФСС_НС.Организация
+		{ГДЕ
+			Доходы.ФизЛицо.*,
+			Доходы.ГоловнаяОрганизация.*,
+			Доходы.Организация.*,
+			Доходы.ВидРасчета.*,
+			Доходы.ПериодРегистрации,
+			("Налоги") КАК Группа,
+			("Налог ФСС НС") КАК ВидПоказателя,
+			(Доходы.Результат * ЕСТЬNULL(СтавкиФСС_НС.Ставка, 0) / 100) КАК Результат}
+		
+		СГРУППИРОВАТЬ ПО
+			Доходы.ГоловнаяОрганизация,
+			Доходы.Организация,
+			Доходы.ПериодРегистрации) КАК Доходы
+		ПО ОтражениеЗарплатыВУчете.Организация = Доходы.Организация
+			И ОтражениеЗарплатыВУчете.ПериодРегистрации = Доходы.ПериодРегистрации
+{ГДЕ
+	ОтражениеЗарплатыВУчете.Организация.*,
+	ОтражениеЗарплатыВУчете.ПериодРегистрации,
+	("Налоги") КАК Группа,
+	("Налог ФСС НС") КАК ВидПоказателя,
+	("Скорректировано проводкой") КАК Пояснение,
+	("") КАК ОбщаяГруппа}
+
+СГРУППИРОВАТЬ ПО
+	ОтражениеЗарплатыВУчете.ПериодРегистрации,
+	ОтражениеЗарплатыВУчете.Организация,
+	ВЫБОР
+		КОГДА ОтражениеЗарплатыВУчете.Организация.ГоловнаяОрганизация = ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)
+			ТОГДА ОтражениеЗарплатыВУчете.Организация
+		ИНАЧЕ ОтражениеЗарплатыВУчете.Организация.ГоловнаяОрганизация
+	КОНЕЦ
+
+ИМЕЮЩИЕ
+	СУММА(ОтражениеЗарплатыВУчете.Сумма) &lt;&gt; 0
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	"Налоги",
+	"",
+	"Налог ФСС НС",
+	"Скорректировано проводкой",
+	СУММА(Доходы.Результат * ЕСТЬNULL(СтавкиФСС_НС.Ставка, 0) / -100),
+	NULL,
+	Доходы.ГоловнаяОрганизация,
+	Доходы.Организация,
+	NULL,
+	Доходы.ПериодРегистрации
+ИЗ
+	(ВЫБРАТЬ
+		ОсновныеНачисления.Физлицо КАК ФизЛицо,
+		ОсновныеНачисления.Результат КАК Результат,
+		ВЫБОР
+			КОГДА ОсновныеНачисления.Ссылка.Организация.ГоловнаяОрганизация = ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)
+				ТОГДА ОсновныеНачисления.Ссылка.Организация
+			ИНАЧЕ ОсновныеНачисления.Ссылка.Организация.ГоловнаяОрганизация
+		КОНЕЦ КАК ГоловнаяОрганизация,
+		ОсновныеНачисления.Ссылка.Организация КАК Организация,
+		ОсновныеНачисления.ВидРасчета КАК ВидРасчета,
+		ОсновныеНачисления.Ссылка.ПериодРегистрации КАК ПериодРегистрации
+	ИЗ
+		Документ.НачислениеЗарплатыРаботникамОрганизаций.Начисления КАК ОсновныеНачисления
+	ГДЕ
+		ОсновныеНачисления.ВидРасчета.КодДоходаФСС_НС = ЗНАЧЕНИЕ(Перечисление.ДоходыФСС_НС.Облагается)
+		И ОсновныеНачисления.Ссылка.ПериодРегистрации МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+		И ОсновныеНачисления.Ссылка.Проведен) КАК Доходы
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ДатыПоследнихДанных.ПериодРегистрации КАК ПериодРегистрации,
+			ДатыПоследнихДанных.Физлицо КАК Физлицо,
+			СведенияОбИнвалидностиФизлиц.Инвалидность КАК Инвалидность
+		ИЗ
+			(ВЫБРАТЬ
+				Периоды.ПериодРегистрации КАК ПериодРегистрации,
+				СведенияОбИнвалидностиФизлиц.Физлицо КАК Физлицо,
+				МАКСИМУМ(СведенияОбИнвалидностиФизлиц.Период) КАК Период
+			ИЗ
+				(ВЫБРАТЬ РАЗЛИЧНЫЕ
+					НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+				ИЗ
+					РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь) КАК Периоды
+					ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОбИнвалидностиФизлиц КАК СведенияОбИнвалидностиФизлиц
+					ПО (КОНЕЦПЕРИОДА(Периоды.ПериодРегистрации, МЕСЯЦ) &gt;= СведенияОбИнвалидностиФизлиц.Период)
+			
+			СГРУППИРОВАТЬ ПО
+				Периоды.ПериодРегистрации,
+				СведенияОбИнвалидностиФизлиц.Физлицо) КАК ДатыПоследнихДанных
+				ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОбИнвалидностиФизлиц КАК СведенияОбИнвалидностиФизлиц
+				ПО ДатыПоследнихДанных.Физлицо = СведенияОбИнвалидностиФизлиц.Физлицо
+					И ДатыПоследнихДанных.Период = СведенияОбИнвалидностиФизлиц.Период) КАК СведенияОбИнвалидности
+		ПО Доходы.ФизЛицо = СведенияОбИнвалидности.Физлицо
+			И Доходы.ПериодРегистрации = СведенияОбИнвалидности.ПериодРегистрации
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Организация КАК Организация,
+			ДатыПоследнихДвижений.ПериодРегистрации КАК ПериодРегистрации,
+			СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Ставка КАК Ставка
+		ИЗ
+			(ВЫБРАТЬ
+				Периоды.ПериодРегистрации КАК ПериодРегистрации,
+				СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Организация КАК Организация,
+				МАКСИМУМ(СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Период) КАК Период
+			ИЗ
+				(ВЫБРАТЬ РАЗЛИЧНЫЕ
+					НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+				ИЗ
+					РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь) КАК Периоды
+					ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев КАК СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев
+					ПО (КОНЕЦПЕРИОДА(Периоды.ПериодРегистрации, МЕСЯЦ) &gt;= СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Период)
+			
+			СГРУППИРОВАТЬ ПО
+				Периоды.ПериодРегистрации,
+				СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Организация) КАК ДатыПоследнихДвижений
+				ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев КАК СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев
+				ПО ДатыПоследнихДвижений.Организация = СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Организация
+					И ДатыПоследнихДвижений.Период = СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Период) КАК СтавкиФСС_НС
+		ПО Доходы.ПериодРегистрации = СтавкиФСС_НС.ПериодРегистрации
+			И Доходы.Организация = СтавкиФСС_НС.Организация
+{ГДЕ
+	Доходы.ФизЛицо.*,
+	Доходы.ГоловнаяОрганизация.*,
+	Доходы.Организация.*,
+	Доходы.ВидРасчета.*,
+	Доходы.ПериодРегистрации,
+	("Налоги") КАК Группа,
+	("Налог ФСС НС") КАК ВидПоказателя,
+	(Доходы.Результат * ЕСТЬNULL(СтавкиФСС_НС.Ставка, 0) / 100) КАК Результат,
+	("Скорректировано проводкой") КАК Пояснение,
+	("") КАК ОбщаяГруппа}
+
+СГРУППИРОВАТЬ ПО
+	Доходы.ГоловнаяОрганизация,
+	Доходы.Организация,
+	Доходы.ПериодРегистрации
+
+ИМЕЮЩИЕ
+	СУММА(Доходы.Результат) &lt;&gt; 0</query>
+			<autoFillFields>false</autoFillFields>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>ПособияФССРучнаяКорректировка</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Организация</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОблагаетсяЕНВД</dataPath>
+				<field>ОблагаетсяЕНВД</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Облагается ЕНВД</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидПоказателя</dataPath>
+				<field>ВидПоказателя</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Вид показателя</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Группа</dataPath>
+				<field>Группа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодРегистрации</dataPath>
+				<field>ПериодРегистрации</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период регистрации</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:periodNumber>2</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Порядок</dataPath>
+				<field>Порядок</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Порядок</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Пояснение</dataPath>
+				<field>Пояснение</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Пояснение</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Результат</dataPath>
+				<field>Результат</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Результат</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбщаяГруппа</dataPath>
+				<field>ОбщаяГруппа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Общая группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДобровольныеВзносыВФСС</dataPath>
+				<field>ДобровольныеВзносыВФСС</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Добровольные взносы ВФСС</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>УСН</dataPath>
+				<field>УСН</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>УСН</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>БЛ</dataPath>
+				<field>БЛ</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>БЛ</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>ИнформационнаяБаза</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ВЫБОР
+		КОГДА (НЕ Пособия.УСН)
+				И (НЕ Пособия.ОблагаетсяЕНВД)
+				И (НЕ Пособия.ДобровольныеВзносыВФСС)
+			ТОГДА "Всего сумма пособия (раздел 1)"
+		ИНАЧЕ "Всего сумма пособия"
+	КОНЕЦ КАК Группа,
+	"Всего сумма пособия" КАК ОбщаяГруппа,
+	"Скорректировано проводкой" КАК Пояснение,
+	"Скорректирована общая сумма" КАК ВидПоказателя,
+	18 КАК Порядок,
+	Пособия.Организация КАК Организация,
+	СУММА(Пособия.СуммаВсего) КАК Результат,
+	Пособия.ПериодРегистрации КАК ПериодРегистрации,
+	Пособия.УСН КАК УСН,
+	Пособия.ОблагаетсяЕНВД КАК ОблагаетсяЕНВД,
+	Пособия.ДобровольныеВзносыВФСС КАК ДобровольныеВзносыВФСС
+{ВЫБРАТЬ
+	Группа,
+	Пояснение,
+	ВидПоказателя,
+	Порядок,
+	Результат,
+	ПериодРегистрации,
+	Организация.*,
+	ОбщаяГруппа,
+	УСН,
+	ОблагаетсяЕНВД,
+	ДобровольныеВзносыВФСС}
+ИЗ
+	(ВЫБРАТЬ
+		Пособия.ПериодРегистрации КАК ПериодРегистрации,
+		Пособия.Организация КАК Организация,
+		СУММА(Пособия.СуммаВсего) КАК СуммаВсего,
+		Пособия.ДокументОснование КАК ДокументОснование,
+		Пособия.УСН КАК УСН,
+		Пособия.ОблагаетсяЕНВД КАК ОблагаетсяЕНВД,
+		Пособия.ДобровольныеВзносыВФСС КАК ДобровольныеВзносыВФСС,
+		Пособия.БЛ КАК БЛ
+	ИЗ
+		(ВЫБРАТЬ
+			НАЧАЛОПЕРИОДА(ПособияСоциальномуСтрахованию.Период, МЕСЯЦ) КАК ПериодРегистрации,
+			ПособияСоциальномуСтрахованию.Организация КАК Организация,
+			СУММА(-ПособияСоциальномуСтрахованию.СуммаВсего) КАК СуммаВсего,
+			ПособияСоциальномуСтрахованию.ДокументОснование КАК ДокументОснование,
+			ЕСТЬNULL(УчетнаяПолитика.УСН, ЛОЖЬ) КАК УСН,
+			ПособияСоциальномуСтрахованию.ОблагаетсяЕНВД КАК ОблагаетсяЕНВД,
+			ЕСТЬNULL(УчетнаяПолитика.ДобровольныеВзносыВФСС, ЛОЖЬ) КАК ДобровольныеВзносыВФСС,
+			ВЫБОР
+				КОГДА ПособияСоциальномуСтрахованию.ВидПособияСоциальногоСтрахования = ЗНАЧЕНИЕ(Перечисление.ВидыПособийСоциальногоСтрахования.Нетрудоспособность)
+					ТОГДА ИСТИНА
+				ИНАЧЕ ЛОЖЬ
+			КОНЕЦ КАК БЛ
+		ИЗ
+			РегистрНакопления.ПособияСоциальномуСтрахованию КАК ПособияСоциальномуСтрахованию
+				ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+					МАКСИМУМ(УчетнаяПолитикаНалоговыйУчет.Период) КАК ПериодУСН,
+					ПоследниеДатыУчтенойПолитики.ПериодРегистрации КАК ПериодРегистрации,
+					ПоследниеДатыУчтенойПолитики.Организация КАК Организация,
+					УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС КАК ДобровольныеВзносыВФСС,
+					ВЫБОР
+						КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+							ТОГДА ИСТИНА
+						ИНАЧЕ ЛОЖЬ
+					КОНЕЦ КАК УСН
+				ИЗ
+					(ВЫБРАТЬ РАЗЛИЧНЫЕ
+						ПериодыРегистрации.ПериодРегистрации КАК ПериодРегистрации,
+						МАКСИМУМ(УчетнаяПолитикаОрганизаций.Период) КАК Период,
+						УчетнаяПолитикаОрганизаций.Организация КАК Организация
+					ИЗ
+						(ВЫБРАТЬ РАЗЛИЧНЫЕ
+							НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+						ИЗ
+							РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь
+						ГДЕ
+							РегламентированныйПроизводственныйКалендарь.ДатаКалендаря МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода) КАК ПериодыРегистрации
+							ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаОрганизаций
+							ПО (КОНЕЦПЕРИОДА(ПериодыРегистрации.ПериодРегистрации, МЕСЯЦ) &gt;= УчетнаяПолитикаОрганизаций.Период)
+					
+					СГРУППИРОВАТЬ ПО
+						ПериодыРегистрации.ПериодРегистрации,
+						УчетнаяПолитикаОрганизаций.Организация) КАК ПоследниеДатыУчтенойПолитики
+						ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаНалоговыйУчет
+						ПО ПоследниеДатыУчтенойПолитики.Организация = УчетнаяПолитикаНалоговыйУчет.Организация
+							И ПоследниеДатыУчтенойПолитики.Период &gt;= УчетнаяПолитикаНалоговыйУчет.Период
+				
+				СГРУППИРОВАТЬ ПО
+					ПоследниеДатыУчтенойПолитики.ПериодРегистрации,
+					ПоследниеДатыУчтенойПолитики.Организация,
+					УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС,
+					ВЫБОР
+						КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+							ТОГДА ИСТИНА
+						ИНАЧЕ ЛОЖЬ
+					КОНЕЦ) КАК УчетнаяПолитика
+				ПО (ВЫБОР
+						КОГДА ПособияСоциальномуСтрахованию.Организация.ГоловнаяОрганизация = ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)
+							ТОГДА ПособияСоциальномуСтрахованию.Организация
+						ИНАЧЕ ПособияСоциальномуСтрахованию.Организация.ГоловнаяОрганизация
+					КОНЕЦ = УчетнаяПолитика.Организация)
+					И (НАЧАЛОПЕРИОДА(ПособияСоциальномуСтрахованию.Период, МЕСЯЦ) = УчетнаяПолитика.ПериодРегистрации)
+		ГДЕ
+			ПособияСоциальномуСтрахованию.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+			И (НЕ ПособияСоциальномуСтрахованию.ВидПособияСоциальногоСтрахования В (ЗНАЧЕНИЕ(Перечисление.ВидыПособийСоциальногоСтрахования.НетрудоспособностьНесчастныйСлучай), ЗНАЧЕНИЕ(Перечисление.ВидыПособийСоциальногоСтрахования.НетрудоспособностьПрофзаболевание), ЗНАЧЕНИЕ(Перечисление.ВидыПособийСоциальногоСтрахования.ДополнительныйОтпускПослеНесчастныхСлучаев)))
+		{ГДЕ
+			ПособияСоциальномуСтрахованию.Организация.*,
+			ПособияСоциальномуСтрахованию.ВидПособияСоциальногоСтрахования.* КАК ВидПоказателя}
+		
+		СГРУППИРОВАТЬ ПО
+			ПособияСоциальномуСтрахованию.ДокументОснование,
+			ПособияСоциальномуСтрахованию.Организация,
+			НАЧАЛОПЕРИОДА(ПособияСоциальномуСтрахованию.Период, МЕСЯЦ),
+			ПособияСоциальномуСтрахованию.ОблагаетсяЕНВД,
+			ЕСТЬNULL(УчетнаяПолитика.УСН, ЛОЖЬ),
+			ЕСТЬNULL(УчетнаяПолитика.ДобровольныеВзносыВФСС, ЛОЖЬ),
+			ВЫБОР
+				КОГДА ПособияСоциальномуСтрахованию.ВидПособияСоциальногоСтрахования = ЗНАЧЕНИЕ(Перечисление.ВидыПособийСоциальногоСтрахования.Нетрудоспособность)
+					ТОГДА ИСТИНА
+				ИНАЧЕ ЛОЖЬ
+			КОНЕЦ) КАК Пособия
+	{ГДЕ
+		Пособия.БЛ}
+	
+	СГРУППИРОВАТЬ ПО
+		Пособия.ПериодРегистрации,
+		Пособия.Организация,
+		Пособия.ДокументОснование,
+		Пособия.УСН,
+		Пособия.ОблагаетсяЕНВД,
+		Пособия.ДобровольныеВзносыВФСС,
+		Пособия.БЛ
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		Пособие.ПериодРегистрации,
+		Пособие.Организация,
+		СУММА(Пособие.СуммаВсего),
+		Пособие.ДокументОснование,
+		Пособие.УСН,
+		Пособие.ОблагаетсяЕНВД,
+		Пособие.ДобровольныеВзносыВФСС,
+		ЛОЖЬ
+	ИЗ
+		(ВЫБРАТЬ
+			НАЧАЛОПЕРИОДА(ПособияПоУходуЗаРебенкомДоПолутораЛет.Период, МЕСЯЦ) КАК ПериодРегистрации,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Организация КАК Организация,
+			СУММА(-ПособияПоУходуЗаРебенкомДоПолутораЛет.СуммаВсего) КАК СуммаВсего,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Регистратор КАК ДокументОснование,
+			ЕСТЬNULL(УчетнаяПолитика.УСН, ЛОЖЬ) КАК УСН,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.ОблагаетсяЕНВД КАК ОблагаетсяЕНВД,
+			ЕСТЬNULL(УчетнаяПолитика.ДобровольныеВзносыВФСС, ЛОЖЬ) КАК ДобровольныеВзносыВФСС
+		ИЗ
+			РегистрНакопления.ПособияПоУходуЗаРебенкомДоПолутораЛет КАК ПособияПоУходуЗаРебенкомДоПолутораЛет
+				ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+					МАКСИМУМ(УчетнаяПолитикаНалоговыйУчет.Период) КАК ПериодУСН,
+					ПоследниеДатыУчтенойПолитики.ПериодРегистрации КАК ПериодРегистрации,
+					ПоследниеДатыУчтенойПолитики.Организация КАК Организация,
+					УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС КАК ДобровольныеВзносыВФСС,
+					ВЫБОР
+						КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+							ТОГДА ИСТИНА
+						ИНАЧЕ ЛОЖЬ
+					КОНЕЦ КАК УСН
+				ИЗ
+					(ВЫБРАТЬ РАЗЛИЧНЫЕ
+						ПериодыРегистрации.ПериодРегистрации КАК ПериодРегистрации,
+						МАКСИМУМ(УчетнаяПолитикаОрганизаций.Период) КАК Период,
+						УчетнаяПолитикаОрганизаций.Организация КАК Организация
+					ИЗ
+						(ВЫБРАТЬ РАЗЛИЧНЫЕ
+							НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+						ИЗ
+							РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь
+						ГДЕ
+							РегламентированныйПроизводственныйКалендарь.ДатаКалендаря МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода) КАК ПериодыРегистрации
+							ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаОрганизаций
+							ПО (КОНЕЦПЕРИОДА(ПериодыРегистрации.ПериодРегистрации, МЕСЯЦ) &gt;= УчетнаяПолитикаОрганизаций.Период)
+					
+					СГРУППИРОВАТЬ ПО
+						ПериодыРегистрации.ПериодРегистрации,
+						УчетнаяПолитикаОрганизаций.Организация) КАК ПоследниеДатыУчтенойПолитики
+						ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаНалоговыйУчет
+						ПО ПоследниеДатыУчтенойПолитики.Организация = УчетнаяПолитикаНалоговыйУчет.Организация
+							И ПоследниеДатыУчтенойПолитики.Период &gt;= УчетнаяПолитикаНалоговыйУчет.Период
+				
+				СГРУППИРОВАТЬ ПО
+					ПоследниеДатыУчтенойПолитики.ПериодРегистрации,
+					ПоследниеДатыУчтенойПолитики.Организация,
+					УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС,
+					ВЫБОР
+						КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+							ТОГДА ИСТИНА
+						ИНАЧЕ ЛОЖЬ
+					КОНЕЦ) КАК УчетнаяПолитика
+				ПО (ВЫБОР
+						КОГДА ПособияПоУходуЗаРебенкомДоПолутораЛет.Организация.ГоловнаяОрганизация = ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)
+							ТОГДА ПособияПоУходуЗаРебенкомДоПолутораЛет.Организация
+						ИНАЧЕ ПособияПоУходуЗаРебенкомДоПолутораЛет.Организация.ГоловнаяОрганизация
+					КОНЕЦ = УчетнаяПолитика.Организация)
+					И (НАЧАЛОПЕРИОДА(ПособияПоУходуЗаРебенкомДоПолутораЛет.Период, МЕСЯЦ) = УчетнаяПолитика.ПериодРегистрации)
+		ГДЕ
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+		{ГДЕ
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Организация.*,
+			(ЗНАЧЕНИЕ(Перечисление.ВидыПособийСоциальногоСтрахования.ПоУходуЗаРебенкомДоПолутораЛет)).* КАК ВидПоказателя}
+		
+		СГРУППИРОВАТЬ ПО
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Организация,
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.Регистратор,
+			НАЧАЛОПЕРИОДА(ПособияПоУходуЗаРебенкомДоПолутораЛет.Период, МЕСЯЦ),
+			ПособияПоУходуЗаРебенкомДоПолутораЛет.ОблагаетсяЕНВД,
+			ЕСТЬNULL(УчетнаяПолитика.УСН, ЛОЖЬ),
+			ЕСТЬNULL(УчетнаяПолитика.ДобровольныеВзносыВФСС, ЛОЖЬ)) КАК Пособие
+	{ГДЕ
+		(ЛОЖЬ) КАК БЛ}
+	
+	СГРУППИРОВАТЬ ПО
+		Пособие.ПериодРегистрации,
+		Пособие.Организация,
+		Пособие.ДокументОснование,
+		Пособие.УСН,
+		Пособие.ОблагаетсяЕНВД,
+		Пособие.ДобровольныеВзносыВФСС
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		ХозрасчетныйОбороты.Период,
+		ХозрасчетныйОбороты.Организация,
+		СУММА(ХозрасчетныйОбороты.СуммаОборот),
+		"",
+		ВЫБОР
+			КОГДА ХозрасчетныйОбороты.Счет = ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС_СПЕЦ_УСН)
+				ТОГДА ИСТИНА
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ,
+		ВЫБОР
+			КОГДА ХозрасчетныйОбороты.Счет = ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС_СПЕЦ_ЕНВД)
+				ТОГДА ИСТИНА
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ,
+		ВЫБОР
+			КОГДА ХозрасчетныйОбороты.Счет = ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС_ДобровольныеВзносы)
+				ТОГДА ИСТИНА
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ,
+		NULL
+	ИЗ
+		РегистрБухгалтерии.Хозрасчетный.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Месяц, , , , , ) КАК ХозрасчетныйОбороты
+	ГДЕ
+		(ХозрасчетныйОбороты.Счет В ИЕРАРХИИ (ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС_СПЕЦ))
+				ИЛИ ХозрасчетныйОбороты.Счет В (ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС))
+				ИЛИ ХозрасчетныйОбороты.Счет В (ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС_ДобровольныеВзносы)))
+		И (ХозрасчетныйОбороты.Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыРасчетовПоСредствамФСС.РасходыПоСтрахованию)
+				ИЛИ ХозрасчетныйОбороты.Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПлатежейВГосБюджет.РасходыПоСтрахованию))
+		И ХозрасчетныйОбороты.КорСчет = ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.РасчетыСПерсоналомПоОплатеТруда)
+	
+	СГРУППИРОВАТЬ ПО
+		ХозрасчетныйОбороты.Организация,
+		ХозрасчетныйОбороты.Период,
+		ВЫБОР
+			КОГДА ХозрасчетныйОбороты.Счет = ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС_СПЕЦ_УСН)
+				ТОГДА ИСТИНА
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ,
+		ВЫБОР
+			КОГДА ХозрасчетныйОбороты.Счет = ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС_СПЕЦ_ЕНВД)
+				ТОГДА ИСТИНА
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ,
+		ВЫБОР
+			КОГДА ХозрасчетныйОбороты.Счет = ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС_ДобровольныеВзносы)
+				ТОГДА ИСТИНА
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ) КАК Пособия
+{ГДЕ
+	("Скорректировано проводкой") КАК Пояснение,
+	("Скорректирована общая сумма") КАК ВидПоказателя,
+	(18) КАК Порядок,
+	Пособия.Организация.*,
+	Пособия.ПериодРегистрации,
+	("Всего сумма пособия") КАК ОбщаяГруппа,
+	Пособия.УСН,
+	Пособия.ОблагаетсяЕНВД,
+	Пособия.ДобровольныеВзносыВФСС,
+	(ВЫБОР
+			КОГДА (НЕ Пособия.УСН)
+					И (НЕ Пособия.ОблагаетсяЕНВД)
+					И (НЕ Пособия.ДобровольныеВзносыВФСС)
+				ТОГДА "Всего сумма пособия (раздел 1)"
+			ИНАЧЕ "Всего сумма пособия"
+		КОНЕЦ) КАК Группа}
+
+СГРУППИРОВАТЬ ПО
+	Пособия.Организация,
+	Пособия.ПериодРегистрации,
+	Пособия.УСН,
+	Пособия.ОблагаетсяЕНВД,
+	Пособия.ДобровольныеВзносыВФСС
+
+ИМЕЮЩИЕ
+	СУММА(Пособия.СуммаВсего) &lt;&gt; 0</query>
+			<autoFillFields>false</autoFillFields>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>ПособияФСС_НСРучнаяКорректировка</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Организация</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидПособияСоциальногоСтрахования</dataPath>
+				<field>ВидПособияСоциальногоСтрахования</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Вид пособия социального страхования</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОблагаетсяЕНВД</dataPath>
+				<field>ОблагаетсяЕНВД</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Облагается ЕНВД</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидПоказателя</dataPath>
+				<field>ВидПоказателя</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Вид показателя</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Группа</dataPath>
+				<field>Группа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодРегистрации</dataPath>
+				<field>ПериодРегистрации</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период регистрации</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:periodNumber>2</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Порядок</dataPath>
+				<field>Порядок</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Порядок</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Пояснение</dataPath>
+				<field>Пояснение</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Пояснение</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Результат</dataPath>
+				<field>Результат</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Результат</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбщаяГруппа</dataPath>
+				<field>ОбщаяГруппа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Общая группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>ИнформационнаяБаза</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	"Всего сумма пособия (ФСС НС)" КАК Группа,
+	"" КАК ОбщаяГруппа,
+	"Скорректировано проводкой" КАК Пояснение,
+	"Скорректирована общая сумма" КАК ВидПоказателя,
+	18 КАК Порядок,
+	Пособия.Организация КАК Организация,
+	СУММА(Пособия.СуммаВсего) КАК Результат,
+	Пособия.ПериодРегистрации КАК ПериодРегистрации
+{ВЫБРАТЬ
+	Группа,
+	Пояснение,
+	ВидПоказателя,
+	Порядок,
+	Результат,
+	ПериодРегистрации,
+	Организация.*,
+	ОбщаяГруппа}
+ИЗ
+	(ВЫБРАТЬ
+		НАЧАЛОПЕРИОДА(ПособияСоциальномуСтрахованию.Период, МЕСЯЦ) КАК ПериодРегистрации,
+		ПособияСоциальномуСтрахованию.Организация КАК Организация,
+		СУММА(-ПособияСоциальномуСтрахованию.СуммаВсего) КАК СуммаВсего,
+		ПособияСоциальномуСтрахованию.ДокументОснование КАК ДокументОснование
+	ИЗ
+		РегистрНакопления.ПособияСоциальномуСтрахованию КАК ПособияСоциальномуСтрахованию
+			ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ РАЗЛИЧНЫЕ
+				ХозрасчетныйОбороты.Период КАК ПериодРегистрации,
+				ХозрасчетныйОбороты.Организация КАК Организация
+			ИЗ
+				РегистрБухгалтерии.Хозрасчетный.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Месяц, , , , , ) КАК ХозрасчетныйОбороты
+			ГДЕ
+				ХозрасчетныйОбороты.КорСчет В (ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС_НСиПЗ))
+				И ХозрасчетныйОбороты.КорСубконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПлатежейВГосБюджет.РасходыПоСтрахованию)
+			
+			СГРУППИРОВАТЬ ПО
+				ХозрасчетныйОбороты.Организация,
+				ХозрасчетныйОбороты.Период) КАК ОтражениеВУчете
+			ПО ПособияСоциальномуСтрахованию.Организация = ОтражениеВУчете.Организация
+				И ПособияСоциальномуСтрахованию.Период = ОтражениеВУчете.ПериодРегистрации
+	ГДЕ
+		ПособияСоциальномуСтрахованию.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+		И ПособияСоциальномуСтрахованию.ВидПособияСоциальногоСтрахования В (ЗНАЧЕНИЕ(Перечисление.ВидыПособийСоциальногоСтрахования.НетрудоспособностьНесчастныйСлучай), ЗНАЧЕНИЕ(Перечисление.ВидыПособийСоциальногоСтрахования.НетрудоспособностьПрофзаболевание), ЗНАЧЕНИЕ(Перечисление.ВидыПособийСоциальногоСтрахования.ДополнительныйОтпускПослеНесчастныхСлучаев))
+	{ГДЕ
+		ПособияСоциальномуСтрахованию.ОблагаетсяЕНВД,
+		ПособияСоциальномуСтрахованию.Организация.*,
+		ПособияСоциальномуСтрахованию.ВидПособияСоциальногоСтрахования.*}
+	
+	СГРУППИРОВАТЬ ПО
+		ПособияСоциальномуСтрахованию.ДокументОснование,
+		ПособияСоциальномуСтрахованию.Организация,
+		НАЧАЛОПЕРИОДА(ПособияСоциальномуСтрахованию.Период, МЕСЯЦ)
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		ХозрасчетныйОбороты.Период,
+		ХозрасчетныйОбороты.Организация,
+		СУММА(ХозрасчетныйОбороты.СуммаОборотКт),
+		""
+	ИЗ
+		РегистрБухгалтерии.Хозрасчетный.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Месяц, , , , , ) КАК ХозрасчетныйОбороты
+	ГДЕ
+		ХозрасчетныйОбороты.КорСчет В (ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС_НСиПЗ))
+		И ХозрасчетныйОбороты.КорСубконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПлатежейВГосБюджет.РасходыПоСтрахованию)
+	
+	СГРУППИРОВАТЬ ПО
+		ХозрасчетныйОбороты.Организация,
+		ХозрасчетныйОбороты.Период) КАК Пособия
+{ГДЕ
+	("Всего сумма пособия (ФСС НС)") КАК Группа,
+	("Скорректировано проводкой") КАК Пояснение,
+	("Скорректирована общая сумма") КАК ВидПоказателя,
+	(18) КАК Порядок,
+	Пособия.Организация.*,
+	Пособия.ПериодРегистрации,
+	("") КАК ОбщаяГруппа}
+
+СГРУППИРОВАТЬ ПО
+	Пособия.Организация,
+	Пособия.ПериодРегистрации
+
+ИМЕЮЩИЕ
+	СУММА(Пособия.СуммаВсего) &lt;&gt; 0</query>
+			<autoFillFields>false</autoFillFields>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>НалогЕСНРучнаяКорректировкаУчета</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидПоказателя</dataPath>
+				<field>ВидПоказателя</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Вид показателя</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Группа</dataPath>
+				<field>Группа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Пояснение</dataPath>
+				<field>Пояснение</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Пояснение</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Порядок</dataPath>
+				<field>Порядок</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Порядок</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Результат</dataPath>
+				<field>Результат</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Результат</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДобровольныеВзносыВФСС</dataPath>
+				<field>ДобровольныеВзносыВФСС</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Добровольные взносы ВФСС</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбщаяГруппа</dataPath>
+				<field>ОбщаяГруппа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Общая группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОблагаетсяЕНВД</dataPath>
+				<field>ОблагаетсяЕНВД</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Облагается ЕНВД</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>УСН</dataPath>
+				<field>УСН</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>УСН</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Документ</dataPath>
+				<field>Документ</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Документ</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:periodNumber>1</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Организация</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодРегистрации</dataPath>
+				<field>ПериодРегистрации</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период регистрации</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:periodNumber>2</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<dataSource>ИнформационнаяБаза</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	"Налоги" КАК Группа,
+	"" КАК ОбщаяГруппа,
+	"Скорректировано проводкой" КАК Пояснение,
+	"Налог ФСС" КАК ВидПоказателя,
+	1 КАК Порядок,
+	ВЫРАЗИТЬ(СУММА(Разница.ФСС) КАК ЧИСЛО(15, 2)) КАК Результат,
+	ЛОЖЬ КАК ДобровольныеВзносыВФСС,
+	ЕСТЬNULL(УчетнаяПолитика.УСН, ЛОЖЬ) КАК УСН,
+	ЛОЖЬ КАК ОблагаетсяЕНВД,
+	Разница.Организация КАК Организация,
+	Разница.ПериодРегистрации КАК ПериодРегистрации,
+	Разница.Документ КАК Документ
+{ВЫБРАТЬ
+	Группа,
+	Пояснение,
+	ВидПоказателя,
+	Порядок,
+	Результат,
+	ДобровольныеВзносыВФСС,
+	ОбщаяГруппа,
+	Организация.*,
+	ПериодРегистрации,
+	Документ.*}
+ИЗ
+	(ВЫБРАТЬ
+		СУММА(ХозрасчетныйОбороты.СуммаОборотКт) КАК ФСС,
+		ХозрасчетныйОбороты.Организация КАК Организация,
+		ХозрасчетныйОбороты.Период КАК ПериодРегистрации,
+		"" КАК Документ
+	ИЗ
+		РегистрБухгалтерии.Хозрасчетный.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Месяц, , , , , ) КАК ХозрасчетныйОбороты
+	ГДЕ
+		ХозрасчетныйОбороты.Счет В (ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС))
+		И ХозрасчетныйОбороты.Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПлатежейВГосБюджет.Налог)
+	
+	СГРУППИРОВАТЬ ПО
+		ХозрасчетныйОбороты.Организация,
+		ХозрасчетныйОбороты.Период
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		СУММА(-ЕСНИсчисленный.ФСС + ЕСТЬNULL(СведенияОСтавкахЕСНиПФР.ФССвПроцентах, 0) * ЕСНИсчисленный.ПримененнаяЛьготаФСС / 100),
+		ЕСНИсчисленный.ОбособленноеПодразделение,
+		НАЧАЛОПЕРИОДА(ЕСНИсчисленный.Период, МЕСЯЦ),
+		ЕСНИсчисленный.Регистратор
+	ИЗ
+		РегистрНакопления.ЕСНИсчисленный КАК ЕСНИсчисленный
+			ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ РАЗЛИЧНЫЕ
+				ХозрасчетныйОбороты.Организация КАК Организация,
+				ХозрасчетныйОбороты.Период КАК ПериодРегистрации
+			ИЗ
+				РегистрБухгалтерии.Хозрасчетный.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Месяц, , , , , ) КАК ХозрасчетныйОбороты
+			ГДЕ
+				ХозрасчетныйОбороты.Счет В (ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС))
+				И ХозрасчетныйОбороты.Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПлатежейВГосБюджет.Налог)
+			
+			СГРУППИРОВАТЬ ПО
+				ХозрасчетныйОбороты.Организация,
+				ХозрасчетныйОбороты.Период) КАК ОтраженияВУчете
+			ПО (НАЧАЛОПЕРИОДА(ЕСНИсчисленный.Период, МЕСЯЦ) = ОтраженияВУчете.ПериодРегистрации)
+				И ЕСНИсчисленный.ОбособленноеПодразделение = ОтраженияВУчете.Организация
+			ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОСтавкахЕСНиПФР КАК СведенияОСтавкахЕСНиПФР
+			ПО ЕСНИсчисленный.ОбособленноеПодразделение.ВидСтавокЕСНиПФР = СведенияОСтавкахЕСНиПФР.ВидСтавокЕСНиПФР
+				И (ГОД(ЕСНИсчисленный.Период) = СведенияОСтавкахЕСНиПФР.Год)
+				И (СведенияОСтавкахЕСНиПФР.НомерСтрокиСтавок = 1)
+	ГДЕ
+		ЕСНИсчисленный.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	
+	СГРУППИРОВАТЬ ПО
+		ЕСНИсчисленный.ОбособленноеПодразделение,
+		НАЧАЛОПЕРИОДА(ЕСНИсчисленный.Период, МЕСЯЦ),
+		ЕСНИсчисленный.Регистратор) КАК Разница
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ДатыПоследнихДвижений.ПериодРегистрации КАК ПериодРегистрации,
+			УчетнаяПолитикаНалоговыйУчет.Организация КАК Организация,
+			ВЫБОР
+				КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+					ТОГДА ИСТИНА
+				ИНАЧЕ ЛОЖЬ
+			КОНЕЦ КАК УСН,
+			УчетнаяПолитикаНалоговыйУчет.ОрганизацияЯвляетсяПлательщикомЕНВД КАК ЕНВД,
+			УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС КАК ДобровольныеВзносыВФСС
+		ИЗ
+			(ВЫБРАТЬ
+				УчетнаяПолитикаНалоговыйУчет.Организация КАК Организация,
+				МАКСИМУМ(УчетнаяПолитикаНалоговыйУчет.Период) КАК Период,
+				Периоды.ПериодРегистрации КАК ПериодРегистрации
+			ИЗ
+				(ВЫБРАТЬ РАЗЛИЧНЫЕ
+					НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+				ИЗ
+					РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь
+				ГДЕ
+					РегламентированныйПроизводственныйКалендарь.ДатаКалендаря МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода) КАК Периоды
+					ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаНалоговыйУчет
+					ПО (КОНЕЦПЕРИОДА(Периоды.ПериодРегистрации, МЕСЯЦ) &gt;= УчетнаяПолитикаНалоговыйУчет.Период)
+			
+			СГРУППИРОВАТЬ ПО
+				УчетнаяПолитикаНалоговыйУчет.Организация,
+				Периоды.ПериодРегистрации) КАК ДатыПоследнихДвижений
+				ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаНалоговыйУчет
+				ПО ДатыПоследнихДвижений.Организация = УчетнаяПолитикаНалоговыйУчет.Организация
+					И ДатыПоследнихДвижений.Период = УчетнаяПолитикаНалоговыйУчет.Период) КАК УчетнаяПолитика
+		ПО Разница.Организация = УчетнаяПолитика.Организация
+			И Разница.ПериодРегистрации = УчетнаяПолитика.ПериодРегистрации
+{ГДЕ
+	("Налоги") КАК Группа,
+	("Скорректировано проводкой") КАК Пояснение,
+	("Налог ФСС") КАК ВидПоказателя,
+	(1) КАК Порядок,
+	(ВЫРАЗИТЬ(СУММА(Разница.ФСС) КАК ЧИСЛО(15, 2))) КАК Результат,
+	(ЛОЖЬ) КАК ДобровольныеВзносыВФСС,
+	("") КАК ОбщаяГруппа,
+	(ЕСТЬNULL(УчетнаяПолитика.УСН, ЛОЖЬ)) КАК УСН,
+	(ЛОЖЬ) КАК ОблагаетсяЕНВД,
+	Разница.Организация.*,
+	Разница.ПериодРегистрации}
+
+СГРУППИРОВАТЬ ПО
+	УчетнаяПолитика.ДобровольныеВзносыВФСС,
+	ЕСТЬNULL(УчетнаяПолитика.УСН, ЛОЖЬ),
+	Разница.Организация,
+	Разница.ПериодРегистрации,
+	Разница.Документ
+
+ИМЕЮЩИЕ
+	(ВЫРАЗИТЬ(СУММА(Разница.ФСС) КАК ЧИСЛО(15, 2))) &lt;&gt; 0</query>
+			<autoFillFields>false</autoFillFields>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>НалогЕСНРучнаяКорректировкаУчетаДобровольныеВзносы</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидПоказателя</dataPath>
+				<field>ВидПоказателя</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Вид показателя</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Группа</dataPath>
+				<field>Группа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Пояснение</dataPath>
+				<field>Пояснение</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Пояснение</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Порядок</dataPath>
+				<field>Порядок</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Порядок</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Результат</dataPath>
+				<field>Результат</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Результат</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДобровольныеВзносыВФСС</dataPath>
+				<field>ДобровольныеВзносыВФСС</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Добровольные взносы ВФСС</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбщаяГруппа</dataPath>
+				<field>ОбщаяГруппа</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Общая группа</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОблагаетсяЕНВД</dataPath>
+				<field>ОблагаетсяЕНВД</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Облагается ЕНВД</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>УСН</dataPath>
+				<field>УСН</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>УСН</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Организация</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодРегистрации</dataPath>
+				<field>ПериодРегистрации</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период регистрации</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:periodNumber>1</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<dataSource>ИнформационнаяБаза</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	"Налоги" КАК Группа,
+	"" КАК ОбщаяГруппа,
+	"Скорректировано проводкой" КАК Пояснение,
+	"Налог ФСС" КАК ВидПоказателя,
+	1 КАК Порядок,
+	ВЫРАЗИТЬ(СУММА(Разница.ФСС) КАК ЧИСЛО(15, 2)) КАК Результат,
+	ИСТИНА КАК ДобровольныеВзносыВФСС,
+	ЕСТЬNULL(УчетнаяПолитика.УСН, ЛОЖЬ) КАК УСН,
+	ЛОЖЬ КАК ОблагаетсяЕНВД,
+	Разница.Организация КАК Организация,
+	Разница.ПериодРегистрации КАК ПериодРегистрации
+{ВЫБРАТЬ
+	Группа,
+	Пояснение,
+	ВидПоказателя,
+	Порядок,
+	Результат,
+	ДобровольныеВзносыВФСС,
+	ОбщаяГруппа,
+	УСН,
+	ОблагаетсяЕНВД,
+	Организация.*,
+	ПериодРегистрации}
+ИЗ
+	(ВЫБРАТЬ
+		СУММА(ХозрасчетныйОбороты.СуммаОборотКт) КАК ФСС,
+		ХозрасчетныйОбороты.Организация КАК Организация,
+		ХозрасчетныйОбороты.Период КАК ПериодРегистрации,
+		"" КАК Документ
+	ИЗ
+		РегистрБухгалтерии.Хозрасчетный.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Месяц, , , , , ) КАК ХозрасчетныйОбороты
+	ГДЕ
+		ХозрасчетныйОбороты.Счет В (ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ФСС_ДобровольныеВзносы))
+		И ХозрасчетныйОбороты.Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПлатежейВГосБюджет.Налог)
+		И ХозрасчетныйОбороты.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	
+	СГРУППИРОВАТЬ ПО
+		ХозрасчетныйОбороты.Организация,
+		ХозрасчетныйОбороты.Период
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		СУММА(-ЕСНИсчисленный.ФСС + ЕСТЬNULL(СведенияОСтавкахЕСНиПФР.ФССвПроцентах, 0) * ЕСНИсчисленный.ПримененнаяЛьготаФСС / 100),
+		ЕСНИсчисленный.ОбособленноеПодразделение,
+		НАЧАЛОПЕРИОДА(ЕСНИсчисленный.Период, МЕСЯЦ),
+		ЕСНИсчисленный.Регистратор
+	ИЗ
+		РегистрНакопления.ЕСНИсчисленный КАК ЕСНИсчисленный
+			ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОСтавкахЕСНиПФР КАК СведенияОСтавкахЕСНиПФР
+			ПО ЕСНИсчисленный.ОбособленноеПодразделение.ВидСтавокЕСНиПФР = СведенияОСтавкахЕСНиПФР.ВидСтавокЕСНиПФР
+				И (ГОД(ЕСНИсчисленный.Период) = СведенияОСтавкахЕСНиПФР.Год)
+				И (СведенияОСтавкахЕСНиПФР.НомерСтрокиСтавок = 1)
+	ГДЕ
+		ЕСНИсчисленный.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	
+	СГРУППИРОВАТЬ ПО
+		ЕСНИсчисленный.ОбособленноеПодразделение,
+		НАЧАЛОПЕРИОДА(ЕСНИсчисленный.Период, МЕСЯЦ),
+		ЕСНИсчисленный.Регистратор) КАК Разница
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ДатыПоследнихДвижений.ПериодРегистрации КАК ПериодРегистрации,
+			УчетнаяПолитикаНалоговыйУчет.Организация КАК Организация,
+			ВЫБОР
+				КОГДА УчетнаяПолитикаНалоговыйУчет.СистемаНалогообложения = ЗНАЧЕНИЕ(Перечисление.СистемыНалогообложения.Упрощенная)
+					ТОГДА ИСТИНА
+				ИНАЧЕ ЛОЖЬ
+			КОНЕЦ КАК УСН,
+			УчетнаяПолитикаНалоговыйУчет.ОрганизацияЯвляетсяПлательщикомЕНВД КАК ЕНВД,
+			УчетнаяПолитикаНалоговыйУчет.УплачиватьДобровольныеВзносыВФСС КАК ДобровольныеВзносыВФСС
+		ИЗ
+			(ВЫБРАТЬ
+				УчетнаяПолитикаНалоговыйУчет.Организация КАК Организация,
+				МАКСИМУМ(УчетнаяПолитикаНалоговыйУчет.Период) КАК Период,
+				Периоды.ПериодРегистрации КАК ПериодРегистрации
+			ИЗ
+				(ВЫБРАТЬ РАЗЛИЧНЫЕ
+					НАЧАЛОПЕРИОДА(РегламентированныйПроизводственныйКалендарь.ДатаКалендаря, МЕСЯЦ) КАК ПериодРегистрации
+				ИЗ
+					РегистрСведений.РегламентированныйПроизводственныйКалендарь КАК РегламентированныйПроизводственныйКалендарь
+				ГДЕ
+					РегламентированныйПроизводственныйКалендарь.ДатаКалендаря МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода) КАК Периоды
+					ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаНалоговыйУчет
+					ПО (КОНЕЦПЕРИОДА(Периоды.ПериодРегистрации, МЕСЯЦ) &gt;= УчетнаяПолитикаНалоговыйУчет.Период)
+			
+			СГРУППИРОВАТЬ ПО
+				УчетнаяПолитикаНалоговыйУчет.Организация,
+				Периоды.ПериодРегистрации) КАК ДатыПоследнихДвижений
+				ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаОрганизаций КАК УчетнаяПолитикаНалоговыйУчет
+				ПО ДатыПоследнихДвижений.Организация = УчетнаяПолитикаНалоговыйУчет.Организация
+					И ДатыПоследнихДвижений.Период = УчетнаяПолитикаНалоговыйУчет.Период) КАК УчетнаяПолитика
+		ПО Разница.Организация = УчетнаяПолитика.Организация
+			И Разница.ПериодРегистрации = УчетнаяПолитика.ПериодРегистрации
+{ГДЕ
+	("Налоги") КАК Группа,
+	("Скорректировано проводкой") КАК Пояснение,
+	("Налог ФСС") КАК ВидПоказателя,
+	(1) КАК Порядок,
+	(ВЫРАЗИТЬ(СУММА(Разница.ФСС) КАК ЧИСЛО(15, 2))) КАК Результат,
+	(ИСТИНА) КАК ДобровольныеВзносыВФСС,
+	("") КАК ОбщаяГруппа,
+	(ЕСТЬNULL(УчетнаяПолитика.УСН, ЛОЖЬ)) КАК УСН,
+	(ЕСТЬNULL(УчетнаяПолитика.ЕНВД, ЛОЖЬ)) КАК ОблагаетсяЕНВД,
+	Разница.Организация.*,
+	Разница.ПериодРегистрации}
+
+СГРУППИРОВАТЬ ПО
+	УчетнаяПолитика.ДобровольныеВзносыВФСС,
+	ЕСТЬNULL(УчетнаяПолитика.УСН, ЛОЖЬ),
+	Разница.Организация,
+	Разница.ПериодРегистрации
+
+ИМЕЮЩИЕ
+	(ВЫРАЗИТЬ(СУММА(Разница.ФСС) КАК ЧИСЛО(15, 2))) &lt;&gt; 0</query>
+			<autoFillFields>false</autoFillFields>
+		</item>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>СредняяЗаработнаяПлата</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ГруппаСреднегоЗаработка</dataPath>
+			<field>ГруппаСреднегоЗаработка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодРегистрации</dataPath>
+			<field>ПериодРегистрации</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ФизЛицо</dataPath>
+			<field>ФизЛицо</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ГоловнаяОрганизация</dataPath>
+			<field>ГоловнаяОрганизация</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РазмерСреднегоЗаработка</dataPath>
+			<field>РазмерСреднегоЗаработка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Средний заработок</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<dataSource>ИнформационнаяБаза</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Организация КАК Организация,
+	ВЫБОР
+		КОГДА ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Организация.ГоловнаяОрганизация = ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)
+			ТОГДА ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Организация
+		ИНАЧЕ ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Организация.ГоловнаяОрганизация
+	КОНЕЦ КАК ГоловнаяОрганизация,
+	ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.ФизЛицо КАК ФизЛицо,
+	МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) КАК РазмерСреднегоЗаработка,
+	ВЫБОР
+		КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &lt;= 3750
+			ТОГДА "до 3750"
+		КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &gt;= 3750
+				И МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &lt; 7500
+			ТОГДА "3751 - 7500"
+		КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &gt;= 7501
+				И МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &lt; 11250
+			ТОГДА "7501 - 11250"
+		КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &gt;= 11251
+				И МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &lt; 15000
+			ТОГДА "11251 - 15000"
+		КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &gt;= 15000
+			ТОГДА "свыше 15000"
+	КОНЕЦ КАК ГруппаСреднегоЗаработка,
+	НАЧАЛОПЕРИОДА(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Период, МЕСЯЦ) КАК ПериодРегистрации,
+	ВЫБОР
+		КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &lt;= 3750
+			ТОГДА "до 3750"
+		КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &gt;= 3750
+				И МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &lt; 7500
+			ТОГДА "3751 - 7500"
+		КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &gt;= 7501
+				И МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &lt; 11250
+			ТОГДА "7501 - 11250"
+		КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &gt;= 11251
+				И МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &lt; 18000
+			ТОГДА "11251 - 18000"
+		КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &gt;= 18000
+			ТОГДА "свыше 18000"
+	КОНЕЦ КАК ГруппаСреднегоЗаработка2009
+{ВЫБРАТЬ
+	Организация.*,
+	ФизЛицо.*,
+	ПериодРегистрации,
+	ГруппаСреднегоЗаработка,
+	ГоловнаяОрганизация.*,
+	РазмерСреднегоЗаработка}
+ИЗ
+	РегистрСведений.ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет КАК ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет
+{ГДЕ
+	ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Организация.*,
+	ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.ФизЛицо.*,
+	(НАЧАЛОПЕРИОДА(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Период, МЕСЯЦ)) КАК ПериодРегистрации,
+	(ВЫБОР
+			КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &lt;= 3750
+				ТОГДА "до 3750"
+			КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &gt;= 3750
+					И МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &lt; 7500
+				ТОГДА "3751 - 7500"
+			КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &gt;= 7501
+					И МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &lt; 11250
+				ТОГДА "7501 - 11250"
+			КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &gt;= 11251
+					И МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &lt; 15000
+				ТОГДА "11251 - 15000"
+			КОГДА МАКСИМУМ(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.РазмерСреднегоЗаработка * 365 / 12) &gt;= 15000
+				ТОГДА "свыше 15000"
+		КОНЕЦ) КАК ГруппаСреднегоЗаработка,
+	(ВЫБОР
+			КОГДА ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Организация.ГоловнаяОрганизация = ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)
+				ТОГДА ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Организация
+			ИНАЧЕ ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Организация.ГоловнаяОрганизация
+		КОНЕЦ).* КАК ГоловнаяОрганизация}
+
+СГРУППИРОВАТЬ ПО
+	ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Организация,
+	ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.ФизЛицо,
+	НАЧАЛОПЕРИОДА(ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Период, МЕСЯЦ),
+	ВЫБОР
+		КОГДА ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Организация.ГоловнаяОрганизация = ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)
+			ТОГДА ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Организация
+		ИНАЧЕ ЗаработкиПолучателейПособияПоУходуЗаРебенкомДоПолутораЛет.Организация.ГоловнаяОрганизация
+	КОНЕЦ</query>
+		<autoFillFields>false</autoFillFields>
+	</dataSet>
+	<dataSetLink>
+		<sourceDataSet>Данные</sourceDataSet>
+		<destinationDataSet>СредняяЗаработнаяПлата</destinationDataSet>
+		<sourceExpression>ФизЛицо</sourceExpression>
+		<destinationExpression>ФизЛицо</destinationExpression>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>Данные</sourceDataSet>
+		<destinationDataSet>СредняяЗаработнаяПлата</destinationDataSet>
+		<sourceExpression>ГоловнаяОрганизация</sourceExpression>
+		<destinationExpression>ГоловнаяОрганизация</destinationExpression>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>Данные</sourceDataSet>
+		<destinationDataSet>СредняяЗаработнаяПлата</destinationDataSet>
+		<sourceExpression>ПериодРегистрации</sourceExpression>
+		<destinationExpression>ПериодРегистрации</destinationExpression>
+	</dataSetLink>
+	<calculatedField>
+		<dataPath>ЧисленостьРаботников</dataPath>
+		<expression>ФизЛицо</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Численость работников</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<totalField>
+		<dataPath>Результат</dataPath>
+		<expression>ВЫБОР КОГДА Не Группа ПОДОБНО "Количество получателей" ТОГДА Сумма(Результат) ИНАЧЕ Количество(Различные ФизЛицо) КОНЕЦ</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ЧисленостьРаботников</dataPath>
+		<expression>Количество(Различные ЧисленостьРаботников)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>РазмерСреднегоЗаработка</dataPath>
+		<expression>Максимум(РазмерСреднегоЗаработка)</expression>
+	</totalField>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ПособияНС</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Пособия НС</v8:content>
+			</v8:item>
+		</title>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПособийСоциальногоСтрахования.НетрудоспособностьНесчастныйСлучай</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПособийСоциальногоСтрахования.НетрудоспособностьПрофзаболевание</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПособийСоциальногоСтрахования.ДополнительныйОтпускПослеНесчастныхСлучаев</value>
+		<useRestriction>false</useRestriction>
+		<valueListAllowed>true</valueListAllowed>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Результат</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Организации.</dcsset:right>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ФизЛицо</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.ФизическиеЛица.</dcsset:right>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Группа</dcsset:left>
+					<dcsset:comparisonType>Contains</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:string"/>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item>
+					<dcscor:parameter>КонецПериода</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+				</dcscor:item>
+				<dcscor:item>
+					<dcscor:parameter>НачалоПериода</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+				</dcscor:item>
+				<dcscor:item>
+					<dcscor:parameter>ПособияНС</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПособийСоциальногоСтрахования.НетрудоспособностьНесчастныйСлучай</dcscor:value>
+					<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПособийСоциальногоСтрахования.НетрудоспособностьПрофзаболевание</dcscor:value>
+					<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПособийСоциальногоСтрахования.ДополнительныйОтпускПослеНесчастныхСлучаев</dcscor:value>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>ДокументОснование</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter/>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+							<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+							<dcscor:value xsi:type="xs:decimal">30</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>Результат</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter/>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+							<dcscor:value xsi:type="xs:decimal">10</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+							<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:use>false</dcscor:use>
+							<dcscor:parameter>МинимальнаяВысота</dcscor:parameter>
+							<dcscor:value xsi:type="xs:decimal">3</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:use>false</dcscor:use>
+							<dcscor:parameter>МаксимальнаяВысота</dcscor:parameter>
+							<dcscor:value xsi:type="xs:decimal">4</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расшифровка отчета 4-ФСС</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemTable">
+				<dcsset:column>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ВидПоказателя</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:column>
+				<dcsset:row>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Организация</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item>
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ФизЛицо</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:row>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

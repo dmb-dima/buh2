@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Данные</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ГоловнаяОрганизация</dataPath>
+			<field>ГоловнаяОрганизация</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Головная организация</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ФизЛицо</dataPath>
+			<field>ФизЛицо</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Физ лицо</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ГОД</dataPath>
+			<field>ГОД</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ГОД</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ДФ='yyyy "г."'</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КодДохода</dataPath>
+			<field>КодДохода</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код дохода</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КодПоОКАТО</dataPath>
+			<field>КодПоОКАТО</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код по ОКАТО</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КПП</dataPath>
+			<field>КПП</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>КПП</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПодразделениеОрганизации</dataPath>
+			<field>ПодразделениеОрганизации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделение организации</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КодОКАТО</dataPath>
+			<field>КодОКАТО</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код ОКАТО</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ РАЗЛИЧНЫЕ
+	ВложенныйЗапрос.ГОД КАК ГОД,
+	ВложенныйЗапрос.ГоловнаяОрганизация КАК ГоловнаяОрганизация,
+	ВложенныйЗапрос.ФизЛицо КАК ФизЛицо,
+	ВложенныйЗапрос.ПодразделениеОрганизации КАК ПодразделениеОрганизации,
+	ВложенныйЗапрос.КодДохода КАК КодДохода,
+	ВложенныйЗапрос.КодОКАТО КАК КодОКАТО,
+	ВЫБОР
+		КОГДА &amp;ОтборПоОрганизации
+			ТОГДА ВложенныйЗапрос.Организация
+		ИНАЧЕ ВложенныйЗапрос.ГоловнаяОрганизация
+	КОНЕЦ КАК Организация
+{ВЫБРАТЬ
+	ГОД КАК ГОД,
+	ГоловнаяОрганизация.*,
+	Организация,
+	ФизЛицо.*,
+	ПодразделениеОрганизации.*,
+	КодДохода.*,
+	КодОКАТО}
+ИЗ
+	(ВЫБРАТЬ РАЗЛИЧНЫЕ
+		НАЧАЛОПЕРИОДА(НДФЛСведенияОДоходах.Период, ГОД) КАК ГОД,
+		НДФЛСведенияОДоходах.Организация КАК ГоловнаяОрганизация,
+		НДФЛСведенияОДоходах.ФизЛицо КАК ФизЛицо,
+		НДФЛСведенияОДоходах.ОбособленноеПодразделение КАК Организация,
+		НДФЛСведенияОДоходах.ПодразделениеОрганизации КАК ПодразделениеОрганизации,
+		НДФЛСведенияОДоходах.КодДохода КАК КодДохода,
+		ВЫБОР
+			КОГДА НДФЛСведенияОДоходах.КодПоОКАТО &lt;&gt; ""
+				ТОГДА НДФЛСведенияОДоходах.КодПоОКАТО
+			КОГДА ЕСТЬNULL(НДФЛСведенияОДоходах.ПодразделениеОрганизации.КодПоОКАТО, "") &lt;&gt; ""
+				ТОГДА НДФЛСведенияОДоходах.ПодразделениеОрганизации.КодПоОКАТО
+			ИНАЧЕ ЕСТЬNULL(НДФЛСведенияОДоходах.ОбособленноеПодразделение.КодПоОКАТО, "")
+		КОНЕЦ КАК КодОКАТО
+	ИЗ
+		РегистрНакопления.НДФЛСведенияОДоходах КАК НДФЛСведенияОДоходах
+	ГДЕ
+		НДФЛСведенияОДоходах.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+		И (ВЫБОР
+					КОГДА НДФЛСведенияОДоходах.КодПоОКАТО &lt;&gt; ""
+						ТОГДА НДФЛСведенияОДоходах.КодПоОКАТО
+					КОГДА ЕСТЬNULL(НДФЛСведенияОДоходах.ПодразделениеОрганизации.КодПоОКАТО, "") &lt;&gt; ""
+						ТОГДА НДФЛСведенияОДоходах.ПодразделениеОрганизации.КодПоОКАТО
+					ИНАЧЕ ЕСТЬNULL(НДФЛСведенияОДоходах.ОбособленноеПодразделение.КодПоОКАТО, "")
+				КОНЕЦ = &amp;КодПоОКАТО
+				ИЛИ &amp;КодПоОКАТО = "")
+	{ГДЕ
+		(НАЧАЛОПЕРИОДА(НДФЛСведенияОДоходах.ПериодРегистрации, ГОД)) КАК Год,
+		НДФЛСведенияОДоходах.Организация.* КАК ГоловнаяОрганизация,
+		НДФЛСведенияОДоходах.ФизЛицо.*,
+		НДФЛСведенияОДоходах.ОбособленноеПодразделение.* КАК Организация,
+		НДФЛСведенияОДоходах.ПодразделениеОрганизации.*,
+		НДФЛСведенияОДоходах.КодДохода.*,
+		(ВЫБОР
+				КОГДА НДФЛСведенияОДоходах.КодПоОКАТО &lt;&gt; &amp;ПустойКодПоОКАТО
+					ТОГДА НДФЛСведенияОДоходах.КодПоОКАТО
+				КОГДА ЕСТЬNULL(НДФЛСведенияОДоходах.ПодразделениеОрганизации.КодПоОКАТО, &amp;ПустойКодПоОКАТО) &lt;&gt; &amp;ПустойКодПоОКАТО
+					ТОГДА НДФЛСведенияОДоходах.ПодразделениеОрганизации.КодПоОКАТО
+				ИНАЧЕ ЕСТЬNULL(НДФЛСведенияОДоходах.ОбособленноеПодразделение.КодПоОКАТО, &amp;ПустойКодПоОКАТО)
+			КОНЕЦ) КАК КодОКАТО}
+	
+	ОБЪЕДИНИТЬ
+	
+	ВЫБРАТЬ РАЗЛИЧНЫЕ
+		НАЧАЛОПЕРИОДА(НДФЛРасчетыСБюджетом.Период, ГОД),
+		НДФЛРасчетыСБюджетом.Организация,
+		НДФЛРасчетыСБюджетом.ФизЛицо,
+		НДФЛРасчетыСБюджетом.ОбособленноеПодразделение,
+		НДФЛРасчетыСБюджетом.ПодразделениеОрганизации,
+		НДФЛРасчетыСБюджетом.КодДохода,
+		ВЫБОР
+			КОГДА НДФЛРасчетыСБюджетом.КодПоОКАТО &lt;&gt; ""
+				ТОГДА НДФЛРасчетыСБюджетом.КодПоОКАТО
+			КОГДА ЕСТЬNULL(НДФЛРасчетыСБюджетом.ПодразделениеОрганизации.КодПоОКАТО, "") &lt;&gt; ""
+				ТОГДА НДФЛРасчетыСБюджетом.ПодразделениеОрганизации.КодПоОКАТО
+			ИНАЧЕ ЕСТЬNULL(НДФЛРасчетыСБюджетом.ОбособленноеПодразделение.КодПоОКАТО, "")
+		КОНЕЦ
+	ИЗ
+		РегистрНакопления.НДФЛРасчетыСБюджетом КАК НДФЛРасчетыСБюджетом
+	ГДЕ
+		НДФЛРасчетыСБюджетом.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+		И (ВЫБОР
+					КОГДА НДФЛРасчетыСБюджетом.КодПоОКАТО &lt;&gt; ""
+						ТОГДА НДФЛРасчетыСБюджетом.КодПоОКАТО
+					КОГДА ЕСТЬNULL(НДФЛРасчетыСБюджетом.ПодразделениеОрганизации.КодПоОКАТО, "") &lt;&gt; ""
+						ТОГДА НДФЛРасчетыСБюджетом.ПодразделениеОрганизации.КодПоОКАТО
+					ИНАЧЕ ЕСТЬNULL(НДФЛРасчетыСБюджетом.ОбособленноеПодразделение.КодПоОКАТО, "")
+				КОНЕЦ = &amp;КодПоОКАТО
+				ИЛИ &amp;КодПоОКАТО = "")
+	{ГДЕ
+		НДФЛРасчетыСБюджетом.Организация.* КАК ГоловнаяОрганизация,
+		НДФЛРасчетыСБюджетом.ФизЛицо.*,
+		НДФЛРасчетыСБюджетом.ОбособленноеПодразделение.* КАК Организация,
+		НДФЛРасчетыСБюджетом.КодПоОКАТО,
+		НДФЛРасчетыСБюджетом.ПодразделениеОрганизации.*,
+		НДФЛРасчетыСБюджетом.КПП,
+		НДФЛРасчетыСБюджетом.КодДохода.*,
+		(ВЫБОР
+				КОГДА НДФЛРасчетыСБюджетом.КодПоОКАТО &lt;&gt; &amp;ПустойКодПоОКАТО
+					ТОГДА НДФЛРасчетыСБюджетом.КодПоОКАТО
+				КОГДА ЕСТЬNULL(НДФЛРасчетыСБюджетом.ПодразделениеОрганизации.КодПоОКАТО, &amp;ПустойКодПоОКАТО) &lt;&gt; &amp;ПустойКодПоОКАТО
+					ТОГДА НДФЛРасчетыСБюджетом.ПодразделениеОрганизации.КодПоОКАТО
+				ИНАЧЕ ЕСТЬNULL(НДФЛРасчетыСБюджетом.ОбособленноеПодразделение.КодПоОКАТО, &amp;ПустойКодПоОКАТО)
+			КОНЕЦ) КАК КодОКАТО}) КАК ВложенныйЗапрос
+{ГДЕ
+	ВложенныйЗапрос.ГОД,
+	ВложенныйЗапрос.ГоловнаяОрганизация.*,
+	ВложенныйЗапрос.ФизЛицо.*,
+	ВложенныйЗапрос.Организация.*,
+	ВложенныйЗапрос.ПодразделениеОрганизации.*,
+	ВложенныйЗапрос.КодДохода.*,
+	ВложенныйЗапрос.КодОКАТО}</query>
+		<autoFillFields>false</autoFillFields>
+	</dataSet>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Ответственный</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Ответственный</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Пользователи</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.Пользователи.ПустаяСсылка</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>КодПоОКАТО</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Код по ОКАТО</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>11</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:type="xs:string"/>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ДатаПодписи</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата подписи</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ОтборПоОрганизации</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Отбор по организации</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ГоловнаяОрганизация</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Организация</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ГОД</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ФизЛицо</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item>
+					<dcscor:parameter>КонецПериода</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+				</dcscor:item>
+				<dcscor:item>
+					<dcscor:parameter>НачалоПериода</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+				</dcscor:item>
+				<dcscor:item>
+					<dcscor:parameter>Ответственный</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DesignTimeValue">Справочник.Пользователи.ПустаяСсылка</dcscor:value>
+				</dcscor:item>
+				<dcscor:item>
+					<dcscor:parameter>КодПоОКАТО</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string"/>
+				</dcscor:item>
+				<dcscor:item>
+					<dcscor:parameter>ДатаПодписи</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+				</dcscor:item>
+			</dcsset:dataParameters>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

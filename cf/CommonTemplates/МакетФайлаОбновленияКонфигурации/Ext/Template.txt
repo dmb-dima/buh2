@@ -1,0 +1,267 @@
+﻿
+#Область ОбластьДоОбновленияКонфигурации
+
+Out = [Out] 'Путь к log-файлу
+Set fs = CreateObject("Scripting.FileSystemObject")
+Set OutFile = fs.OpenTextFile(Out, 8, True)
+
+OutFile.WriteLine(CStr(Now) + " НАЧАЛО ОБНОВЛЕНИЯ КОНФИГУРАЦИИ")
+
+' Удаляется исполняемый файл
+OutFile.WriteLine(CStr(Now) + " Удаление исполняемого файла VBS")
+FilePath = [FilePath] 'Путь к текущему файлу
+Set fs = CreateObject("Scripting.FileSystemObject")
+Set f = fs.GetFile(FilePath)
+f.delete
+
+OutFile.WriteLine(CStr(Now) + " Инициализация переменных")
+' Инициализируем необходимые переменные
+ServerName = [ServerName] 'Имя сервера БД
+KlasterPortNumber = [KlasterPortNumber] 'Номер пора кластера
+InfoBaseName = [InfoBaseName] 'Имя ИБ
+
+LockMessageText = [LockMessageText] 'Текст сообщения о блокировки подключений к ИБ
+LockPermissionCode = [LockPermissionCode] 'Ключ для запуска заблокированной ИБ
+ClasterAdminName = [ClasterAdminName] 'Имя администратора кластера
+ClasterAdminPass = [ClasterAdminPass] 'Пароль администратора кластера
+InfoBasesAdminName = [InfoBasesAdminName] 'Имя администратора ИБ
+InfoBasesAdminPass = [InfoBasesAdminPass] 'Пароль администратора ИБ
+TimeBeginLock = [TimeBeginLock] ' Время начала блокировки ИБ
+TimeEndLock = [TimeEndLock] ' Время окончания блокировки ИБ
+
+Cfg = [Cfg] 'Путь к файлу с измененной конфигурацией
+InfoCfgFile = [ОписаниеФайлаОбновленияКонфигурации] 'Информация о файле обновления конфигурации
+v8exe = [v8exe] 'Путь к исполняемому файлу 1С:Предприятия 8.1
+
+NewPass = [NewPass] 'Новый пароль администратора, обновляющего ИБ
+
+FindInfoBase = False 'Флаг, что ИБ найдена
+
+OutFile.WriteLine(CStr(Now) + " Создание COM-коннектора")
+Set ComConnector = CreateObject("v81.COMConnector")
+
+OutFile.WriteLine(CStr(Now) + " Подключение к агенту сервера")
+Set ServerAgent = ComConnector.ConnectAgent(ServerName)
+
+' Получим массив кластеров сервера у агента сервера
+OutFile.WriteLine(CStr(Now) + " Получение массива кластеров сервера у агента сервера")
+Clasters = ServerAgent.GetClusters()
+
+OutFile.WriteLine(CStr(Now) + " Начало завершения работы пользователей")
+
+' Найдем необходимый нам кластер по IP адресу
+OutFile.WriteLine(CStr(Now) + " Начало цикла нахождения необходимого кластера по известному IP-адресу")
+For i = LBound(Clasters) To UBound(Clasters)
+	If Clasters(i).MainPort = KlasterPortNumber Then
+		
+		OutFile.WriteLine(CStr(Now) + " Аутефикация к найденному кластеру: " + Clasters(i).Name)
+		ServerAgent.Authenticate Clasters(i), ClasterAdminName, ClasterAdminPass
+
+		' Получаем список рабочих процессов
+		OutFile.WriteLine(CStr(Now) + " Получение списка работающих рабочих процессов и обход в цикле")
+		WorkingProcesses = ServerAgent.GetWorkingProcesses(Clasters(i))
+
+		For j = LBound(WorkingProcesses) To UBound(WorkingProcesses)
+
+			If WorkingProcesses(j).Running = 1 Then
+
+				' Для каждого рабочего процесса создаем соединение с рабочим процессом
+				OutFile.WriteLine(CStr(Now) + " Создание соединения с рабочим процессом " + WorkingProcesses(j).HostName + ":" + CStr(WorkingProcesses(j).MainPort))
+				Set ConnectToWorkProcess = ComConnector.ConnectWorkingProcess("tcp://" + WorkingProcesses(j).HostName + ":" + CStr(WorkingProcesses(j).MainPort))
+
+				ConnectToWorkProcess.AuthenticateAdmin ClasterAdminName, ClasterAdminPass
+				ConnectToWorkProcess.AddAuthentication InfoBasesAdminName, InfoBasesAdminPass
+
+				If Not FindInfoBase Then
+
+					' Получаем список ИБ рабочего процесса
+					OutFile.WriteLine(CStr(Now) + " Получение списка ИБ рабочего процесса")
+					InfoBases = ConnectToWorkProcess.GetInfoBases()
+					OutFile.WriteLine(CStr(Now) + " Поиск нужной ИБ")
+					For h = LBound(InfoBases) To UBound(InfoBases)
+						' Ищем нужную базу
+						OutFile.WriteLine(CStr(Now) + " Обрабатывается ИБ: " + InfoBases(h).Name)
+						If InfoBases(h).Name = InfoBaseName Then
+							Set InfoBase = InfoBases(h)
+							FindInfoBase = True
+							OutFile.WriteLine(CStr(Now) + " Нашли нужную ИБ")
+							Exit For
+						End If
+					Next
+
+					If Not FindInfoBase Then
+						OutFile.WriteLine(CStr(Now) + " Не нашли нужную ИБ")
+						Exit For
+					End If
+
+					' Устанавливаем запрет на подключение новых соединений
+					OutFile.WriteLine(CStr(Now) + " Установка запрета на подключения к ИБ: " + InfoBase.Name)
+					InfoBase.ConnectDenied = True
+					InfoBase.DeniedFrom = TimeBeginLock
+					InfoBase.DeniedTo   = TimeEndLock
+					InfoBase.DeniedMessage = LockMessageText
+					InfoBase.PermissionCode = LockPermissionCode
+					ConnectToWorkProcess.UpdateInfoBase(InfoBase)
+
+					' Устанавливаем задержку выполнения
+					OutFile.WriteLine(CStr(Now) + " Задержка перед началом завершения работы пользователей")
+					TimeSleep = (DateDiff("s",Now,TimeBeginLock) + 60)*1000
+					set WshShell = WScript.CreateObject("WScript.Shell")
+					WScript.Sleep TimeSleep
+
+				End If
+
+				OutFile.WriteLine(CStr(Now) + " Начало завершение работы пользователей с ИБ " + InfoBase.Name)
+				If FindInfoBase Then
+					' Получаем массив соединений с ИБ
+					Connections = ConnectToWorkProcess.GetInfoBaseConnections(InfoBase)
+					OutFile.WriteLine(CStr(Now) + " Обработка списка соединений")
+					For k = LBound(Connections) To UBound(Connections)
+						' Разрываем Connections с ИБ
+						OutFile.WriteLine(CStr(Now) + " Обрабатывается соединение: Пользователь " + Connections(k).UserName + ", компьютер " + Connections(k).HostName + ", установлено " + CStr(Connections(k).ConnectedAt) + ", режим " + Connections(k).AppID)
+						ConnectToWorkProcess.Disconnect(Connections(k))
+					Next
+				End If
+
+			End If
+
+		Next
+
+	End If
+
+Next
+
+ComConnector = Null
+ServerAgent = Null
+Clasters = Null
+WorkingProcesses = Null
+ConnectToWorkProcess = Null
+InfoBases = Null
+InfoBase = Null
+Connections = Null
+
+If FindInfoBase Then
+
+	OutFile.WriteLine(CStr(Now) + " Окончаение завершения работы пользователей")
+
+#КонецОбласти
+
+#Область ОбластьЗагрузкиИзмененнойКонфигурации
+	OutFile.WriteLine(CStr(Now) + " Загрузка измененной конфигурации")
+	OutFile.WriteLine("    Описание файла: " + InfoCfgFile)
+	OutFile.Close()
+
+	Set Sh = CreateObject("WScript.Shell")
+	' Подключений к ИБ нет, произведем загрузку измененной конфигурации
+	LineExe = """" + v8exe + """ CONFIG /S" + ServerName + ":" + CStr(KlasterPortNumber) + "\" + InfoBaseName + " /N""" + InfoBasesAdminName + """ /P""" + InfoBasesAdminPass + """ /WA- /LoadCfg""" + Cfg + """ /UC""" + LockPermissionCode + """ /Out""" + Out + """ -NoTruncate"
+	Sh.Run LineExe, 5, True
+	
+	Set fs = CreateObject("Scripting.FileSystemObject")
+	Set f = fs.GetFile(Cfg)
+	f.delete()
+	
+	Set OutFile = fs.OpenTextFile(Out, 8, True)
+
+#КонецОбласти
+
+#Область ОбластьОбновленияКонфигурацииБД
+	OutFile.WriteLine(CStr(Now) + " Обновление конфигурации ИБ")
+	OutFile.Close()
+	
+	Set Sh = CreateObject("WScript.Shell")
+	' Обновим конфигурацию БД
+	LineExe = """" + v8exe + """ CONFIG /S" + ServerName + ":" + CStr(KlasterPortNumber) + "\" + InfoBaseName + " /N""" + InfoBasesAdminName + """ /P""" + InfoBasesAdminPass + """ /WA- /UpdateDBCfg /UC""" + LockPermissionCode + """ /Out""" + Out + """ -NoTruncate"
+	Sh.Run LineExe, 5, True
+
+	Set OutFile = fs.OpenTextFile(Out, 8, True)
+	
+#КонецОбласти
+
+#Область ОбластьПослеОбновленияКонфигурации
+
+	OutFile.WriteLine(CStr(Now) + " Установка разрешения подключения к ИБ")
+
+	FindInfoBase = False
+	
+	Set ComConnector = CreateObject("v81.COMConnector")
+	Set ServerAgent = ComConnector.ConnectAgent(ServerName)
+	Clasters = ServerAgent.GetClusters()
+
+	'Установим разрешение на доступ к ИБ
+	For i = LBound(Clasters) To UBound(Clasters)
+	
+		If Clasters(i).MainPort = KlasterPortNumber Then
+
+			ServerAgent.Authenticate Clasters(i), ClasterAdminName, ClasterAdminPass
+			WorkingProcesses = ServerAgent.GetWorkingProcesses(Clasters(i))
+
+			For j = LBound(WorkingProcesses) To UBound(WorkingProcesses)
+
+				If WorkingProcesses(j).Running = 1 Then
+
+					Set ConnectToWorkProcess = ComConnector.ConnectWorkingProcess("tcp://" + WorkingProcesses(j).HostName + ":" + CStr(WorkingProcesses(j).MainPort))
+					ConnectToWorkProcess.AuthenticateAdmin ClasterAdminName, ClasterAdminPass
+					ConnectToWorkProcess.AddAuthentication InfoBasesAdminName, InfoBasesAdminPass
+
+					' Получаем список ИБ рабочего процесса
+					InfoBases = ConnectToWorkProcess.GetInfoBases()
+					For h = LBound(InfoBases) To UBound(InfoBases)
+						' Ищем нужную базу
+						If InfoBases(h).Name = InfoBaseName Then
+							Set InfoBase = InfoBases(h)
+							FindInfoBase = True
+							Exit For
+						End If
+					Next
+
+					If FindInfoBase Then
+						' Устанавливаем разрешение на подключение соединений
+						InfoBase.ConnectDenied = False
+						InfoBase.DeniedMessage = ""
+						InfoBase.PermissionCode = ""
+						ConnectToWorkProcess.UpdateInfoBase(InfoBase)
+						Exit For
+					End If
+
+				End If
+
+			Next
+
+		End If
+
+		If FindInfoBase Then
+			Exit For
+		End If
+
+	Next
+
+End If
+
+OutFile.WriteLine(CStr(Now) + " Сохранение данных журнала регистрации, изменение пароля администратора")
+Set ComConnector = CreateObject("V81.COMConnector")
+Set connection = ComConnector.Connect("Srvr=" + ServerName + ":" + CStr(KlasterPortNumber) + ";Ref=" + InfoBaseName + ";Usr=" + InfoBasesAdminName + ";Pwd=" + InfoBasesAdminPass)
+
+OutFile.WriteLine(CStr(Now) + " ЗАВЕРШЕНИЕ ОБНОВЛЕНИЯ КОНФИГУРАЦИИ")
+OutFile.Close()
+
+Set fs = CreateObject("Scripting.FileSystemObject")
+Set f = fs.OpenTextFile(Out, 1, False, -2)
+Text = f.ReadAll
+
+'Запишем всю информацию из log-файла в журнал регистрации
+connection.WriteLogEvent "Регламентное обновление ИБ", connection.EventLogLevel.Information,,, Text
+
+'Изменим пароль администратора, который обновляет ИБ
+Set UserAdm = connection.InfoBaseUsers.FindByName(InfoBasesAdminName)
+UserAdm.Password = NewPass
+UserAdm.Write()
+
+connection = Null
+ComConnector = Null
+
+'Удалим log-файл
+Set fs = CreateObject("Scripting.FileSystemObject")
+Set f = fs.GetFile(Out)
+f.delete
+
+#КонецОбласти

@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
+	<DocumentJournal uuid="a6426f9c-5451-4df3-b63d-2e6dcf1e3830">
+		<InternalInfo>
+			<xr:GeneratedType name="DocumentJournalSelection.ДокументыПоОС" category="Selection">
+				<xr:TypeId>6c295af1-4eac-4112-b4b6-520f2713e080</xr:TypeId>
+				<xr:ValueId>25de00ee-e182-4338-b993-80d038bf8a4f</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DocumentJournalList.ДокументыПоОС" category="List">
+				<xr:TypeId>578fad46-fde6-4804-88d3-2d6bcfdc84c7</xr:TypeId>
+				<xr:ValueId>caaa3d5d-a55a-4ea5-8f2a-dee57a5a0571</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DocumentJournalManager.ДокументыПоОС" category="Manager">
+				<xr:TypeId>68b8d283-b83b-4cf6-8051-23d23cc6a2c2</xr:TypeId>
+				<xr:ValueId>a6b0a394-084c-4bda-8eb0-aa69cbb6aa4d</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>ДокументыПоОС</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы по ОС</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<DefaultForm>DocumentJournal.ДокументыПоОС.Form.ФормаСписка</DefaultForm>
+			<AuxiliaryForm/>
+			<UseStandardCommands>false</UseStandardCommands>
+			<RegisteredDocuments>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ПринятиеКУчетуОС</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ПередачаОборудованияВМонтаж</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.МодернизацияОС</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ПеремещениеОС</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ПодготовкаКПередачеОС</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.СписаниеОС</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ПередачаОС</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ИнвентаризацияОС</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.АвизоОСВходящее</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.АвизоОСИсходящее</xr:Item>
+			</RegisteredDocuments>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation/>
+		</Properties>
+		<ChildObjects>
+			<Column uuid="7ddc8947-4cc3-46dd-a644-46146b0c72b0">
+				<Properties>
+					<Name>Организация</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>IndexWithAdditionalOrder</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СписаниеОС.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПередачаОС.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПодготовкаКПередачеОС.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПринятиеКУчетуОС.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПередачаОборудованияВМонтаж.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПеремещениеОС.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.МодернизацияОС.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ИнвентаризацияОС.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.АвизоОСВходящее.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.АвизоОСИсходящее.Attribute.Организация</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="7a299562-adbd-4cc6-a196-5959b3f1b395">
+				<Properties>
+					<Name>ОбъектСтроительства</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объект строительства</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПередачаОборудованияВМонтаж.Attribute.ОбъектСтроительства</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПринятиеКУчетуОС.Attribute.ОбъектСтроительства</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.МодернизацияОС.Attribute.ОбъектСтроительства</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="10f553fa-c214-4ff9-b569-672a03f3e741">
+				<Properties>
+					<Name>СобытиеОС</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Событие ОС</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СписаниеОС.Attribute.СобытиеОС</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПередачаОС.Attribute.СобытиеОС</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПодготовкаКПередачеОС.Attribute.СобытиеОС</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПеремещениеОС.Attribute.СобытиеОС</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.МодернизацияОС.Attribute.СобытиеОС</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.АвизоОСВходящее.Attribute.СобытиеОС</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.АвизоОСИсходящее.Attribute.СобытиеОС</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="45c3ce7c-0222-4757-bfd3-9b6cc2b41a43">
+				<Properties>
+					<Name>Комментарий</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СписаниеОС.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПередачаОС.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПодготовкаКПередачеОС.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПринятиеКУчетуОС.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПередачаОборудованияВМонтаж.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПеремещениеОС.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.МодернизацияОС.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ИнвентаризацияОС.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.АвизоОСВходящее.Attribute.Комментарий</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.АвизоОСИсходящее.Attribute.Комментарий</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="f961a993-5484-4ed8-b4e2-1c18041a8e91">
+				<Properties>
+					<Name>Ответственный</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ответственный</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СписаниеОС.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПередачаОС.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПодготовкаКПередачеОС.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПринятиеКУчетуОС.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПередачаОборудованияВМонтаж.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПеремещениеОС.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.МодернизацияОС.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ИнвентаризацияОС.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.АвизоОСВходящее.Attribute.Ответственный</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.АвизоОСИсходящее.Attribute.Ответственный</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="89658b0b-ef57-42a7-b6f1-374d37e5fcc8">
+				<Properties>
+					<Name>РучнаяКорректировка</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ручная корректировка</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СписаниеОС.Attribute.РучнаяКорректировка</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПередачаОС.Attribute.РучнаяКорректировка</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПодготовкаКПередачеОС.Attribute.РучнаяКорректировка</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПринятиеКУчетуОС.Attribute.РучнаяКорректировка</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПередачаОборудованияВМонтаж.Attribute.РучнаяКорректировка</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.МодернизацияОС.Attribute.РучнаяКорректировка</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ПеремещениеОС.Attribute.РучнаяКорректировка</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Form>ФормаСписка</Form>
+		</ChildObjects>
+	</DocumentJournal>
+</MetaDataObject>

@@ -1,0 +1,1067 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>0</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Графа5_0</dataPath>
+			<field>Графа5_0</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма доходов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент_0</dataPath>
+			<field>Контрагент_0</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагент</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор_0</dataPath>
+			<field>Регистратор_0</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	СУММА(КнигаУчетаДоходовИРасходов.Графа5) КАК Графа5_0,
+	ВЫБОР
+		КОГДА (НЕ ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.Контрагент ЕСТЬ NULL )
+			ТОГДА ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.Контрагент
+		КОГДА (НЕ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.Контрагент ЕСТЬ NULL )
+			ТОГДА ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.Контрагент
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ВозвратТоваровОтПокупателя
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.ВозвратТоваровОтПокупателя).Контрагент
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.РеализацияТоваровУслуг
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.РеализацияТоваровУслуг).Контрагент
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.РеализацияОтгруженныхТоваров
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.РеализацияОтгруженныхТоваров).Контрагент
+	КОНЕЦ КАК Контрагент_0,
+	КнигаУчетаДоходовИРасходов.Регистратор КАК Регистратор_0
+ИЗ
+	РегистрНакопления.КнигаУчетаДоходовИРасходов КАК КнигаУчетаДоходовИРасходов
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ПоступлениеНаРасчетныйСчет.РасшифровкаПлатежа КАК ПлатежноеПоручениеВходящееРасшифровкаПлатежа
+		ПО КнигаУчетаДоходовИРасходов.Регистратор = ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ПриходныйКассовыйОрдер.РасшифровкаПлатежа КАК ПриходныйКассовыйОрдерРасшифровкаПлатежа
+		ПО КнигаУчетаДоходовИРасходов.Регистратор = ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка
+ГДЕ
+	КнигаУчетаДоходовИРасходов.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И КнигаУчетаДоходовИРасходов.Организация = &amp;Организация
+	И КнигаУчетаДоходовИРасходов.Активность
+	И КнигаУчетаДоходовИРасходов.ЭтапПроведения &lt;&gt; -1
+	И (ПлатежноеПоручениеВходящееРасшифровкаПлатежа.НомерСтроки = 1 ИЛИ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.НомерСтроки ЕСТЬ NULL)
+	И (ПриходныйКассовыйОрдерРасшифровкаПлатежа.НомерСтроки = 1 ИЛИ ПриходныйКассовыйОрдерРасшифровкаПлатежа.НомерСтроки ЕСТЬ NULL)
+	И (ПриходныйКассовыйОрдерРасшифровкаПлатежа.ДоговорКонтрагента.ВидДоговора = &amp;СПокупателем
+			ИЛИ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.ДоговорКонтрагента.ВидДоговора = &amp;СПокупателем
+			ИЛИ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.ВидОперации = &amp;КартыИКредиты
+			ИЛИ КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ВозвратТоваровОтПокупателя
+			ИЛИ КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.РеализацияТоваровУслуг
+			ИЛИ КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.РеализацияОтгруженныхТоваров)
+
+СГРУППИРОВАТЬ ПО
+	ВЫБОР
+		КОГДА (НЕ ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.Контрагент ЕСТЬ NULL )
+			ТОГДА ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.Контрагент
+		КОГДА (НЕ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.Контрагент ЕСТЬ NULL )
+			ТОГДА ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.Контрагент
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ВозвратТоваровОтПокупателя
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.ВозвратТоваровОтПокупателя).Контрагент
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.РеализацияТоваровУслуг
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.РеализацияТоваровУслуг).Контрагент
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.РеализацияОтгруженныхТоваров
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.РеализацияОтгруженныхТоваров).Контрагент
+	КОНЕЦ,
+	КнигаУчетаДоходовИРасходов.Регистратор
+
+ИМЕЮЩИЕ
+	СУММА(КнигаУчетаДоходовИРасходов.Графа5) &lt;&gt; 0</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Графа5_1</dataPath>
+			<field>Графа5_1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма доходов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор_1</dataPath>
+			<field>Регистратор_1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Склад_1</dataPath>
+			<field>Склад_1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Торговая точка</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	СУММА(КнигаУчетаДоходовИРасходов.Графа5) КАК Графа5_1,
+	КнигаУчетаДоходовИРасходов.Регистратор КАК Регистратор_1,
+	ВЫБОР
+		КОГДА ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.ВидОперации = &amp;РозничнаяВыручка
+			ТОГДА ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.Контрагент
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ОтчетОРозничныхПродажах
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.ОтчетОРозничныхПродажах).Склад
+	КОНЕЦ КАК Склад_1
+ИЗ
+	РегистрНакопления.КнигаУчетаДоходовИРасходов КАК КнигаУчетаДоходовИРасходов
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ПриходныйКассовыйОрдер.РасшифровкаПлатежа КАК ПриходныйКассовыйОрдерРасшифровкаПлатежа
+		ПО КнигаУчетаДоходовИРасходов.Регистратор = ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка
+ГДЕ
+	КнигаУчетаДоходовИРасходов.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И КнигаУчетаДоходовИРасходов.Организация = &amp;Организация
+	И КнигаУчетаДоходовИРасходов.Активность
+	И КнигаУчетаДоходовИРасходов.ЭтапПроведения &lt;&gt; -1
+	И (ПриходныйКассовыйОрдерРасшифровкаПлатежа.НомерСтроки = 1 ИЛИ ПриходныйКассовыйОрдерРасшифровкаПлатежа.НомерСтроки ЕСТЬ NULL)
+	И (КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ОтчетОРозничныхПродажах
+		ИЛИ ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.ВидОперации = &amp;РозничнаяВыручка)
+
+СГРУППИРОВАТЬ ПО
+	КнигаУчетаДоходовИРасходов.Регистратор,
+	ВЫБОР
+		КОГДА ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.ВидОперации = &amp;РозничнаяВыручка
+			ТОГДА ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.Контрагент
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ОтчетОРозничныхПродажах
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.ОтчетОРозничныхПродажах).Склад
+	КОНЕЦ
+
+ИМЕЮЩИЕ
+	СУММА(КнигаУчетаДоходовИРасходов.Графа5) &lt;&gt; 0</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>2</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Графа5_2</dataPath>
+			<field>Графа5_2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма доходов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент_2</dataPath>
+			<field>Контрагент_2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагент</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор_2</dataPath>
+			<field>Регистратор_2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	СУММА(КнигаУчетаДоходовИРасходов.Графа5) КАК Графа5_2,
+	ВЫБОР
+		КОГДА НЕ ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.Контрагент ЕСТЬ NULL 
+			ТОГДА ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.Контрагент
+		КОГДА НЕ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.Контрагент ЕСТЬ NULL 
+			ТОГДА ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.Контрагент
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ОтчетКомиссионераОПродажах 
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.ОтчетКомиссионераОПродажах).Контрагент
+	КОНЕЦ КАК Контрагент_2,
+	КнигаУчетаДоходовИРасходов.Регистратор КАК Регистратор_2
+ИЗ
+	РегистрНакопления.КнигаУчетаДоходовИРасходов КАК КнигаУчетаДоходовИРасходов
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ПоступлениеНаРасчетныйСчет.РасшифровкаПлатежа КАК ПлатежноеПоручениеВходящееРасшифровкаПлатежа
+		ПО КнигаУчетаДоходовИРасходов.Регистратор = ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ПриходныйКассовыйОрдер.РасшифровкаПлатежа КАК ПриходныйКассовыйОрдерРасшифровкаПлатежа
+		ПО КнигаУчетаДоходовИРасходов.Регистратор = ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка
+ГДЕ
+	КнигаУчетаДоходовИРасходов.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И КнигаУчетаДоходовИРасходов.Организация = &amp;Организация
+	И КнигаУчетаДоходовИРасходов.Активность
+	И КнигаУчетаДоходовИРасходов.ЭтапПроведения &lt;&gt; -1
+	И (ПлатежноеПоручениеВходящееРасшифровкаПлатежа.НомерСтроки = 1 ИЛИ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.НомерСтроки ЕСТЬ NULL)
+	И (ПриходныйКассовыйОрдерРасшифровкаПлатежа.НомерСтроки = 1 ИЛИ ПриходныйКассовыйОрдерРасшифровкаПлатежа.НомерСтроки ЕСТЬ NULL)
+	И (ПриходныйКассовыйОрдерРасшифровкаПлатежа.ДоговорКонтрагента.ВидДоговора = &amp;СКомиссионером
+		ИЛИ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.ДоговорКонтрагента.ВидДоговора = &amp;СКомиссионером
+		ИЛИ КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ОтчетКомиссионераОПродажах)
+
+СГРУППИРОВАТЬ ПО
+	ВЫБОР
+		КОГДА НЕ ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.Контрагент ЕСТЬ NULL 
+			ТОГДА ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.Контрагент
+		КОГДА НЕ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.Контрагент ЕСТЬ NULL 
+			ТОГДА ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.Контрагент
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ОтчетКомиссионераОПродажах 
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.ОтчетКомиссионераОПродажах).Контрагент
+	КОНЕЦ,
+	КнигаУчетаДоходовИРасходов.Регистратор
+
+ИМЕЮЩИЕ
+	СУММА(КнигаУчетаДоходовИРасходов.Графа5) &lt;&gt; 0</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>3</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Графа5_3</dataPath>
+			<field>Графа5_3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма доходов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент_3</dataPath>
+			<field>Контрагент_3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагент</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор_3</dataPath>
+			<field>Регистратор_3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	СУММА(КнигаУчетаДоходовИРасходов.Графа5) КАК Графа5_3,
+	ВЫБОР
+		КОГДА НЕ ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.Контрагент ЕСТЬ NULL 
+			ТОГДА ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.Контрагент
+		КОГДА НЕ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.Контрагент ЕСТЬ NULL 
+			ТОГДА ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.Контрагент
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ОтчетКомитентуОПродажах 
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.ОтчетКомитентуОПродажах).Контрагент
+	КОНЕЦ КАК Контрагент_3,
+	КнигаУчетаДоходовИРасходов.Регистратор КАК Регистратор_3
+ИЗ
+	РегистрНакопления.КнигаУчетаДоходовИРасходов КАК КнигаУчетаДоходовИРасходов
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ПоступлениеНаРасчетныйСчет.РасшифровкаПлатежа КАК ПлатежноеПоручениеВходящееРасшифровкаПлатежа
+		ПО КнигаУчетаДоходовИРасходов.Регистратор = ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ПриходныйКассовыйОрдер.РасшифровкаПлатежа КАК ПриходныйКассовыйОрдерРасшифровкаПлатежа
+		ПО КнигаУчетаДоходовИРасходов.Регистратор = ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка
+ГДЕ
+	КнигаУчетаДоходовИРасходов.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И КнигаУчетаДоходовИРасходов.Организация = &amp;Организация
+	И КнигаУчетаДоходовИРасходов.Активность
+	И КнигаУчетаДоходовИРасходов.ЭтапПроведения &lt;&gt; -1
+	И (ПлатежноеПоручениеВходящееРасшифровкаПлатежа.НомерСтроки = 1 ИЛИ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.НомерСтроки ЕСТЬ NULL)
+	И (ПриходныйКассовыйОрдерРасшифровкаПлатежа.НомерСтроки = 1 ИЛИ ПриходныйКассовыйОрдерРасшифровкаПлатежа.НомерСтроки ЕСТЬ NULL)
+	И (ПриходныйКассовыйОрдерРасшифровкаПлатежа.ДоговорКонтрагента.ВидДоговора = &amp;СКомитентом
+		ИЛИ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.ДоговорКонтрагента.ВидДоговора = &amp;СКомитентом
+		ИЛИ КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ОтчетКомитентуОПродажах)
+
+СГРУППИРОВАТЬ ПО
+	ВЫБОР
+		КОГДА НЕ ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.Контрагент ЕСТЬ NULL 
+			ТОГДА ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.Контрагент
+		КОГДА НЕ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.Контрагент ЕСТЬ NULL 
+			ТОГДА ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.Контрагент
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ОтчетКомитентуОПродажах 
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.ОтчетКомитентуОПродажах).Контрагент
+	КОНЕЦ,
+	КнигаУчетаДоходовИРасходов.Регистратор
+
+ИМЕЮЩИЕ
+	СУММА(КнигаУчетаДоходовИРасходов.Графа5) &lt;&gt; 0</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>4</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Графа5_4</dataPath>
+			<field>Графа5_4</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма доходов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент_4</dataPath>
+			<field>Контрагент_4</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагент</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор_4</dataPath>
+			<field>Регистратор_4</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	СУММА(КнигаУчетаДоходовИРасходов.Графа5) КАК Графа5_4,
+	КнигаУчетаДоходовИРасходов.Регистратор КАК Регистратор_4,
+	ВЫБОР
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.РасходныйКассовыйОрдер 
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.РасходныйКассовыйОрдер).Контрагент
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.СписаниеСРасчетногоСчета 
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.СписаниеСРасчетногоСчета).Контрагент		
+	КОНЕЦ КАК Контрагент_4
+ИЗ
+	РегистрНакопления.КнигаУчетаДоходовИРасходов КАК КнигаУчетаДоходовИРасходов		
+ГДЕ
+	КнигаУчетаДоходовИРасходов.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И КнигаУчетаДоходовИРасходов.Организация = &amp;Организация
+	И КнигаУчетаДоходовИРасходов.Активность
+	И КнигаУчетаДоходовИРасходов.ЭтапПроведения &lt;&gt; -1
+	И (КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.РасходныйКассовыйОрдер
+		ИЛИ КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.СписаниеСРасчетногоСчета)
+
+СГРУППИРОВАТЬ ПО
+	КнигаУчетаДоходовИРасходов.Регистратор,
+	ВЫБОР
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.РасходныйКассовыйОрдер 
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.РасходныйКассовыйОрдер).Контрагент
+		КОГДА КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.СписаниеСРасчетногоСчета 
+			ТОГДА ВЫРАЗИТЬ(КнигаУчетаДоходовИРасходов.Регистратор КАК Документ.СписаниеСРасчетногоСчета).Контрагент		
+	КОНЕЦ
+
+ИМЕЮЩИЕ
+	СУММА(КнигаУчетаДоходовИРасходов.Графа5) &lt;&gt; 0</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>5</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Графа5_5</dataPath>
+			<field>Графа5_5</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма доходов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор_5</dataPath>
+			<field>Регистратор_5</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	СУММА(КнигаУчетаДоходовИРасходов.Графа5) КАК Графа5_5,
+	КнигаУчетаДоходовИРасходов.Регистратор КАК Регистратор_5	
+ИЗ
+	РегистрНакопления.КнигаУчетаДоходовИРасходов КАК КнигаУчетаДоходовИРасходов
+ГДЕ
+	КнигаУчетаДоходовИРасходов.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И КнигаУчетаДоходовИРасходов.Организация = &amp;Организация
+	И КнигаУчетаДоходовИРасходов.Активность
+	И КнигаУчетаДоходовИРасходов.ЭтапПроведения = -1
+
+СГРУППИРОВАТЬ ПО
+	КнигаУчетаДоходовИРасходов.Регистратор
+
+ИМЕЮЩИЕ
+	СУММА(КнигаУчетаДоходовИРасходов.Графа5) &lt;&gt; 0</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>6</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Графа5_6</dataPath>
+			<field>Графа5_6</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма доходов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор_6</dataPath>
+			<field>Регистратор_6</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидДоходов_6</dataPath>
+			<field>ВидДоходов_6</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид доходов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	СУММА(КнигаУчетаДоходовИРасходов.Графа5) КАК Графа5_6,
+	КнигаУчетаДоходовИРасходов.Регистратор КАК Регистратор_6,
+	ВЫБОР
+		КОГДА НЕ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.СчетУчетаРасчетовСКонтрагентом ЕСТЬ NULL 
+			ТОГДА ВЫБОР 
+				КОГДА ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.ВидОперации = &amp;ПрочееПоступлениеБН
+					ТОГДА ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.СчетУчетаРасчетовСКонтрагентом.Наименование
+				ИНАЧЕ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.СчетУчетаРасчетовСКонтрагентом.Наименование			
+			КОНЕЦ
+		КОГДА НЕ ПриходныйКассовыйОрдерРасшифровкаПлатежа.СчетУчетаРасчетовСКонтрагентом ЕСТЬ NULL 
+			ТОГДА  ВЫБОР 
+				КОГДА ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.ВидОперации = &amp;ПрочееПоступлениеН
+					ТОГДА ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.СчетУчетаРасчетовСКонтрагентом.Наименование
+				ИНАЧЕ ПриходныйКассовыйОрдерРасшифровкаПлатежа.СчетУчетаРасчетовСКонтрагентом.Наименование			
+			КОНЕЦ			
+		ИНАЧЕ
+			"Прочие доходы"
+	КОНЕЦ КАК ВидДоходов_6
+ИЗ
+	РегистрНакопления.КнигаУчетаДоходовИРасходов КАК КнигаУчетаДоходовИРасходов
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ПоступлениеНаРасчетныйСчет.РасшифровкаПлатежа КАК ПлатежноеПоручениеВходящееРасшифровкаПлатежа
+		ПО КнигаУчетаДоходовИРасходов.Регистратор = ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ПриходныйКассовыйОрдер.РасшифровкаПлатежа КАК ПриходныйКассовыйОрдерРасшифровкаПлатежа
+		ПО КнигаУчетаДоходовИРасходов.Регистратор = ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка
+		
+ГДЕ
+	КнигаУчетаДоходовИРасходов.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И КнигаУчетаДоходовИРасходов.Организация = &amp;Организация
+	И КнигаУчетаДоходовИРасходов.Активность
+	И КнигаУчетаДоходовИРасходов.ЭтапПроведения &lt;&gt; -1
+	И (НЕ КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ОтчетОРозничныхПродажах)
+	И (НЕ КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.РасходныйКассовыйОрдер)
+	И (НЕ КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.СписаниеСРасчетногоСчета)
+	И (НЕ КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ВозвратТоваровОтПокупателя)
+	И (НЕ КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.РеализацияТоваровУслуг)
+	И (НЕ КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.РеализацияОтгруженныхТоваров)
+	И (НЕ КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ОтчетКомиссионераОПродажах)
+	И (НЕ КнигаУчетаДоходовИРасходов.Регистратор ССЫЛКА Документ.ОтчетКомитентуОПродажах)
+	И (ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.ВидОперации ЕСТЬ NULL ИЛИ ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.ВидОперации &lt;&gt; &amp;РозничнаяВыручка)
+	И (ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.ВидОперации ЕСТЬ NULL ИЛИ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.ВидОперации &lt;&gt; &amp;КартыИКредиты)
+	И (ПриходныйКассовыйОрдерРасшифровкаПлатежа.ДоговорКонтрагента.ВидДоговора ЕСТЬ NULL ИЛИ 
+			(ПриходныйКассовыйОрдерРасшифровкаПлатежа.ДоговорКонтрагента.ВидДоговора &lt;&gt; &amp;СПокупателем
+			И ПриходныйКассовыйОрдерРасшифровкаПлатежа.ДоговорКонтрагента.ВидДоговора &lt;&gt; &amp;СКомиссионером
+			И ПриходныйКассовыйОрдерРасшифровкаПлатежа.ДоговорКонтрагента.ВидДоговора &lt;&gt; &amp;СКомитентом))
+	И (ПлатежноеПоручениеВходящееРасшифровкаПлатежа.ДоговорКонтрагента.ВидДоговора ЕСТЬ NULL ИЛИ		
+			(ПлатежноеПоручениеВходящееРасшифровкаПлатежа.ДоговорКонтрагента.ВидДоговора &lt;&gt; &amp;СПокупателем
+			И ПлатежноеПоручениеВходящееРасшифровкаПлатежа.ДоговорКонтрагента.ВидДоговора &lt;&gt; &amp;СКомиссионером
+			И ПлатежноеПоручениеВходящееРасшифровкаПлатежа.ДоговорКонтрагента.ВидДоговора &lt;&gt; &amp;СКомитентом))
+	И (НЕ КнигаУчетаДоходовИРасходов.ЭтапПроведения = -1)
+
+СГРУППИРОВАТЬ ПО
+	КнигаУчетаДоходовИРасходов.Регистратор,
+	ВЫБОР
+		КОГДА НЕ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.СчетУчетаРасчетовСКонтрагентом ЕСТЬ NULL 
+			ТОГДА ВЫБОР 
+				КОГДА ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.ВидОперации = &amp;ПрочееПоступлениеБН
+					ТОГДА ПлатежноеПоручениеВходящееРасшифровкаПлатежа.Ссылка.СчетУчетаРасчетовСКонтрагентом.Наименование
+				ИНАЧЕ ПлатежноеПоручениеВходящееРасшифровкаПлатежа.СчетУчетаРасчетовСКонтрагентом.Наименование			
+			КОНЕЦ
+		КОГДА НЕ ПриходныйКассовыйОрдерРасшифровкаПлатежа.СчетУчетаРасчетовСКонтрагентом ЕСТЬ NULL 
+			ТОГДА  ВЫБОР 
+				КОГДА ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.ВидОперации = &amp;ПрочееПоступлениеН
+					ТОГДА ПриходныйКассовыйОрдерРасшифровкаПлатежа.Ссылка.СчетУчетаРасчетовСКонтрагентом.Наименование
+				ИНАЧЕ ПриходныйКассовыйОрдерРасшифровкаПлатежа.СчетУчетаРасчетовСКонтрагентом.Наименование			
+			КОНЕЦ			
+		ИНАЧЕ
+			"Прочие доходы"
+	КОНЕЦ
+
+ИМЕЮЩИЕ
+	СУММА(КнигаУчетаДоходовИРасходов.Графа5) &lt;&gt; 0</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Графа5_0</dataPath>
+		<expression>Сумма(Графа5_0)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Графа5_1</dataPath>
+		<expression>Сумма(Графа5_1)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Графа5_2</dataPath>
+		<expression>Сумма(Графа5_2)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Графа5_3</dataPath>
+		<expression>Сумма(Графа5_3)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Графа5_4</dataPath>
+		<expression>Сумма(Графа5_4)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Графа5_5</dataPath>
+		<expression>Сумма(Графа5_5)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Графа5_6</dataPath>
+		<expression>Сумма(Графа5_6)</expression>
+	</totalField>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>Организация</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Организация</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Организации</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.Организации.ПустаяСсылка</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>РозничнаяВыручка</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Розничная выручка</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ВидыОперацийПКО</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыОперацийПКО.РозничнаяВыручка</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>СКомиссионером</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>С комиссионером</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ВидыДоговоровКонтрагентов</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыДоговоровКонтрагентов.СКомиссионером</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>СКомитентом</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>С комитентом</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ВидыДоговоровКонтрагентов</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыДоговоровКонтрагентов.СКомитентом</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>СПокупателем</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>С покупателем</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ВидыДоговоровКонтрагентов</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыДоговоровКонтрагентов.СПокупателем</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>КартыИКредиты</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Карты и кредиты</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ВидыОперацийПоступлениеДенежныхСредств</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыОперацийПоступлениеДенежныхСредств.ПоступленияОтПродажПоПлатежнымКартамИБанковскимКредитам</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ПрочееПоступлениеБН</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Прочее поступление БН</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ВидыОперацийПоступлениеДенежныхСредств</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыОперацийПоступлениеДенежныхСредств.ПрочееПоступление</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ПрочееПоступлениеН</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Прочее поступление Н</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ВидыОперацийПКО</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыОперацийПКО.ПрочийПриход</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:name>0</dcsset:name>
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Контрагент_0</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Графа5_0</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Поступления от покупателей</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Регистратор_0</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:name>1</dcsset:name>
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Склад_1</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Графа5_1</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Розничная выручка</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Регистратор_1</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:name>2</dcsset:name>
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Контрагент_2</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Графа5_2</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Поступления от комиссионеров</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Регистратор_2</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:name>3</dcsset:name>
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Контрагент_3</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Графа5_3</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Комиссионное вознаграждение</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Регистратор_3</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:name>4</dcsset:name>
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Контрагент_4</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Графа5_4</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Возврат авансов покупателям</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Регистратор_4</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:name>5</dcsset:name>
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Регистратор_5</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Графа5_5</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Курсовые разницы</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:name>6</dcsset:name>
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ВидДоходов_6</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Графа5_6</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Прочие доходы</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Регистратор_6</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

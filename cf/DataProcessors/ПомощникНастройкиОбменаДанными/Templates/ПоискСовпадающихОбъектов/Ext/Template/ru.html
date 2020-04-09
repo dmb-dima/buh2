@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link href="__STYLE__" type="text/css" rel="stylesheet"></link><meta content="MSHTML 6.00.2900.3492" name="GENERATOR"></meta><style>A:link {
+	FONT-WEIGHT: bold; COLOR: #0000ff; TEXT-DECORATION: underline
+}
+A:visited {
+	FONT-WEIGHT: bold; COLOR: #0000ff; TEXT-DECORATION: underline
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+H1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 18pt; COLOR: #003366; FONT-FAMILY: Ariall, Tahoma; TEXT-ALIGN: left
+}
+H2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14pt; FONT-FAMILY: Arial, Tahoma; TEXT-ALIGN: left
+}
+H3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; FONT-FAMILY: Arial, Tahoma; TEXT-ALIGN: left
+}
+TABLE {
+	FONT-SIZE: x-small
+}
+TABLE .Programtext {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; COLOR: #0000ff; PADDING-TOP: 10px; BACKGROUND-COLOR: #f0f0f0
+}
+BODY {
+	FONT-SIZE: x-small; FONT-FAMILY: Verdana
+}
+.withBorder {
+	BORDER-RIGHT: #ffd700 1px solid; BORDER-TOP: #ffd700 1px solid; FONT-SIZE: x-small; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+}
+.withBorder TD {
+	BORDER-LEFT: #ffd700 1px solid; BORDER-BOTTOM: #ffd700 1px solid
+}
+.withBorder TH {
+	BORDER-LEFT: #ffd700 1px solid; BORDER-BOTTOM: #ffd700 1px solid; BACKGROUND-COLOR: #ffffee
+}
+UL.TOC LI {
+	LIST-STYLE-TYPE: none
+}
+.Programtext {
+	FONT-SIZE: 10pt; COLOR: #000080; FONT-FAMILY: Courier
+}
+PRE.Query {
+	FONT-SIZE: 10pt; COLOR: #000080; FONT-FAMILY: Courier
+}
+PRE.xml {
+	FONT-SIZE: 10pt; COLOR: #000080; FONT-FAMILY: Courier
+}
+PRE.vbcode {
+	FONT-SIZE: 10pt; COLOR: #000080; FONT-FAMILY: Courier
+}
+PRE {
+	FONT-SIZE: 10pt
+}
+.Marker {
+	BACKGROUND-COLOR: #ffff00
+}
+.heading {
+	FONT-WEIGHT: bold; BORDER-LEFT: #ffd700 1px solid; BORDER-BOTTOM: #ffd700 1px solid; BACKGROUND-COLOR: #ffffee
+}
+.tip {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 15px; PADDING-LEFT: 15px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 15px; WIDTH: 95%; PADDING-TOP: 15px; BACKGROUND-COLOR: #eeffee; BORDER-RIGHT-WIDTH: 0px
+}
+.tip TD {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 15px; PADDING-LEFT: 15px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 15px; WIDTH: 95%; PADDING-TOP: 15px; BACKGROUND-COLOR: #eeffee; BORDER-RIGHT-WIDTH: 0px
+}
+.important {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 15px; PADDING-LEFT: 15px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 15px; WIDTH: 95%; PADDING-TOP: 15px; BACKGROUND-COLOR: #ffeeee; BORDER-RIGHT-WIDTH: 0px
+}
+.important TD {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 15px; PADDING-LEFT: 15px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 15px; WIDTH: 95%; PADDING-TOP: 15px; BACKGROUND-COLOR: #ffeeee; BORDER-RIGHT-WIDTH: 0px
+}
+.note {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 15px; PADDING-LEFT: 15px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 15px; WIDTH: 95%; PADDING-TOP: 15px; BACKGROUND-COLOR: #eeeeff; BORDER-RIGHT-WIDTH: 0px
+}
+.note TD {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 15px; PADDING-LEFT: 15px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 15px; WIDTH: 95%; PADDING-TOP: 15px; BACKGROUND-COLOR: #eeeeff; BORDER-RIGHT-WIDTH: 0px
+}
+.k {
+	COLOR: red
+}
+.c {
+	COLOR: green
+}
+.s {
+	COLOR: black
+}
+.n {
+	COLOR: black
+}
+.p {
+	COLOR: brown
+}
+OL LI {
+	MARGIN-BOTTOM: 12pt
+}
+</style></head><body>
+<h1 align="justify">Поиск совпадающих по полям синхронизации объектов</h1>
+<p><strong>Поиск совпадающих по полям синхронизации объектов</strong> -  механизм, позволяющий выявить объекты, совпадающие по полям поиска. </p>
+<p>Пример: в информационной базе есть два элемента справочника "Контрагенты". 
+</p><p>Первый элемент: 
+</p><p>Наименование: ООО "Сервис-Тренд", 
+</p><p>ИНН: 7999890, 
+</p><p>КПП: не заполнено. 
+</p><p>Второй элемент:</p>
+<p>Наименование: ООО "СтройМаркет", 
+</p><p>ИНН: 7999890, 
+</p><p>КПП: не заполнено.</p>
+<p>При настройке обмена с другой базой для справочника "Контрагенты" выбран вариант сопоставления "ИНН+КПП". 
+</p><p>Обратите внимание, что первый и второй элементы(ООО "Сервис-Тренд") и ООО "СтройМаркет" имеют одинаковые ИНН и одинаковые КПП(значения КПП не заполнены). 
+</p><p>Что происходит при обмене данными: 
+</p><p>Механизм обмена данными при создании первого элемента в базе-приемнике ищет, есть ли базе элементы с такими ИНН и КПП и не находит. 
+</p><p>В базе-приемнике создается новый элемент справочника "Контрагенты" (ООО "Сервис-Тренд"). 
+</p><p>При загрузке второго элемента механизм обмена данными снова ищет в базе-приемнике элементы справочника "Контрагенты" по ИНН и КПП второго элемента. И находит первый элемент. Далее в базе-приемнике происходит замещение всех реквизитов первого элемента на реквизиты второго элемента. То есть из базы "пропадает" первый элемент (ООО "Сервис-Тренд"), а вместо него появляется второй элемент(ООО "СтройМаркет"). Как избежать подобных ситуаций? 
+</p><p>Для этого и создан механизм поиска совпадающих по полям синхронизации объектов. 
+</p><p>В нашем примере полями синхронизации будут ИНН и КПП, а объектами - элементы справочника "Контрагенты". 
+</p><p>При настройке обмена данными теперь можно проанализоровать справочники в информационной базе, выявить такие ситуации и устранить их. 
+</p><p> <img style="WIDTH: 562px; HEIGHT: 490px" height="587" src="_files/Поиск.PNG" width="649"></img></p><p>
+</p><p> На рисунке видно, что все найденные объекты сгруппированы по : 
+</p><p>Виду справочника и группам. Группой является комбинация реквизитов, по которой найдены совпадающие объекты. 
+</p><p>Видно, что и первый и второй элемент из примера попали в первую группу : у них совпадает ИНН и не заполнено КПП. 
+</p><p>При работе с поиском можно открыть либо форму найденного элемента, либо(если это элемент из другой базы) - просмотреть список реквизитов элемента. 
+</p><p>Поиск не сопоставляет объекты различных информационных баз, все сравнения происходят в одной информационной базе. 
+</p><p><strong>Важно: </strong>Поиск применяется только при настройке обмена данными. После настройки обмена использование поиска не имеет смысла, поскольку при настроенном обмене данными большинство объектов(справочников, документов) сопоставляется по уникальным идентификаторам. 
+</p><p><strong>Важно:</strong> Поиск при настройке обмена через COM-соединение работает в двух информационных базах. 
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><p> </p></body></html>

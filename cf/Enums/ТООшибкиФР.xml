@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
+	<Enum uuid="fd0f00ce-1851-47b7-becb-e799e421d61e">
+		<InternalInfo>
+			<xr:GeneratedType name="EnumRef.ТООшибкиФР" category="Ref">
+				<xr:TypeId>aaa92904-ec4c-4b5e-a709-ca7365a4499d</xr:TypeId>
+				<xr:ValueId>9d24b5d8-6917-428b-9fd5-12acecaa7e7e</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumManager.ТООшибкиФР" category="Manager">
+				<xr:TypeId>b20d1784-00ad-405a-9cdd-cc9c28b95ec2</xr:TypeId>
+				<xr:ValueId>a285ab5f-d08e-4c93-8181-84409f069b50</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumList.ТООшибкиФР" category="List">
+				<xr:TypeId>6bcb1d24-7c68-45e2-9a5c-0e4fda0c8257</xr:TypeId>
+				<xr:ValueId>b4d02145-39c5-458f-9766-5185b5a2b559</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>ТООшибкиФР</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ТООшибки ФР</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<UseStandardCommands>false</UseStandardCommands>
+			<Characteristics/>
+			<QuickChoice>true</QuickChoice>
+			<ChoiceMode>BothWays</ChoiceMode>
+			<DefaultListForm/>
+			<DefaultChoiceForm/>
+			<AuxiliaryListForm/>
+			<AuxiliaryChoiceForm/>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation/>
+			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+		</Properties>
+		<ChildObjects>
+			<EnumValue uuid="328337a0-f862-4834-b083-ad62b412683b">
+				<Properties>
+					<Name>ОшибкаНеобходимПарольАдминистратора</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Для выполнения данной операции необходим корректный пароль администратора</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>Убедитесь, что в настройках пользователя задан корректный пароль администратора</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="0bda1161-4e95-4894-8ab9-bb79f81aa366">
+				<Properties>
+					<Name>ОшибкаНеобходимПарольКассира</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Для выполнения данной операции необходим корректный пароль кассира</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>Убедитесь, что в настройках пользователя задан корректный пароль кассира</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="9293c6fb-57a4-4b37-8b35-184c0c12bbd9">
+				<Properties>
+					<Name>ОшибкаНетВозможностиПечатиПКО</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данный фискальный регистратор не имеет возможности отражать в чеке факт наличных расчетов с юридическими лицами</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>В случае, если данная возможность предусмотрена фискальным регистратором, рекомендуется проверить его настройки в форме обработки "Настройка торгового оборудования".</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="5168c955-46c8-4472-be24-9898165cf25f">
+				<Properties>
+					<Name>ОшибкаНетНаличных</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Недостаточно наличных средств в кассе для выполнения операции</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>Выполнение операции в данный момент невозможно. В случае, если данная ошибка возникает при попытке закрыть чек необходимо уменьшить сумму сдачи.</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="3400597b-8ae5-4783-87e5-29cc8b8cab8b">
+				<Properties>
+					<Name>ОшибкаРежимПечатиЧека</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выполнение данного действия невозможно в режиме печати чека</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>Необходимо закрыть или аннулировать чек и повторить попытку ещё раз.</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="4fe1b775-c954-4781-99ab-3b978de7645d">
+				<Properties>
+					<Name>ОшибкаСуммыНедостаточно</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Переданной суммы недостаточно для оплаты</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+		</ChildObjects>
+	</Enum>
+</MetaDataObject>

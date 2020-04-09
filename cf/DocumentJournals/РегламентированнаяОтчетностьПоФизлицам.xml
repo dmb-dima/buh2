@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
+	<DocumentJournal uuid="b6a19324-7b9e-4038-b5ff-c24ce222bf01">
+		<InternalInfo>
+			<xr:GeneratedType name="DocumentJournalSelection.РегламентированнаяОтчетностьПоФизлицам" category="Selection">
+				<xr:TypeId>cb1b2015-c1be-4975-b23e-6d4b23b8e030</xr:TypeId>
+				<xr:ValueId>af4b68c8-7cbe-40ce-8fc0-da7ec579dfba</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DocumentJournalList.РегламентированнаяОтчетностьПоФизлицам" category="List">
+				<xr:TypeId>f9881f39-2f25-4628-8430-81c7cc2f0c2f</xr:TypeId>
+				<xr:ValueId>ba9ccac1-8e6d-4e29-9acc-ad6685052a94</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DocumentJournalManager.РегламентированнаяОтчетностьПоФизлицам" category="Manager">
+				<xr:TypeId>ae21d701-41d1-46ed-a3f4-11f4961a316d</xr:TypeId>
+				<xr:ValueId>954a6330-6708-45a0-ae43-0efeb51af07e</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>РегламентированнаяОтчетностьПоФизлицам</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Регламентированная отчетность по физлицам</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<DefaultForm>DocumentJournal.РегламентированнаяОтчетностьПоФизлицам.Form.ФормаСписка</DefaultForm>
+			<AuxiliaryForm/>
+			<UseStandardCommands>false</UseStandardCommands>
+			<RegisteredDocuments>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ЗаявлениеОбОбменеДубликатеСтраховогоСвидетельства</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.АнкетаЗастрахованногоЛица</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.СведенияОТрудовомСтажеИЗаработкеСЗВ4</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ПередачаСЗВ4вПФР</xr:Item>
+			</RegisteredDocuments>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation/>
+		</Properties>
+		<ChildObjects>
+			<Column uuid="5fd18539-78d1-4e8b-b186-df2fbc943eea">
+				<Properties>
+					<Name>Организация</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>IndexWithAdditionalOrder</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.ЗаявлениеОбОбменеДубликатеСтраховогоСвидетельства.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.АнкетаЗастрахованногоЛица.Attribute.Организация</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.СведенияОТрудовомСтажеИЗаработкеСЗВ4.Attribute.Организация</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Form>ФормаСписка</Form>
+		</ChildObjects>
+	</DocumentJournal>
+</MetaDataObject>
